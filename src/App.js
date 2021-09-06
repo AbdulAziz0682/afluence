@@ -18,7 +18,7 @@ const customTheme = createTheme({
 			main: '#ff004d',
 			light: '#f1f1f1',
 		},
-	},
+	}
 })
 
 const jss = create({

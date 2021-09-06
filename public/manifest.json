@@ -2,11 +2,7 @@
   "short_name": "Afluence",
   "name": "Voice Interfaces with Afluence",
   "icons": [
-    {
-      "src": "afluence.png",
-      "type": "image/png",
-      "sizes": "192x192"
-    }
+
   ],
   "start_url": ".",
   "display": "standalone",
