@@ -2,6 +2,9 @@ import React from 'react';
 import { ThemeProvider, createTheme } from '@material-ui/core/styles';
 import Routes from './routes';
 
+import { Provider } from 'react-redux';
+import store from './redux/store';
+
 import { createGenerateClassName, jssPreset, StylesProvider } from '@material-ui/core/styles';
 import {create} from 'jss';
 import jssExtend from 'jss-plugin-extend';
@@ -30,10 +33,12 @@ const jss = create({
 
 export default function App(){
 	return (
-		<StylesProvider jss={jss} generateClassName={createGenerateClassName()}>
-			<ThemeProvider theme={customTheme}>
-				<Routes />
-			</ThemeProvider>
-		</StylesProvider>
+		<Provider store={store}>
+			<StylesProvider jss={jss} generateClassName={createGenerateClassName()}>
+				<ThemeProvider theme={customTheme}>
+					<Routes />
+				</ThemeProvider>
+			</StylesProvider>
+		</Provider>
 	)
 }
