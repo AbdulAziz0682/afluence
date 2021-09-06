@@ -7,12 +7,15 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+
+import { Redirect } from 'react-router';
 
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 
 export default function Account(props){
+    let loggedIn = useSelector((state)=>state.account.loggedIn);
     let user = useSelector((state)=>state.account.user);
     let [edit, setEdit] = useState(false);
     //Form requirements
@@ -21,17 +24,41 @@ export default function Account(props){
             .string('Enter your email')
             .email('Enter a valid email')
             .required('Email is required'),
+        password: yup
+            .string('Enter your Password')
+            .min(8, 'Enter at least 8 characters')
+            .required('Password is required'),
+        company: yup
+            .string('Enter your Company name')
+            .min(4, 'Enter at least 4 characters')
+            .required('Company is required'),
+        name: yup
+            .string('Enter your Name')
+            .min(2, 'Enter at least 2 characters')
+            .required('Name is required'),
+        token: yup
+            .string('Enter your token')
+            .min(16, 'Enter at least 16 characters')
+            .required('Token is required'),
+        confirmPassword: yup
+            .string('Enter confirm password')
+            .oneOf([yup.ref('password'), null], 'Passwords must match')
         });
     const formik = useFormik({
         initialValues: {
-            ...user
+            ...user,
+            confirmPassword: user.password
         },
         validationSchema: validationSchema,
         onSubmit: (values) => {
-            alert(JSON.stringify(values, null, 2));
+            setEdit(false);
+            console.log(JSON.stringify(values, null, 2));
         },
     });
     //------------------------
+    if(!loggedIn){
+        return <Redirect push to="/home" />
+    }
     return (
         <Grid item md={11} lg={9}>
             <form onSubmit={formik.handleSubmit} className="w-100">
@@ -50,7 +77,7 @@ export default function Account(props){
                                     }
                                 }}
                             >
-                                {edit ? 'Submit' : 'Edit'}
+                                {edit ? 'Save' : 'Edit'}
                             </Button>
                         }
                     </div>
@@ -92,6 +119,23 @@ export default function Account(props){
                                                     onChange={formik.handleChange}
                                                     error={formik.touched.password && Boolean(formik.errors.password)}
                                                     helperText={formik.touched.password && formik.errors.password}
+                                                />
+                                            </TableCell>
+                                        </TableRow>
+                                        <TableRow key="8">
+                                            <TableCell scope="row">Confirm Password</TableCell>
+                                            <TableCell scope="row">
+                                                <TextField
+                                                    fullWidth
+                                                    type="password"
+                                                    id="confirmPassword"
+                                                    name="confirmPassword"
+                                                    variant="outlined"
+                                                    size="small"
+                                                    value={formik.values.confirmPassword}
+                                                    onChange={formik.handleChange}
+                                                    error={formik.touched.confirmPassword && Boolean(formik.errors.confirmPassword)}
+                                                    helperText={formik.touched.confirmPassword && formik.errors.confirmPassword}
                                                 />
                                             </TableCell>
                                         </TableRow>

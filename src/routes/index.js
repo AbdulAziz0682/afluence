@@ -14,7 +14,7 @@ export default function Routes({children}){
                 <Grid item>
                     <TopBar />
                 </Grid>
-                <Grid item className="flex justify-center items-center w-screen h-screen">
+                <Grid item className="flex justify-center w-screen h-screen">
                     <Switch>
                         <Route exact path="/account"><Account /></Route>
                         <Route exact path="/register"><Register /></Route>
