@@ -5,6 +5,7 @@ import { Grid } from '@material-ui/core';
 import TopBar from '../components/TopBar';
 import Home from './Home';
 import Register from './Regiser';
+import Account from './Account';
 
 export default function Routes({children}){
     return (
@@ -13,8 +14,9 @@ export default function Routes({children}){
                 <Grid item>
                     <TopBar />
                 </Grid>
-                <Grid item>
+                <Grid item className="flex justify-center items-center w-screen h-screen">
                     <Switch>
+                        <Route exact path="/account"><Account /></Route>
                         <Route exact path="/register"><Register /></Route>
                         <Route path="/"><Home /></Route>
                     </Switch>

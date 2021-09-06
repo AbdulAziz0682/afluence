@@ -3,7 +3,11 @@ import { SET_LOGGEDIN, SET_USER } from "../actions/accountTypes";
 const initialState = {
     loggedIn: false,
     user: {
-        name: 'Abdul Aziz'
+        name: 'Abdul Aziz',
+        email: 'email@gmail.com',
+        password: 'Password123',
+        company: 'company 1',
+        token: 'abdcder0985djljsjkj38875'
     }
 }
 

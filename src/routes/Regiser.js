@@ -1,8 +1,17 @@
-import { Typography } from '@material-ui/core';
 import React from 'react';
+import { Grid, Typography } from '@material-ui/core';
 
 export default function Register(props){
     return (
-        <Typography variant="h3" color="primary" align="center">Create your account</Typography>
+        <Grid item md={8} lg={6}>
+            <Grid container className="bg-green-200 self-center rounded-lg">
+                <Grid item sm={6}>
+                    Some text here
+                </Grid>
+                <Grid item sm={6} className="flex flex-col justify-center">
+                    <Typography variant="body" color="primary" className="font-extrabold">CREATE YOUR ACCOUNT</Typography>
+                </Grid>
+            </Grid>
+        </Grid>
     )
 }
