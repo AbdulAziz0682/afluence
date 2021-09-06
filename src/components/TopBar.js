@@ -17,8 +17,9 @@ const useStyles = makeStyles((theme) => ({
       marginBottom: theme.mixins.toolbar.minHeight
     },
     logo: {
-      margin: theme.spacing(0),
-      width: 50
+      margin: 0,
+      width: 48,
+      padding: 0
     },
     title: {
       flexGrow: 1,
