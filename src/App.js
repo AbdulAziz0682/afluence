@@ -1,6 +1,7 @@
 import React from 'react';
 import { ThemeProvider, createTheme } from '@material-ui/core/styles';
 import { Button } from '@material-ui/core';
+import Routes from './routes';
 
 import { createGenerateClassName, jssPreset, StylesProvider } from '@material-ui/core/styles';
 import {create} from 'jss';
@@ -30,7 +31,7 @@ export default function App(){
 	return (
 		<StylesProvider jss={jss} generateClassName={createGenerateClassName()}>
 			<ThemeProvider theme={customTheme}>
-		  		<h1 className="text-green-200 bg-gray-600">Afluence Setup with material Ui<Button variant="contained" color="primary" >BTN</Button></h1>
+				<Routes />
 			</ThemeProvider>
 		</StylesProvider>
 	)
