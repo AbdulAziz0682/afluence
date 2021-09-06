@@ -11,6 +11,7 @@
     "jss": "^10.7.1",
     "jss-plugin-extend": "^10.7.1",
     "jss-rtl": "^0.3.0",
+    "purgecss": "^4.0.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.5",
@@ -24,7 +25,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "purge-tailwind": "purgecss --css ./tailwind.css --content ./public/index.html ./src/*.js --output ./public"
   },
   "eslintConfig": {
     "extends": [

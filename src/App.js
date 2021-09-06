@@ -1,12 +1,13 @@
 import React from 'react';
 import { ThemeProvider, createTheme } from '@material-ui/core/styles';
-import { Button } from '@material-ui/core';
 import Routes from './routes';
 
 import { createGenerateClassName, jssPreset, StylesProvider } from '@material-ui/core/styles';
 import {create} from 'jss';
 import jssExtend from 'jss-plugin-extend';
 import rtl from 'jss-rtl';
+
+import './assets/tailwind.css';
 
 const customTheme = createTheme({
 	palette: {
