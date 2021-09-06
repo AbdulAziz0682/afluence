@@ -1,7 +1,10 @@
-import { SET_LOGGEDIN } from "../actions/accountTypes";
+import { SET_LOGGEDIN, SET_USER } from "../actions/accountTypes";
 
 const initialState = {
-    loggedIn: false
+    loggedIn: false,
+    user: {
+        name: 'Abdul Aziz'
+    }
 }
 
 const account = (state = initialState, action) => {
@@ -10,6 +13,10 @@ const account = (state = initialState, action) => {
             ...state,
             loggedIn: action.payload.value
         };
+        case SET_USER: return {
+            ...state,
+            user: action.payload.value
+        }
         default: return state;
     }
 }
