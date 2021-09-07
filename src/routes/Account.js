@@ -60,15 +60,15 @@ export default function Account(props){
         return <Redirect push to="/home" />
     }
     return (
-        <Grid item md={11} lg={9}>
+        <Grid item xs={12} md={11} lg={9} className="mt-3">
             <form onSubmit={formik.handleSubmit} className="w-100">
             <Grid container direction="column" className="border self-center rounded-lg md:p-8 p-4">
-                <Grid item className="flex gap-6 justify-between w-full h-full">
+                <Grid item className="flex gap-6 justify-between items-center">
                     <Typography variant="h6" color="primary">ACCOUNT DETAILS</Typography>
                     <div className="flex gap-3 justify-between">
-                        <Button variant="contained" color="secondary">Delete</Button>
+                        <Button variant="contained" size="small" className="text-white hover:bg-red-700 bg-red-500">Delete</Button>
                         {
-                            <Button color="primary" variant="contained" fullWidth 
+                            <Button color="primary" variant="contained" 
                                 type={edit ? 'submit' : 'button'}
                                 onClick={(e)=>{
                                     if(!edit){

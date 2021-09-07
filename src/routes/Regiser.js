@@ -9,7 +9,7 @@ export default function Register(props){
                     Some text here
                 </Grid>
                 <Grid item sm={6} className="flex flex-col justify-center">
-                    <Typography variant="body" color="primary" className="font-extrabold">CREATE YOUR ACCOUNT</Typography>
+                    <Typography variant="body1" color="primary" className="font-extrabold">CREATE YOUR ACCOUNT</Typography>
                 </Grid>
             </Grid>
         </Grid>
