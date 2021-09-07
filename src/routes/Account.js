@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { Button, Grid, Typography, TextField, IconButton } from '@material-ui/core';
+import { Button, Grid, Typography, TextField } from '@material-ui/core';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -80,8 +80,11 @@ export default function Account(props){
                     <Typography variant="h6" color="primary">ACCOUNT DETAILS</Typography>
                     <div className="flex gap-3 justify-between">
                         <DeleteAccountConfirmation open={open} handleClose={handleClose} />
-                        <Button variant="contained" size="small" onClick={handleClickOpen} className="text-white hover:bg-red-700 bg-red-500">
-                            <DeleteIcon htmlColor="white" />
+                        <Button variant="contained" size="small" 
+                            onClick={handleClickOpen} 
+                            className="text-white hover:bg-red-700 bg-red-500"
+                            startIcon={<DeleteIcon htmlColor="white" />}
+                        >
                             Delete
                         </Button>
                         {
@@ -93,8 +96,9 @@ export default function Account(props){
                                         setEdit(!edit);
                                     }
                                 }}
+                                startIcon={!edit && <EditIcon htmlColor="white" />}
                             >
-                                {!edit && <EditIcon htmlColor="white" />}
+                                
                                 {edit ? 'Save' : 'Edit'}
                             </Button>
                         }

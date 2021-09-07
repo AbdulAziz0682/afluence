@@ -1,13 +1,17 @@
 import { SET_LOGGEDIN, SET_USER } from "../actions/accountTypes";
 
 const initialState = {
-    loggedIn: false,
+    loggedIn: true,
     user: {
         name: 'Abdul Aziz',
         email: 'email@gmail.com',
         password: 'Password123',
         company: 'company 1',
-        token: 'abdcder0985djljsjkj38875'
+        token: 'abdcder0985djljsjkj38875',
+        projects: [
+            {name: 'Project_1', status: 'Active'},
+            {name: 'Project_2', status: 'In development'}
+        ]
     }
 }
 
