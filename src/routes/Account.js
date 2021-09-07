@@ -18,9 +18,18 @@ import { useFormik } from 'formik';
 import * as yup from 'yup';
 import DeleteAccountConfirmation from '../components/Account/DeleteAccountConfirmation';
 
+const User = {
+    name: '',
+    email: '',
+    password: '',
+    company: '',
+    token: '',
+    projects: []
+}
+
 export default function Account(props){
     let loggedIn = useSelector((state)=>state.account.loggedIn);
-    let user = useSelector((state)=>state.account.user);
+    let user = useSelector((state)=>state.account.user) || User;
     let [edit, setEdit] = useState(false);
     //Dialog Actions
     const [open, setOpen] = useState(false);
