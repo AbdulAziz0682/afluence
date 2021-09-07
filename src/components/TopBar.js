@@ -9,7 +9,7 @@ import { MoreVert } from "@material-ui/icons";
 
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { setLoggedIn } from "../redux/actions/accountActions";
+import { logout } from "../redux/actions/accountActions";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -42,10 +42,10 @@ export default function TopBar(props){
         <div className={classes.root}>
             <AppBar position="fixed" color="default">
                 <Toolbar>
-                    <IconButton edge="start" className={classes.logo} color="inherit" aria-label="menu" onClick={()=>dispatch(setLoggedIn(!loggedIn))}>
+                    <IconButton edge="start" className={classes.logo} color="inherit" aria-label="menu">
                         <img src={logo} alt="afluence logo" width="100%"/>
                     </IconButton>
-                    <Typography variant="h6" className={classes.title}>{loggedIn ? user.name : "Afluence" }</Typography>
+                    <Typography variant="h6" className={classes.title}>{loggedIn ? (user ? user.name : '') : "Afluence" }</Typography>
                     {   loggedIn ? <> 
                         <IconButton onClick={handleMenuClick} color="inherit">
                             {loggedIn && <MoreVert />}
@@ -65,11 +65,12 @@ export default function TopBar(props){
                     {   loggedIn ? [
                             <MenuItem key="1" component={Link} to="/console" onClick={handleMenuClose}>Console</MenuItem>,
                             <MenuItem key="2" component={Link} to="/account" onClick={handleMenuClose}>Account</MenuItem>,
-                            <MenuItem key="3" component={Link} to="/login" onClick={(e)=>{dispatch(setLoggedIn(false)); handleMenuClose(e)}}>Logout</MenuItem>
+                            <MenuItem key="3" component={Link} to="/login" onClick={(e)=>{dispatch(logout()); handleMenuClose(e)}}>Logout</MenuItem>
                         ]
                         : [
                             <MenuItem key="4" component={Link} to="/" onClick={handleMenuClose}>Home</MenuItem>,
-                            <MenuItem key="5" component={Link} to="/register" onClick={handleMenuClose}>Register</MenuItem>
+                            <MenuItem key="5" component={Link} to="/register" onClick={handleMenuClose}>Register</MenuItem>,
+                            <MenuItem key="6" component={Link} to="/login" onClick={handleMenuClose}>Login</MenuItem>
                         ]
                     }
                     </Menu>

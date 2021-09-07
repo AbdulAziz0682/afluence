@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import { Button, FormHelperText, Grid, InputLabel, Typography } from '@material-ui/core';
 import { TextField } from '@material-ui/core';
 import CheckBox from '@material-ui/core/Checkbox';
@@ -8,7 +8,12 @@ import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { Link } from 'react-router-dom';
 
+import { useSelector } from 'react-redux';
+
+import { Redirect } from 'react-router';
+
 export default function Register(props){
+    let loggedIn = useSelector((state)=>state.account.loggedIn);
 
     //Form requirements
     const validationSchema = yup.object({
@@ -52,6 +57,9 @@ export default function Register(props){
         },
     });
     //------------------------
+    if(loggedIn){
+        return <Redirect push to="/" />
+    }
     return (
         <Grid item md={5} lg={4} className="mt-3">
             <form onSubmit={formik.handleSubmit} className="w-100">

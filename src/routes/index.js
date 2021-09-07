@@ -7,6 +7,7 @@ import Home from './Home';
 import Register from './Regiser';
 import Account from './Account';
 import Console from './Console';
+import Login from './Login';
 
 export default function Routes({children}){
     return (
@@ -17,10 +18,11 @@ export default function Routes({children}){
                 </Grid>
                 <Grid item className="flex justify-center">
                     <Switch>
+                        <Route exact path="/login"><Login /></Route>
                         <Route exact path="/console"><Console /></Route>
                         <Route exact path="/account"><Account /></Route>
                         <Route exact path="/register"><Register /></Route>
-                        <Route path="/"><Home /></Route>
+                        <Route exact path="/"><Home /></Route>
                     </Switch>
                 </Grid>
             </Grid>

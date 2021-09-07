@@ -69,7 +69,7 @@ export default function Account(props){
     });
     //------------------------
     if(!loggedIn){
-        return <Redirect push to="/home" />
+        return <Redirect push to="/" />
     }
     return (
         <Grid item xs={12} md={11} lg={9} className="mt-3">

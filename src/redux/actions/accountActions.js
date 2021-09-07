@@ -1,11 +1,8 @@
-import { SET_LOGGEDIN, SET_USER } from "./accountTypes";
+import { LOGOUT, SET_USER, LOGIN } from "./accountTypes";
 
-export const setLoggedIn = (value) => {
+export const logout = () => {
     return {
-        type: SET_LOGGEDIN,
-        payload: {
-            value
-        }
+        type: LOGOUT
     }
 }
 
@@ -14,6 +11,15 @@ export const setUser = (value) => {
         type: SET_USER,
         payload: {
             value
+        }
+    }
+}
+
+export const login = (user) => {
+    return {
+        type: LOGIN,
+        payload: {
+            user
         }
     }
 }
