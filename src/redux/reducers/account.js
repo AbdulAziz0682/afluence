@@ -9,8 +9,8 @@ const initialState = {
         company: 'company 1',
         token: 'abdcder0985djljsjkj38875',
         projects: [
-            {name: 'Project_1', status: 'Active'},
-            {name: 'Project_2', status: 'In development'}
+            {name: 'Project_1', status: 'Active', country: 'United States'},
+            {name: 'Project_2', status: 'In development', country: 'United States'}
         ]
     }
 }

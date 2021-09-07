@@ -109,7 +109,7 @@ export default function Account(props){
                         edit 
                         ?
                             <TableContainer component={Paper}>
-                                <Table aria-label="simple table">
+                                <Table aria-label="simple table" size="small">
                                     <TableBody>
                                         <TableRow key="0">
                                             <TableCell scope="row">Email</TableCell>

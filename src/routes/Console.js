@@ -6,18 +6,17 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import { FormControl, InputLabel, MenuItem } from '@material-ui/core';
+import { FormControl, MenuItem } from '@material-ui/core';
 
-import DeleteIcon from '@material-ui/icons/Delete';
 import AddIcon from '@material-ui/icons/Add';
 import SearchIcon from '@material-ui/icons/Search';
+import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 import { useSelector } from 'react-redux';
 
 import { Redirect } from 'react-router';
 
-import { useFormik } from 'formik';
-import * as yup from 'yup';
 import NewProjectDialog from '../components/Console/NewProjectDialog';
 
 export default function Account(props){
@@ -42,7 +41,7 @@ export default function Account(props){
     return (
         <Grid item xs={12} md={11} lg={9} className="mt-3">
             <Grid container direction="column" className="border self-center rounded-lg md:p-8 p-4">
-                <Grid item className="flex gap-6 justify-between flex-col md:flex-row md:gap-1 items-center flex-grow">
+                <Grid item className="flex gap-6 justify-between flex-col sm:flex-row md:gap-1 items-center flex-grow">
                     <Typography variant="h6" color="primary">MY PROJECTS</Typography>
                     <div className="flex">
                         <TextField
@@ -84,13 +83,15 @@ export default function Account(props){
                                 <TableRow>
                                     <TableCell scope="row">Name</TableCell>
                                     <TableCell scope="row">Status</TableCell>
+                                    <TableCell scope="row">Action</TableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
                                 {projects.map((proj, index)=>(
-                                    <TableRow key={index}>
+                                    <TableRow hover key={index}>
                                         <TableCell scope="row">{proj.name}</TableCell>
                                         <TableCell scope="row">{proj.status}</TableCell>
+                                        <TableCell scope="row"><EditIcon /> <DeleteIcon /></TableCell>
                                     </TableRow>
                                 ))}
                             </TableBody>
