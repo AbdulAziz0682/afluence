@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -11,6 +11,10 @@ import { FormControl, MenuItem, Select } from '@material-ui/core';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 
+const initialValues = {
+    name: '',
+    country: ''
+}
 export default function DeleteAccountConfirmation(props) {
     let {open, handleClose} = props;
 
@@ -23,17 +27,15 @@ export default function DeleteAccountConfirmation(props) {
             .required('Name is required'),
         country: yup
             .string('Enter country Name')
-            .required('Name is required')
+            .required('Country is required')
             .oneOf(countries, `Country should be one of ${countries.join(', ')}`)
         });
     const formik = useFormik({
-        initialValues: {
-            name: '',
-            country: 'United States'
-        },
+        initialValues: initialValues,
         validationSchema: validationSchema,
-        onSubmit: (values) => {
+        onSubmit: (values, actions) => {
             handleClose();
+            actions.resetForm();
             console.log(JSON.stringify(values, null, 2));
         },
     });
@@ -49,11 +51,11 @@ export default function DeleteAccountConfirmation(props) {
         <form onSubmit={formik.handleSubmit}>
             <Typography component={DialogTitle} className="text-center" variant="h4">New Project</Typography>
             <DialogContent className="flex flex-col gap-3">
+                <Typography variant="body1">Project Name</Typography>
                 <TextField
                     fullWidth
                     id="name"
                     name="name"
-                    label="Name"
                     variant="outlined"
                     size="small"
                     value={formik.values.name}
@@ -61,8 +63,8 @@ export default function DeleteAccountConfirmation(props) {
                     error={formik.touched.name && Boolean(formik.errors.name)}
                     helperText={formik.touched.name && formik.errors.name}
                 />
+                <Typography variant="body1">Choose country for project launch</Typography>
                 <FormControl variant="outlined" size="small">
-                    <InputLabel id="country-label">Country</InputLabel>
                     <Select
                         id="country-select"
                         name="country"
