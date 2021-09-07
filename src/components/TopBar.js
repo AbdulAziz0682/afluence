@@ -63,7 +63,7 @@ export default function TopBar(props){
                         onClose={handleMenuClose}
                     >
                     {   loggedIn ? [
-                            <MenuItem key="1" component={Link} to="/console" onClick={handleMenuClose}>Console</MenuItem>,
+                            <MenuItem key="1" component={Link} to="/projects" onClick={handleMenuClose}>Projects</MenuItem>,
                             <MenuItem key="2" component={Link} to="/account" onClick={handleMenuClose}>Account</MenuItem>,
                             <MenuItem key="3" component={Link} to="/login" onClick={(e)=>{dispatch(logout()); handleMenuClose(e)}}>Logout</MenuItem>
                         ]

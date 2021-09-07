@@ -19,7 +19,7 @@ import { Redirect } from 'react-router';
 
 import NewProjectDialog from '../components/Console/NewProjectDialog';
 
-export default function Account(props){
+export default function Projects(props){
     let loggedIn = useSelector((state)=>state.account.loggedIn);
     let user = useSelector((state)=>state.account.user);
     let {projects} = user;

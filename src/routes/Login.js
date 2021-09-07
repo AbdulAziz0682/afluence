@@ -52,7 +52,7 @@ export default function Login(props){
     });
     //------------------------
     if(loggedIn){
-        return <Redirect push to="/console" />
+        return <Redirect push to="/projects" />
     }
     return (
         <Grid item md={5} lg={4} className="mt-3">
