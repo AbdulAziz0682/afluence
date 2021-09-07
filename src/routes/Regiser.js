@@ -10,7 +10,6 @@ import { Link } from 'react-router-dom';
 
 export default function Register(props){
 
-
     //Form requirements
     const validationSchema = yup.object({
         email: yup
@@ -30,8 +29,8 @@ export default function Register(props){
             .min(4, 'Enter at least 4 characters')
             .required('Please tell us some thing'),
         isAccepting: yup
-            .boolean(true)
-            .oneOf([true], 'You have to accept terms')
+            .boolean()
+            .oneOf([true, null], 'You have to accept terms')
             .required('Please accept the terms'),
         confirmPassword: yup
             .string('Enter confirm password')
@@ -45,16 +44,13 @@ export default function Register(props){
             confirmPassword: '',
             company: '',
             hearAboutUs: '',
-            isAccepting: true,
+            isAccepting: false,
         },
         validationSchema: validationSchema,
         onSubmit: (values) => {
             console.log(JSON.stringify(values, null, 2));
         },
     });
-    useEffect(()=>{
-        console.log(formik.values);
-    })
     //------------------------
     return (
         <Grid item md={5} lg={4} className="mt-3">
@@ -137,11 +133,11 @@ export default function Register(props){
                     />
                 </Grid>
                 <Grid item className="w-80 md:w-full flex-col">
-                    <div className={`${(formik.touched.hearAboutUs && Boolean(formik.errors.hearAboutUs)) ? 'border-red-600 rounded border' : ''} flex gap-3 items-center md:w-full`}>
-                        <CheckBox name="isAccepting" onChange={formik.handleChange} checked={formik.values.isAccepting} />
-                        <InputLabel>I have read and accept terms</InputLabel>
+                    <div className={`${(formik.touched.isAccepting && Boolean(formik.errors.isAccepting)) ? 'border-red-600 rounded border' : ''} flex gap-3 items-center md:w-full`}>
+                        <CheckBox name="isAccepting" onChange={formik.handleChange} checked={formik.values.isAccepting} color="primary" />
+                        <InputLabel>I have read and accept Terms and Conditions</InputLabel>
                     </div>
-                    {formik.touched.hearAboutUs && Boolean(formik.errors.hearAboutUs) && <FormHelperText error>{formik.touched.hearAboutUs && formik.errors.isAccepting}</FormHelperText>}
+                    {formik.touched.isAccepting && Boolean(formik.errors.isAccepting) && <FormHelperText error className="ml-3">{formik.touched.hearAboutUs && formik.errors.isAccepting}</FormHelperText>}
                 </Grid>
                 <Grid item className="w-80 md:w-full flex justify-center">
                     <Button variant="contained" color="primary" type="submit">Create your Account</Button>
