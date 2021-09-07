@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { Button, Grid, Typography, TextField } from '@material-ui/core';
+import { Button, Grid, Typography, TextField, IconButton } from '@material-ui/core';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -7,17 +7,30 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
+import DeleteIcon from '@material-ui/icons/Delete'
+import EditIcon from '@material-ui/icons/Edit';
+
 import { useSelector } from 'react-redux';
 
 import { Redirect } from 'react-router';
 
 import { useFormik } from 'formik';
 import * as yup from 'yup';
+import DeleteAccountConfirmation from '../components/Account/DeleteAccountConfirmation';
 
 export default function Account(props){
     let loggedIn = useSelector((state)=>state.account.loggedIn);
     let user = useSelector((state)=>state.account.user);
     let [edit, setEdit] = useState(false);
+    //Dialog Actions
+    const [open, setOpen] = useState(false);
+    const handleClickOpen = () => {
+      setOpen(true);
+    };
+    const handleClose = () => {
+        setOpen(false);
+    };
+    console.log(open)
     //Form requirements
     const validationSchema = yup.object({
         email: yup
@@ -66,7 +79,11 @@ export default function Account(props){
                 <Grid item className="flex gap-6 justify-between items-center">
                     <Typography variant="h6" color="primary">ACCOUNT DETAILS</Typography>
                     <div className="flex gap-3 justify-between">
-                        <Button variant="contained" size="small" className="text-white hover:bg-red-700 bg-red-500">Delete</Button>
+                        <DeleteAccountConfirmation open={open} handleClose={handleClose} />
+                        <Button variant="contained" size="small" onClick={handleClickOpen} className="text-white hover:bg-red-700 bg-red-500">
+                            <DeleteIcon htmlColor="white" />
+                            Delete
+                        </Button>
                         {
                             <Button color="primary" variant="contained" 
                                 type={edit ? 'submit' : 'button'}
@@ -77,6 +94,7 @@ export default function Account(props){
                                     }
                                 }}
                             >
+                                {!edit && <EditIcon htmlColor="white" />}
                                 {edit ? 'Save' : 'Edit'}
                             </Button>
                         }
