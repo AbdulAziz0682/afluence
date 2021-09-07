@@ -1,7 +1,7 @@
 import { SET_LOGGEDIN, SET_USER } from "../actions/accountTypes";
 
 const initialState = {
-    loggedIn: true,
+    loggedIn: false,
     user: {
         name: 'Abdul Aziz',
         email: 'email@gmail.com',

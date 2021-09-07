@@ -1,11 +1,10 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import { Typography, TextField, InputLabel } from '@material-ui/core';
+import { Typography, TextField } from '@material-ui/core';
 import { FormControl, MenuItem, Select } from '@material-ui/core';
 
 import { useFormik } from 'formik';
@@ -19,7 +18,7 @@ export default function DeleteAccountConfirmation(props) {
     let {open, handleClose} = props;
 
     //Form requirements
-    let countries = ['United State', 'England', 'France', 'China'];
+    let countries = ['United States', 'England', 'France', 'China'];
     const validationSchema = yup.object({
         name: yup
             .string('Enter your Name')

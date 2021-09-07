@@ -30,7 +30,6 @@ export default function Account(props){
     const handleClose = () => {
         setOpen(false);
     };
-    console.log(open)
     //Form requirements
     const validationSchema = yup.object({
         email: yup
