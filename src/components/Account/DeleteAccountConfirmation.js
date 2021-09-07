@@ -18,9 +18,7 @@ export default function DeleteAccountConfirmation(props) {
             aria-labelledby="alert-dialog-title"
             aria-describedby="alert-dialog-description"
         >
-            <DialogTitle id="alert-dialog-title">
-                <Typography variant="h4" color="error">Deactivate my account</Typography>
-            </DialogTitle>
+            <Typography component={DialogTitle} variant="h4" color="error">Deactivate my account</Typography>
             <DialogContent>
                 <DialogContentText id="alert-dialog-description">
                     Lorem ipsum dorem amit ...
