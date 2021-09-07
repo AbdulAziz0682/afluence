@@ -16,7 +16,7 @@ const customTheme = createTheme({
 	palette: {
 		type: 'light',
 		primary: {
-			main: '#1F2B36',
+			main: '#1f2b36d9',
 		},
 		secondary: {
 			main: '#ff004d',
