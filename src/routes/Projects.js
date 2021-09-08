@@ -17,7 +17,7 @@ import { useSelector } from 'react-redux';
 
 import { Redirect } from 'react-router';
 
-import NewProjectDialog from '../components/Console/NewProjectDialog';
+import NewProjectDialog from '../components/Projects/NewProjectDialog';
 
 export default function Projects(props){
     let loggedIn = useSelector((state)=>state.account.loggedIn);
