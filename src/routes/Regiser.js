@@ -1,8 +1,10 @@
 import React from 'react';
-import { Button, FormHelperText, Grid, InputLabel, Typography } from '@material-ui/core';
+import { Button, FormHelperText, Grid, InputLabel, Typography, InputAdornment } from '@material-ui/core';
 import { TextField } from '@material-ui/core';
 import CheckBox from '@material-ui/core/Checkbox';
 import logo from '../assets/afluence.png';
+
+import { VpnKey, Email, Business, CheckCircle, Mood } from '@material-ui/icons';
 
 import { useFormik } from 'formik';
 import * as yup from 'yup';
@@ -76,6 +78,13 @@ export default function Register(props){
                         variant="outlined"
                         label="Email"
                         size="small"
+                        InputProps={{
+                            startAdornment:(
+                                <InputAdornment postition="start">
+                                    <Email />
+                                </InputAdornment>
+                            )
+                        }}
                         value={formik.values.email}
                         onChange={formik.handleChange}
                         error={formik.touched.email && Boolean(formik.errors.email)}
@@ -91,6 +100,13 @@ export default function Register(props){
                         variant="outlined"
                         label="Password"
                         size="small"
+                        InputProps={{
+                            startAdornment:(
+                                <InputAdornment postition="start">
+                                    <VpnKey />
+                                </InputAdornment>
+                            )
+                        }}
                         value={formik.values.password}
                         onChange={formik.handleChange}
                         error={formik.touched.password && Boolean(formik.errors.password)}
@@ -106,6 +122,13 @@ export default function Register(props){
                         variant="outlined"
                         label="Confirm Password"
                         size="small"
+                        InputProps={{
+                            startAdornment:(
+                                <InputAdornment postition="start">
+                                    <CheckCircle />
+                                </InputAdornment>
+                            )
+                        }}
                         value={formik.values.confirmPassword}
                         onChange={formik.handleChange}
                         error={formik.touched.confirmPassword && Boolean(formik.errors.confirmPassword)}
@@ -120,6 +143,13 @@ export default function Register(props){
                         variant="outlined"
                         label="Company"
                         size="small"
+                        InputProps={{
+                            startAdornment:(
+                                <InputAdornment postition="start">
+                                    <Business />
+                                </InputAdornment>
+                            )
+                        }}
                         value={formik.values.company}
                         onChange={formik.handleChange}
                         error={formik.touched.company && Boolean(formik.errors.company)}
@@ -134,6 +164,13 @@ export default function Register(props){
                         variant="outlined"
                         label="How did you hear about us?"
                         size="small"
+                        InputProps={{
+                            startAdornment:(
+                                <InputAdornment postition="start">
+                                    <Mood />
+                                </InputAdornment>
+                            )
+                        }}
                         value={formik.values.hearAboutUs}
                         onChange={formik.handleChange}
                         error={formik.touched.hearAboutUs && Boolean(formik.errors.hearAboutUs)}
