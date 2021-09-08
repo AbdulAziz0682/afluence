@@ -1,9 +1,7 @@
 import React from 'react';
-import clsx from 'clsx';
 import { Button, FormHelperText, Grid, InputLabel, Typography, InputAdornment } from '@material-ui/core';
 import { TextField } from '@material-ui/core';
 import CheckBox from '@material-ui/core/Checkbox';
-import { makeStyles } from '@material-ui/core';
 import { Hidden } from '@material-ui/core';
 
 import logo from '../assets/afluence.png';
@@ -19,36 +17,8 @@ import { useSelector } from 'react-redux';
 
 import { Redirect } from 'react-router';
 
-const useStyles = makeStyles(theme => ({
-    showOnSm:{
-        [theme.breakpoints.down('md')]:{
-            visibility: 'visible',
-            display: 'block'
-        }
-    },
-    hideOnSm:{
-        [theme.breakpoints.down('md')]:{
-            visibility: 'hidden',
-            display: 'none'
-        }
-    },
-    showOnMd:{
-        [theme.breakpoints.up('md')]:{
-            visibility: 'visible',
-            display: 'block'
-        }
-    },
-    hideOnMd:{
-        [theme.breakpoints.up('md')]:{
-            visibility: 'hidden',
-            display: 'none'
-        }
-    }
-}))
-
 export default function Register(props){
     let loggedIn = useSelector((state)=>state.account.loggedIn);
-    let classes = useStyles();
     //Form requirements
     const validationSchema = yup.object({
         email: yup
@@ -108,6 +78,10 @@ export default function Register(props){
                     </Grid>
                     <Grid item>
                         <Grid container spacing={2} direction="column" alignItems="center" justifyContent="center">
+                        <Grid item className="my-2 flex flex-col items-center">
+                            <Typography variant="h4" color="primary" className="font-extrabold">Create your Account</Typography>
+                            <hr className="border-2 w-full border-black" />
+                        </Grid>
                             <Grid item className="w-80">
                                 <TextField
                                     fullWidth
