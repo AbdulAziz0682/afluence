@@ -11,6 +11,7 @@ import jssExtend from 'jss-plugin-extend';
 import rtl from 'jss-rtl';
 
 import './assets/tailwind.css';
+import ErrorBoundary from './components/ErrorBoundary';
 
 const customTheme = createTheme({
 	palette: {
@@ -33,6 +34,7 @@ const jss = create({
 
 export default function App(){
 	return (
+		<ErrorBoundary>
 		<Provider store={store}>
 			<StylesProvider jss={jss} generateClassName={createGenerateClassName()}>
 				<ThemeProvider theme={customTheme}>
@@ -40,5 +42,6 @@ export default function App(){
 				</ThemeProvider>
 			</StylesProvider>
 		</Provider>
+		</ErrorBoundary>
 	)
 }

@@ -14,12 +14,16 @@ import AddIcon from '@material-ui/icons/Add';
 import ExpandIcon from '../ExpandIcon';
 import ChevronIcon from '../ChevronIcon';
 
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+
 import actions from '../../assets/actions.svg';
 import billing from '../../assets/billing.svg';
 import commond from '../../assets/commond.svg';
 import dialogFlow from '../../assets/dialogFlow.svg';
 import metrics from '../../assets/metrics.svg';
 import states from '../../assets/states.svg';
+import { addAction, addCommand, addState } from '../../redux/actions/currentProjectActions';
 
 const drawerWidth = 240;
 
@@ -57,7 +61,7 @@ const useStyles = makeStyles((theme) => ({
 	padding: theme.spacing(0, 1),
 	// necessary for content to be below app bar
 	...theme.mixins.toolbar,
-	marginTop: theme.mixins.toolbar.minHeight+1
+	marginTop: theme.mixins.toolbar.minHeight+1,
   },
   content: {
 	flexGrow: 1,
@@ -68,41 +72,13 @@ const useStyles = makeStyles((theme) => ({
 export default function SideBar() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
-  let [items, setItems] = useState([
-	  {
-		  name: 'States',
-		  icon: states,
-		  expanded: false,
-		  children: [
-			  {name: 'Start'},
-			  {name: 'End'}
-		  ]
-	  },
-	  {
-		  name: 'Actions',
-		  icon: actions,
-		  expanded: false,
-		  children: [
-			  {name: 'GET_INPUT'},
-			  {name: 'END_CONVO'},
-			  {name: 'PLAY_AUDIO'},
-		  ]
-	  },
-	  {
-		  name: 'Commands',
-		  icon: commond,
-		  expanded: false,
-		  children: [
-			  {name: 'NOT_MATCH'},
-			  {name: 'NO_INPUT'}
-		  ]
-	  }
-  ]);
+  let dispatch = useDispatch();
+  let items = useSelector((state)=>state.currentProject.expandableItems)
   function toggleExpand(index){
-	  const newItems = [...items];
+/* 	  const newItems = [...items];
 	  const item = items[index];
 	  newItems[index] = {...item, expanded: !item.expanded};
-	  setItems(newItems);
+	  setItems(newItems); */
   }
 
   return (
@@ -135,22 +111,22 @@ export default function SideBar() {
 			</ListItem>
 			{
 				items.map((item, index) => <>
-					<ListItem button key={index+1} onClick={()=>toggleExpand(index)}>
+					<ListItem button key={index+2} onClick={()=>toggleExpand(index)}>
 						<ListItemIcon><img src={item.icon} alt={item.name} className="w-6" /></ListItemIcon>
 						<ListItemText primary={item.name} />
 						<ExpandIcon expanded={item.expanded} />
 					</ListItem>
-					<Collapse in={item.expanded} key={index}>
+					<Collapse in={item.expanded} key={index*10}>
 						{
 							item.children.map((child, idx) => <>
-								<ListItem button key={idx}>
+								<ListItem button key={Math.random()}>
 									<ListItemText primary={<span className="text-sm">{child.name}</span>} inset/>
 								</ListItem>
 							</>)
 						}
 						{
 							item.name === 'States' && <>
-								<ListItem button key="addState">
+								<ListItem button key="addState" onClick={()=>dispatch(addState({name: 'abc'}))}>
 									<ListItemIcon><AddIcon /></ListItemIcon>
 									<ListItemText primary={<span className="text-sm">Add State</span>} />
 								</ListItem>
@@ -158,7 +134,7 @@ export default function SideBar() {
 						}
 						{
 							item.name === 'Commands' && <>
-								<ListItem button key="addState">
+								<ListItem button key="addCommand" onClick={()=>dispatch(addCommand({name: 'abc'}))}>
 									<ListItemIcon><AddIcon /></ListItemIcon>
 									<ListItemText primary={<span className="text-sm">Add Command</span>} />
 								</ListItem>
@@ -166,7 +142,7 @@ export default function SideBar() {
 						}
 						{
 							item.name === 'Actions' && <>
-								<ListItem button key="addState">
+								<ListItem button key="addActions" onClick={()=>dispatch(addAction({name: 'abc'}))}>
 									<ListItemIcon><AddIcon /></ListItemIcon>
 									<ListItemText primary={<span className="text-sm">Add Action</span>} />
 								</ListItem>
