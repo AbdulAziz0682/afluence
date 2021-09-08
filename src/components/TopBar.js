@@ -16,6 +16,9 @@ const useStyles = makeStyles((theme) => ({
       flexGrow: 1,
       marginBottom: theme.mixins.toolbar.minHeight
     },
+    appBarZIndex: {
+        zIndex: theme.zIndex.drawer + 1,
+    },
     logo: {
       margin: 0,
       width: 48,
@@ -40,7 +43,7 @@ export default function TopBar(props){
     }
     return (
         <div className={classes.root}>
-            <AppBar position="fixed" color="default">
+            <AppBar position="fixed" color="default" className={classes.appBarZIndex}>
                 <Toolbar>
                     <IconButton edge="start" className={classes.logo} color="inherit" aria-label="menu">
                         <img src={logo} alt="afluence logo" width="100%"/>
