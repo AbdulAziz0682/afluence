@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import clsx from 'clsx';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import { Collapse } from '@material-ui/core';
@@ -10,6 +10,7 @@ import IconButton from '@material-ui/core/IconButton';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
+import AddIcon from '@material-ui/icons/Add';
 import ExpandIcon from '../ExpandIcon';
 import ChevronIcon from '../ChevronIcon';
 
@@ -66,7 +67,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SideBar() {
   const classes = useStyles();
-  const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   let [items, setItems] = useState([
 	  {
@@ -89,7 +89,7 @@ export default function SideBar() {
 		  ]
 	  },
 	  {
-		  name: 'Commond',
+		  name: 'Commands',
 		  icon: commond,
 		  expanded: false,
 		  children: [
@@ -144,9 +144,33 @@ export default function SideBar() {
 						{
 							item.children.map((child, idx) => <>
 								<ListItem button key={idx}>
-									<ListItemText primary={child.name} />
+									<ListItemText primary={<span className="text-sm">{child.name}</span>} inset/>
 								</ListItem>
 							</>)
+						}
+						{
+							item.name === 'States' && <>
+								<ListItem button key="addState">
+									<ListItemIcon><AddIcon /></ListItemIcon>
+									<ListItemText primary={<span className="text-sm">Add State</span>} />
+								</ListItem>
+							</>
+						}
+						{
+							item.name === 'Commands' && <>
+								<ListItem button key="addState">
+									<ListItemIcon><AddIcon /></ListItemIcon>
+									<ListItemText primary={<span className="text-sm">Add Command</span>} />
+								</ListItem>
+							</>
+						}
+						{
+							item.name === 'Actions' && <>
+								<ListItem button key="addState">
+									<ListItemIcon><AddIcon /></ListItemIcon>
+									<ListItemText primary={<span className="text-sm">Add Action</span>} />
+								</ListItem>
+							</>
 						}
 					</Collapse>
 				</>)
