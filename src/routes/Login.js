@@ -1,6 +1,7 @@
 import React from 'react';
-import { Button, Grid, Typography } from '@material-ui/core';
+import { Button, Grid, InputAdornment, Typography } from '@material-ui/core';
 import { TextField } from '@material-ui/core';
+import { VpnKey, Email } from '@material-ui/icons';
 import logo from '../assets/afluence.png';
 
 import { useFormik } from 'formik';
@@ -70,6 +71,13 @@ export default function Login(props){
                         variant="outlined"
                         label="Email"
                         size="small"
+                        InputProps={{
+                            startAdornment:(
+                                <InputAdornment postition="start">
+                                    <Email />
+                                </InputAdornment>
+                            )
+                        }}
                         value={formik.values.email}
                         onChange={formik.handleChange}
                         error={formik.touched.email && Boolean(formik.errors.email)}
@@ -85,6 +93,13 @@ export default function Login(props){
                         variant="outlined"
                         label="Password"
                         size="small"
+                        InputProps={{
+                            startAdornment:(
+                                <InputAdornment postition="start">
+                                    <VpnKey />
+                                </InputAdornment>
+                            )
+                        }}
                         value={formik.values.password}
                         onChange={formik.handleChange}
                         error={formik.touched.password && Boolean(formik.errors.password)}
