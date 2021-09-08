@@ -65,9 +65,9 @@ const initialState = {
             //some data
         }
     },
-    tabs: {
+    tabs: [
 
-    },
+    ],
     currentTab: 0
 }
 
@@ -94,9 +94,9 @@ function addTab(state, action){
     let newState = _.cloneDeep(state);
     newState.tabs.push({
         id: newState.tabs.length+1,
-        title: action.payload.title || `${Math.random()}`,
-        type: action.payload.type, //Can be dataFlow, state, command, action, metric or billing
-        data: action.payload.data
+        title: action.payload.tab.title || `${Math.random()}`,
+        type: action.payload.tab.type, //Can be dataFlow, state, command, action, metric or billing
+        data: action.payload.tab.data
     });
     newState.currentTab = newState.tabs.length-1;
     return newState;

@@ -7,18 +7,21 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 
+import {useSelector, useDispatch} from 'react-redux';
+import { setCurrentTab } from '../../redux/actions/currentProjectActions';
+
 function TabPanel(props) {
-  const { children, value, index, ...other } = props;
+  const { children, currentTab, index, ...other } = props;
 
   return (
     <div
       role="tabpanel"
-      hidden={value !== index}
+      hidden={currentTab !== index}
       id={`scrollable-auto-tabpanel-${index}`}
       aria-labelledby={`scrollable-auto-tab-${index}`}
       {...other}
     >
-      {value === index && (
+      {currentTab === index && (
         <Box p={3}>
           <Typography>{children}</Typography>
         </Box>
@@ -33,13 +36,6 @@ TabPanel.propTypes = {
   value: PropTypes.any.isRequired,
 };
 
-function a11yProps(index) {
-  return {
-    id: `scrollable-auto-tab-${index}`,
-    'aria-controls': `scrollable-auto-tabpanel-${index}`,
-  };
-}
-
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -50,17 +46,19 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ScrollableTabsButtonAuto() {
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
+  let dispatch = useDispatch();
+  let tabs = useSelector((state)=>state.currentProject.tabs);
+  let currentTab = useSelector((state)=>state.currentProject.currentTab);
 
   const handleChange = (event, newValue) => {
-    setValue(newValue);
+    dispatch(setCurrentTab(newValue));
   };
 
   return (
     <div className={classes.root}>
       <AppBar position="static" color="default">
         <Tabs
-          value={value}
+          value={currentTab}
           onChange={handleChange}
           indicatorColor="primary"
           textColor="primary"
@@ -68,36 +66,20 @@ export default function ScrollableTabsButtonAuto() {
           scrollButtons="auto"
           aria-label="scrollable auto tabs example"
         >
-          <Tab label="Item One" {...a11yProps(0)} />
-          <Tab label="Item Two" {...a11yProps(1)} />
-          <Tab label="Item Three" {...a11yProps(2)} />
-          <Tab label="Item Four" {...a11yProps(3)} />
-          <Tab label="Item Five" {...a11yProps(4)} />
-          <Tab label="Item Six" {...a11yProps(5)} />
-          <Tab label="Item Seven" {...a11yProps(6)} />
+          {
+            tabs.map((tab, index) => (
+              <Tab label={tab.title} value={index} key={'tab'+index} />
+            ))
+          }
         </Tabs>
       </AppBar>
-      <TabPanel value={value} index={0}>
-        Item One
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-        Item Two
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-        Item Three
-      </TabPanel>
-      <TabPanel value={value} index={3}>
-        Item Four
-      </TabPanel>
-      <TabPanel value={value} index={4}>
-        Item Five
-      </TabPanel>
-      <TabPanel value={value} index={5}>
-        Item Six
-      </TabPanel>
-      <TabPanel value={value} index={6}>
-        Item Seven
-      </TabPanel>
+      {
+        tabs.map((tab, index)=>(
+          <TabPanel currentTab={currentTab} key={'panel'+index} index={index}>
+            {tab.type}
+          </TabPanel>
+        ))
+      }
     </div>
   );
 }
