@@ -7,12 +7,11 @@ import { Collapse } from '@material-ui/core';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import ExpandIcon from '../ExpandIcon';
+import ChevronIcon from '../ChevronIcon';
 
 import actions from '../../assets/actions.svg';
 import billing from '../../assets/billing.svg';
@@ -125,7 +124,7 @@ export default function SideBar() {
 	  >
 		<div id="drawerbar" className={classes.toolbar}>
 		  <IconButton onClick={()=>setOpen(!open)}>
-			{theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+			<ChevronIcon expanded={open} />
 		  </IconButton>
 		</div>
 		<Divider />
