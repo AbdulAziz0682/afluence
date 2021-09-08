@@ -1,28 +1,55 @@
-import { ADD_STATE, ADD_ACTION, ADD_COMMAND } from "./currentProjectTypes";
+import { ADD_STATE, ADD_ACTION, ADD_COMMAND, ADD_TAB, CLOSE_TAB, SET_CURRENT_TAB } from "./currentProjectTypes";
 
-export const addState = (value) => {
+export const addState = (state) => {
     return {
         type: ADD_STATE,
         payload: {
-            state: value
+            state: state
         }
     }
 }
 
-export const addCommand = (value) => {
+export const addCommand = (command) => {
     return {
         type: ADD_COMMAND,
         payload: {
-            command: value
+            command: command
         }
     }
 }
 
-export const addAction = (value) => {
+export const addAction = (action) => {
     return {
         type: ADD_ACTION,
         payload: {
-            action: value
+            action: action
+        }
+    }
+}
+
+export const addTab = (tab) => {
+    return {
+        type: ADD_TAB,
+        payload: {
+            tab
+        }
+    }
+}
+
+export const closeTab = (id) => {
+    return {
+        type: CLOSE_TAB,
+        payload: {
+            id
+        }
+    }
+}
+
+export const setCurrentTab = (index) => {
+    return {
+        type: SET_CURRENT_TAB,
+        payload: {
+            index
         }
     }
 }

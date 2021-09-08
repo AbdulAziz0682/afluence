@@ -17,13 +17,13 @@ import ChevronIcon from '../ChevronIcon';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 
-import actions from '../../assets/actions.svg';
-import billing from '../../assets/billing.svg';
-import commond from '../../assets/commond.svg';
-import dialogFlow from '../../assets/dialogFlow.svg';
-import metrics from '../../assets/metrics.svg';
-import states from '../../assets/states.svg';
-import { addAction, addCommand, addState } from '../../redux/actions/currentProjectActions';
+import actionsIcon from '../../assets/actions.svg';
+import billingIcon from '../../assets/billing.svg';
+import commandsIcon from '../../assets/commond.svg';
+import dialogFlowIcon from '../../assets/dialogFlow.svg';
+import metricsIcon from '../../assets/metrics.svg';
+import statesIcon from '../../assets/states.svg';
+import { addAction, addCommand, addState, addTab } from '../../redux/actions/currentProjectActions';
 
 const drawerWidth = 240;
 
@@ -70,16 +70,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SideBar() {
-  const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
-  let dispatch = useDispatch();
-  let items = useSelector((state)=>state.currentProject.expandableItems)
-  function toggleExpand(index){
-/* 	  const newItems = [...items];
-	  const item = items[index];
-	  newItems[index] = {...item, expanded: !item.expanded};
-	  setItems(newItems); */
-  }
+	const classes = useStyles();
+	const [open, setOpen] = React.useState(false);
+	let dispatch = useDispatch();
+	let [statesExpanded, setStatesExpanded] = useState(false);
+	let [commandsExpanded, setCommandsExpanded] = useState(false);
+	let [actionsExpanded, setActionsExpanded] = useState(false);
+	//let items = useSelector((state)=>state.currentProject.expandableItems);
+	let {states, commands, actions} = useSelector((state)=>state.currentProject);
 
   return (
 	<>
@@ -106,10 +104,70 @@ export default function SideBar() {
 		<Divider />
 		<List>
 			<ListItem button key="1">
-			  <ListItemIcon><img src={dialogFlow} alt="dialogFlow" className="w-6" /></ListItemIcon>
+			  <ListItemIcon><img src={dialogFlowIcon} alt="dialogFlow" className="w-6" /></ListItemIcon>
 			  <ListItemText primary="Dialog Flow" />
 			</ListItem>
-			{
+			<ListItem button key="states" onClick={()=>setStatesExpanded(!statesExpanded)}>
+				<ListItemIcon><img src={statesIcon} alt="States" className="w-6" /></ListItemIcon>
+				<ListItemText primary="States" />
+				<ExpandIcon expanded={statesExpanded} />
+			</ListItem>
+			<Collapse key="stateItems" in={statesExpanded}>
+				{
+					states.map((state, index) => <>
+						<ListItem button key={'state'+index} onClick={()=>{}}>
+							<ListItemText primary={<span className="text-sm">{state.name}</span>} inset />
+						</ListItem>
+					</>)
+				}
+				{
+					<ListItem button key="addState" onClick={()=>dispatch(addState({name: `${Math.random()}`}))}>
+						<ListItemIcon><AddIcon /></ListItemIcon>
+						<ListItemText primary={<span className="text-sm">Add State</span>} />
+					</ListItem>
+				}
+			</Collapse>
+			<ListItem button key="commands" onClick={()=>setCommandsExpanded(!commandsExpanded)}>
+				<ListItemIcon><img src={commandsIcon} alt="commands" className="w-6" /></ListItemIcon>
+				<ListItemText primary="Commands" />
+				<ExpandIcon expanded={commandsExpanded} />
+			</ListItem>
+			<Collapse key="commandItems" in={commandsExpanded}>
+				{
+					commands.map((command, index) => <>
+						<ListItem button key={'command'+index} onClick={()=>{}}>
+							<ListItemText primary={<span className="text-sm">{command.name}</span>} inset />
+						</ListItem>
+					</>)
+				}
+				{
+					<ListItem button key="addCommand" onClick={()=>dispatch(addCommand({name: `${Math.random()}`}))}>
+						<ListItemIcon><AddIcon /></ListItemIcon>
+						<ListItemText primary={<span className="text-sm">Add Command</span>} />
+					</ListItem>
+				}
+			</Collapse>
+			<ListItem button key="actions" onClick={()=>setActionsExpanded(!actionsExpanded)}>
+				<ListItemIcon><img src={actionsIcon} alt="actions" className="w-6" /></ListItemIcon>
+				<ListItemText primary="Actions" />
+				<ExpandIcon expanded={actionsExpanded} />
+			</ListItem>
+			<Collapse key="actionItems" in={actionsExpanded}>
+				{
+					actions.map((action, index) => <>
+						<ListItem button key={'action'+index} onClick={()=>{}}>
+							<ListItemText primary={<span className="text-sm">{action.name}</span>} inset />
+						</ListItem>
+					</>)
+				}
+				{
+					<ListItem button key="addAction" onClick={()=>dispatch(addAction({name: `${Math.random()}`}))}>
+						<ListItemIcon><AddIcon /></ListItemIcon>
+						<ListItemText primary={<span className="text-sm">Add Action</span>} />
+					</ListItem>
+				}
+			</Collapse>
+			{/* {
 				items.map((item, index) => <>
 					<ListItem button key={index+2} onClick={()=>toggleExpand(index)}>
 						<ListItemIcon><img src={item.icon} alt={item.name} className="w-6" /></ListItemIcon>
@@ -150,13 +208,13 @@ export default function SideBar() {
 						}
 					</Collapse>
 				</>)
-			}
-			<ListItem button key="5">
-			  <ListItemIcon><img src={metrics} alt="metrics" className="w-6" /></ListItemIcon>
+			} */}
+			<ListItem button key="metrics">
+			  <ListItemIcon><img src={metricsIcon} alt="metrics" className="w-6" /></ListItemIcon>
 			  <ListItemText primary="Metrics" />
 			</ListItem>
-			<ListItem button key="6">
-			  <ListItemIcon><img src={billing} alt="billing" className="w-6" /></ListItemIcon>
+			<ListItem button key="billing" onClick={()=>dispatch(addTab({title: 'Billing', type:'billing'}))}>
+			  <ListItemIcon><img src={billingIcon} alt="billing" className="w-6" /></ListItemIcon>
 			  <ListItemText primary="Billing" />
 			</ListItem>
 		</List>
