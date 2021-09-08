@@ -5,7 +5,9 @@ import { TextField } from '@material-ui/core';
 import CheckBox from '@material-ui/core/Checkbox';
 import { makeStyles } from '@material-ui/core';
 import { Hidden } from '@material-ui/core';
+
 import logo from '../assets/afluence.png';
+import registerBackground from '../assets/registerBackground.png';
 
 import { VpnKey, Email, Business, CheckCircle, Mood } from '@material-ui/icons';
 
@@ -96,10 +98,13 @@ export default function Register(props){
         <Grid item className="mt-3">
             <form onSubmit={formik.handleSubmit} className="w-100">
             <Hidden smDown>
-                <Grid container id="md" direction="row" alignItems="center" className="border w-full self-center rounded-lg mt-3 p-3">
-                    <Grid item className="flex items-center p-6">
-                        <img src={logo} alt="afluence logo" width="30%"/>
-                        <Typography variant="h3" color="primary" className="font-extrabold text-right">Amazethu</Typography>
+                <Grid container id="md" direction="row" className="border w-full self-center rounded-lg mt-3 p-3">
+                    <Grid item className="flex flex-col justify-center p-6">
+                        <div className="flex flex-row items-center">
+                            <img src={logo} alt="afluence logo" width="50px"/>
+                            <Typography variant="h3" color="primary" className="font-extrabold text-right">Amazethu</Typography>
+                        </div>
+                        <img src={registerBackground} alt="register background" style={{width: '300px'}} />
                     </Grid>
                     <Grid item>
                         <Grid container spacing={2} direction="column" alignItems="center" justifyContent="center">
