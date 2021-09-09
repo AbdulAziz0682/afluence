@@ -15,6 +15,7 @@ import { setCurrentTab } from '../../redux/actions/currentProjectActions';
 
 import BillingTab from './BillingTab';
 import MetricsTab from './MetricsTab';
+import AddCommandTab from './AddCommandTab';
 
 function TabPanel(props) {
   const { children, currentTab, index, ...other } = props;
@@ -94,6 +95,11 @@ export default function TabsPanel() {
 			{
 				tab.type === 'metrics' && (
 					<MetricsTab />
+				)
+			}
+			{
+				tab.type === 'addCommand' && (
+					<AddCommandTab />
 				)
 			}
 		  </TabPanel>
