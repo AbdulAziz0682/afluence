@@ -7,6 +7,7 @@ const useStyles = makeStyles(theme => ({
         padding: theme.spacing(1),
         paddingTop: theme.mixins.toolbar.minHeight/2,
         flexGrow: 1,
+        width: 50
     },
 }))
 
