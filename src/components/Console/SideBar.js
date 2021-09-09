@@ -209,7 +209,7 @@ export default function SideBar() {
 					</Collapse>
 				</>)
 			} */}
-			<ListItem button key="metrics">
+			<ListItem button key="metrics" onClick={()=>dispatch(addTab({title: 'Metrics', type:'metrics'}))}>
 			  <ListItemIcon><img src={metricsIcon} alt="metrics" className="w-6" /></ListItemIcon>
 			  <ListItemText primary="Metrics" />
 			</ListItem>

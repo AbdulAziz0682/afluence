@@ -97,6 +97,10 @@ function addAction(state, action){
 
 function addTab(state, action){
     let newState = _.cloneDeep(state);
+    if(_.find(newState.tabs, {type: action.payload.tab.type})){
+        //Tab already present
+        return newState;
+    }
     newState.tabs.push({
         id: newState.tabs.length+1,
         title: action.payload.tab.title || `${Math.random()}`,

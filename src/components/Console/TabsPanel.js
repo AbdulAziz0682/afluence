@@ -5,14 +5,16 @@ import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 
+import { IconButton } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close'
 
 import {useSelector, useDispatch} from 'react-redux';
 import { setCurrentTab } from '../../redux/actions/currentProjectActions';
+
 import BillingTab from './BillingTab';
+import MetricsTab from './MetricsTab';
 
 function TabPanel(props) {
   const { children, currentTab, index, ...other } = props;
@@ -71,7 +73,12 @@ export default function TabsPanel() {
 		>
 		  {
 			tabs.map((tab, index) => (
-			  <Tab label={tab.title} value={index} key={'tab'+index} icon={<CloseIcon />}/>
+			  <Tab 
+			  	label={tab.title} 
+				value={index} 
+				key={'tab'+index} 
+				className="hover:bg-green-100"
+				icon={<IconButton className="hover:bg-gray-200"><CloseIcon /></IconButton>}/>
 			))
 		  }
 		</Tabs>
@@ -82,6 +89,11 @@ export default function TabsPanel() {
 			{
 				tab.type === 'billing' && (
 					<BillingTab />
+				)
+			}
+			{
+				tab.type === 'metrics' && (
+					<MetricsTab />
 				)
 			}
 		  </TabPanel>
