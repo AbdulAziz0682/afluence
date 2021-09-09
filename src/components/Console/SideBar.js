@@ -23,9 +23,9 @@ import commandsIcon from '../../assets/commond.svg';
 import dialogFlowIcon from '../../assets/dialogFlow.svg';
 import metricsIcon from '../../assets/metrics.svg';
 import statesIcon from '../../assets/states.svg';
-import { addAction, addCommand, addState, addTab } from '../../redux/actions/currentProjectActions';
+import { addAction, addCommand, addState, addTab, toggleDrawer } from '../../redux/actions/currentProjectActions';
 
-const drawerWidth = 240;
+const drawerWidth = 200;
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -71,7 +71,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SideBar() {
 	const classes = useStyles();
-	const [open, setOpen] = React.useState(false);
+	let open = useSelector((state)=>state.currentProject.drawerOpen);
 	let dispatch = useDispatch();
 	let [statesExpanded, setStatesExpanded] = useState(false);
 	let [commandsExpanded, setCommandsExpanded] = useState(false);
@@ -97,7 +97,7 @@ export default function SideBar() {
 		}}
 	  >
 		<div id="drawerbar" className={classes.toolbar}>
-		  <IconButton onClick={()=>setOpen(!open)}>
+		  <IconButton onClick={()=>dispatch(toggleDrawer())}>
 			<ChevronIcon expanded={open} />
 		  </IconButton>
 		</div>

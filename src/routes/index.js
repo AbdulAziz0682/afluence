@@ -9,6 +9,7 @@ import Account from './Account';
 import Projects from './Projects';
 import Login from './Login';
 import Console from './Console';
+import Test from './Test';
 
 export default function Routes({children}){
     return (
@@ -24,6 +25,7 @@ export default function Routes({children}){
                         <Route exact path="/projects"><Projects /></Route>
                         <Route exact path="/account"><Account /></Route>
                         <Route exact path="/register"><Register /></Route>
+                        <Route exact path="/test"><Test /></Route>
                         <Route exact path="/"><Home /></Route>
                     </Switch>
                 </Grid>

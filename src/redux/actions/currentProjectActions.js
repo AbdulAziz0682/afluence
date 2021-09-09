@@ -1,5 +1,10 @@
-import { ADD_STATE, ADD_ACTION, ADD_COMMAND, ADD_TAB, CLOSE_TAB, SET_CURRENT_TAB } from "./currentProjectTypes";
+import { ADD_STATE, ADD_ACTION, ADD_COMMAND, ADD_TAB, CLOSE_TAB, SET_CURRENT_TAB, TOGGLE_DRAWER } from "./currentProjectTypes";
 
+export const toggleDrawer = () => {
+    return {
+        type: TOGGLE_DRAWER,
+    }
+}
 export const addState = (state) => {
     return {
         type: ADD_STATE,

@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { ADD_STATE, ADD_ACTION, ADD_COMMAND, ADD_TAB, CLOSE_TAB, SET_CURRENT_TAB } from "../actions/currentProjectTypes";
+import { ADD_STATE, ADD_ACTION, ADD_COMMAND, ADD_TAB, CLOSE_TAB, SET_CURRENT_TAB, TOGGLE_DRAWER } from "../actions/currentProjectTypes";
 
 /* import actions from '../../assets/actions.svg';
 import commond from '../../assets/commond.svg';
@@ -36,6 +36,7 @@ const initialState = {
             ]
         }
     ], */
+    drawerOpen: false,
     states: [
         {name: 'Start'},
         {name: 'End'}
@@ -70,7 +71,11 @@ const initialState = {
     ],
     currentTab: 0
 }
-
+function toggleDrawer(state){
+    let newState = _.cloneDeep(state);
+    newState.drawerOpen = !state.drawerOpen;
+    return newState;
+}
 function addState(state, action){
     let newState = _.cloneDeep(state);
     //newState.expandableItems[0].children.push(action.payload.state);
@@ -119,6 +124,7 @@ function setTab(state, action){
 }
 const currentProject = (state = initialState, action) => {
     switch(action.type){
+        case TOGGLE_DRAWER: return toggleDrawer(state);
         case ADD_STATE: return addState(state, action);
         case ADD_COMMAND: return addCommand(state, action);
         case ADD_ACTION: return addAction(state, action);

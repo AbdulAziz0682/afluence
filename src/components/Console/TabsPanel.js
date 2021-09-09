@@ -1,11 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+
+import CloseIcon from '@material-ui/icons/Close'
 
 import {useSelector, useDispatch} from 'react-redux';
 import { setCurrentTab } from '../../redux/actions/currentProjectActions';
@@ -36,17 +39,18 @@ TabPanel.propTypes = {
   value: PropTypes.any.isRequired,
 };
 
+const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    width: '100%',
     backgroundColor: theme.palette.background.paper,
-  },
+  }
 }));
 
 export default function ScrollableTabsButtonAuto() {
   const classes = useStyles();
   let dispatch = useDispatch();
+  let drawerOpen = useSelector(state=>state.currentProject.drawerOpen);
   let tabs = useSelector((state)=>state.currentProject.tabs);
   let currentTab = useSelector((state)=>state.currentProject.currentTab);
 
@@ -55,8 +59,8 @@ export default function ScrollableTabsButtonAuto() {
   };
 
   return (
-    <div className={classes.root}>
-      <AppBar position="static" color="default">
+    <div className={clsx({[classes.root]:true})}>
+      <AppBar position="static" color="default" elevation={0}>
         <Tabs
           value={currentTab}
           onChange={handleChange}
@@ -68,7 +72,7 @@ export default function ScrollableTabsButtonAuto() {
         >
           {
             tabs.map((tab, index) => (
-              <Tab label={tab.title} value={index} key={'tab'+index} />
+              <Tab label={tab.title} value={index} key={'tab'+index} icon={<CloseIcon />}/>
             ))
           }
         </Tabs>
