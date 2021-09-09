@@ -46,9 +46,9 @@ const initialState = {
         {name: 'End'}
     ],
     commands: [
-        {name: 'GET_INPUT'},
-        {name: 'END_CONVO'},
-        {name: 'PLAY_AUDIO'},
+        {name: 'GET_INPUT', phrases: [{language: 'English', audio: null, text: ''}]},
+        {name: 'END_CONVO', phrases: [{language: 'English', audio: null, text: ''}]},
+        {name: 'PLAY_AUDIO', phrases: [{language: 'English', audio: null, text: ''}]},
     ],
     actions: [
         {name: 'NOT_MATCH'},
@@ -107,7 +107,7 @@ function addAction(state, action){
 
 function addTab(state, action){
     let newState = _.cloneDeep(state);
-    if(_.find(newState.tabs, {type: action.payload.tab.type})){
+    if(_.find(newState.tabs, {title: action.payload.tab.title})){
         //Tab already present
         return newState;
     }
