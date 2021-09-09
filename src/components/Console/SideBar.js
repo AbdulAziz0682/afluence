@@ -135,7 +135,7 @@ export default function SideBar() {
 			<Collapse key="commandItems" in={commandsExpanded}>
 				{
 					commands.map((command, index) => <>
-						<ListItem button key={'command'+index} onClick={()=>{}}>
+						<ListItem button key={'command'+index} onClick={()=>dispatch(addTab({title: command.name, type:'editCommand', data: command}))}>
 							<ListItemText primary={<span className="text-sm">{command.name}</span>} inset />
 						</ListItem>
 					</>)
