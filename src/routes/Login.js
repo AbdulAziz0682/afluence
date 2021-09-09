@@ -46,8 +46,86 @@ export default function Login(props){
                 company: 'company 1',
                 token: 'abdcder0985djljsjkj38875',
                 projects: [
-                    {name: 'Project_1', status: 'Active', country: 'United States'},
-                    {name: 'Project_2', status: 'In development', country: 'United States'}
+                    {
+                        name: 'Project_1',
+                        id: Number(new Date()),
+                        country: 'United States',
+                        status: 'Active',
+                        drawerOpen: false,
+                        states: [
+                            {name: 'Start'},
+                            {name: 'End'}
+                        ],
+                        commands: [
+                            {name: 'GET_INPUT'},
+                            {name: 'END_CONVO'},
+                            {name: 'PLAY_AUDIO'},
+                        ],
+                        actions: [
+                            {name: 'NOT_MATCH'},
+                            {name: 'NO_INPUT'}
+                        ],
+                        metrics: [
+                            {name: 'Classification Accuracy(QA)', value: 'X'},
+                            {name: 'Classification Accuracy(Live)', value: 'X'},
+                            {name: 'Uptime', value: 'X'},
+                            {name: 'Avg. Request per minute', value: 'X'},
+                            {name: 'Avg. latency', value: 'X'},
+                            {name: 'Max. latency', value: 'X'},
+                        ],
+                        billing: {
+                            currentBalance: 5000.00,
+                            totalCost: 10.00,
+                            date: new Date(),
+                            graphData: {
+                                //some data
+                            }
+                        },
+                        tabs: [
+                    
+                        ],
+                        currentTab: 0
+                    },
+                    {
+                        name: 'Project_2',
+                        id: Number(new Date())+1,
+                        country: 'United States',
+                        status: 'In developent',
+                        drawerOpen: false,
+                        states: [
+                            {name: 'Start'},
+                            {name: 'End'}
+                        ],
+                        commands: [
+                            {name: 'GET_INPUT'},
+                            {name: 'END_CONVO'},
+                            {name: 'PLAY_AUDIO'},
+                        ],
+                        actions: [
+                            {name: 'NOT_MATCH'},
+                            {name: 'NO_INPUT'}
+                        ],
+                        metrics: [
+                            {name: 'Classification Accuracy(QA)', value: 'X'},
+                            {name: 'Classification Accuracy(Live)', value: 'X'},
+                            {name: 'Uptime', value: 'X'},
+                            {name: 'Avg. Request per minute', value: 'X'},
+                            {name: 'Avg. latency', value: 'X'},
+                            {name: 'Max. latency', value: 'X'},
+                        ],
+                        billing: {
+                            currentBalance: 5000.00,
+                            totalCost: 10.00,
+                            date: new Date(),
+                            graphData: {
+                                //some data
+                            }
+                        },
+                        tabs: [
+
+                        ],
+                        currentTab: 0
+                    }
                 ]
             }
             dispatch(login(user));

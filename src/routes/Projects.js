@@ -13,19 +13,30 @@ import SearchIcon from '@material-ui/icons/Search';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { Redirect } from 'react-router';
+import { useHistory } from 'react-router-dom';
 
 import NewProjectDialog from '../components/Projects/NewProjectDialog';
+import { setProject } from '../redux/actions/currentProjectActions';
 
 export default function Projects(props){
+    let dispatch = useDispatch();
+    let history = useHistory();
     let loggedIn = useSelector((state)=>state.account.loggedIn);
     let user = useSelector((state)=>state.account.user);
-    let {projects} = user;
+    let projects = user ? user.projects : [];
     let [searchType, setType] = useState('name');
     function handleTypeChange(e){
         setType(e.target.value)
+    }
+    function handleProjectSetup(id){
+        console.log(id);
+        let project = projects.find(p => p.id === id);
+        console.log('project', project);
+        dispatch(setProject(project));
+        history.push('/console');
     }
     //Dialog Actions
     const [open, setOpen] = useState(false);
@@ -36,7 +47,7 @@ export default function Projects(props){
         setOpen(false);
     };
     if(!loggedIn){
-        return <Redirect push to="/home" />
+        return <Redirect push to="/login" />
     }
     return (
         <Grid item xs={12} md={11} lg={9} className="mt-3">
@@ -84,6 +95,7 @@ export default function Projects(props){
                                     <TableCell scope="row">Name</TableCell>
                                     <TableCell scope="row">Status</TableCell>
                                     <TableCell scope="row">Action</TableCell>
+                                    <TableCell scope="row">Console</TableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
@@ -92,6 +104,7 @@ export default function Projects(props){
                                         <TableCell scope="row">{proj.name}</TableCell>
                                         <TableCell scope="row">{proj.status}</TableCell>
                                         <TableCell scope="row"><EditIcon /> <DeleteIcon /></TableCell>
+                                        <TableCell scope="row" className="hover:bg-gray-200" onClick={()=>{handleProjectSetup(proj.id)}}>Go to Console</TableCell>
                                     </TableRow>
                                 ))}
                             </TableBody>

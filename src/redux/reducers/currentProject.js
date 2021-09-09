@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { ADD_STATE, ADD_ACTION, ADD_COMMAND, ADD_TAB, CLOSE_TAB, SET_CURRENT_TAB, TOGGLE_DRAWER } from "../actions/currentProjectTypes";
+import { ADD_STATE, ADD_ACTION, ADD_COMMAND, ADD_TAB, CLOSE_TAB, SET_CURRENT_TAB, TOGGLE_DRAWER, SET_CURRENT_PROJECT } from "../actions/currentProjectTypes";
 
 /* import actions from '../../assets/actions.svg';
 import commond from '../../assets/commond.svg';
@@ -36,6 +36,10 @@ const initialState = {
             ]
         }
     ], */
+    name: 'proj',
+    id: Number(new Date()),
+    country: 'United States',
+    status: 'active',
     drawerOpen: false,
     states: [
         {name: 'Start'},
@@ -70,6 +74,12 @@ const initialState = {
 
     ],
     currentTab: 0
+}
+
+function setProject(state, action){
+    let newState = _.cloneDeep(state);
+    newState = {...newState, ...action.payload.project};
+    return newState;
 }
 function toggleDrawer(state){
     let newState = _.cloneDeep(state);
@@ -126,8 +136,10 @@ function setTab(state, action){
     newState.currentTab = action.payload.index;
     return newState;
 }
+
 const currentProject = (state = initialState, action) => {
     switch(action.type){
+        case SET_CURRENT_PROJECT: return setProject(state, action);
         case TOGGLE_DRAWER: return toggleDrawer(state);
         case ADD_STATE: return addState(state, action);
         case ADD_COMMAND: return addCommand(state, action);
