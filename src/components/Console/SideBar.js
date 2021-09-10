@@ -155,13 +155,13 @@ export default function SideBar() {
 			<Collapse key="actionItems" in={actionsExpanded}>
 				{
 					actions.map((action, index) => <>
-						<ListItem button key={'action'+index} onClick={()=>{}}>
+						<ListItem button key={'action'+index} onClick={()=>dispatch(addTab({title: action.name, type: 'editAction', data: action}))}>
 							<ListItemText primary={<span className="text-sm">{action.name}</span>} inset />
 						</ListItem>
 					</>)
 				}
 				{
-					<ListItem button key="addAction" onClick={()=>dispatch(addAction({name: `${Math.random()}`}))}>
+					<ListItem button key="addAction" onClick={()=>dispatch(addTab({title: 'Add Action', type: 'addAction'}))}>
 						<ListItemIcon><AddIcon /></ListItemIcon>
 						<ListItemText primary={<span className="text-sm">Add Action</span>} />
 					</ListItem>

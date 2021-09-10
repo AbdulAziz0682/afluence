@@ -51,8 +51,8 @@ const initialState = {
         {name: 'PLAY_AUDIO', phrases: [{language: 'English', audio: null, text: ''}]},
     ],
     actions: [
-        {name: 'NOT_MATCH'},
-        {name: 'NO_INPUT'}
+        {name: 'NOT_MATCH', parameters: [{name: 'param1', dataType: 'string'}, {name: 'param2', dataType: 'number'}]},
+        {name: 'NO_INPUT', parameters: [{name: 'param1', dataType: 'string'}, {name: 'param2', dataType: 'number'}]}
     ],
     metrics: [
         {name: 'Classification Accuracy(QA)', value: 'X'},

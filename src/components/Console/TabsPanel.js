@@ -17,6 +17,8 @@ import BillingTab from './BillingTab';
 import MetricsTab from './MetricsTab';
 import AddCommandTab from './AddCommandTab';
 import EditCommandTab from './EditCommandTab';
+import AddActionTab from './AddActionTab';
+import EditActionTab from './EditActionTab';
 
 function TabPanel(props) {
   const { children, currentTab, index, ...other } = props;
@@ -80,7 +82,7 @@ export default function TabsPanel() {
 				value={index} 
 				key={'tab'+index} 
 				className="hover:bg-green-100"
-				icon={<IconButton className="hover:bg-gray-200"><CloseIcon /></IconButton>}/>
+				icon={<IconButton className="hover:bg-gray-400"><CloseIcon /></IconButton>}/>
 			))
 		  }
 		</Tabs>
@@ -106,6 +108,16 @@ export default function TabsPanel() {
 			{
 				tab.type === 'editCommand' && (
 					<EditCommandTab command={tab.data} />
+				)
+			}
+			{
+				tab.type === 'addAction' && (
+					<AddActionTab />
+				)
+			}
+			{
+				tab.type === 'editAction' && (
+					<EditActionTab action={tab.data} />
 				)
 			}
 		  </TabPanel>
