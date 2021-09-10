@@ -19,6 +19,7 @@ import AddCommandTab from './AddCommandTab';
 import EditCommandTab from './EditCommandTab';
 import AddActionTab from './AddActionTab';
 import EditActionTab from './EditActionTab';
+import AddStateTab from './AddStateTab';
 
 function TabPanel(props) {
   const { children, currentTab, index, ...other } = props;
@@ -118,6 +119,11 @@ export default function TabsPanel() {
 			{
 				tab.type === 'editAction' && (
 					<EditActionTab action={tab.data} />
+				)
+			}
+			{
+				tab.type === 'addState' && (
+					<AddStateTab />
 				)
 			}
 		  </TabPanel>

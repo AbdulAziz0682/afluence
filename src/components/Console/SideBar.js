@@ -121,7 +121,7 @@ export default function SideBar() {
 					</>)
 				}
 				{
-					<ListItem button key="addState" onClick={()=>dispatch(addState({name: `${Math.random()}`}))}>
+					<ListItem button key="addState" onClick={()=>dispatch(addTab({title: 'Add State', type: 'addState'}))}>
 						<ListItemIcon><AddIcon /></ListItemIcon>
 						<ListItemText primary={<span className="text-sm">Add State</span>} />
 					</ListItem>
