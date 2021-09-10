@@ -11,6 +11,10 @@ export default function EditCommandTab(props){
             <Grid item className="flex gap-3 p-1 sm:p-3 border-b-2 items-center justify-between">
                 <TextField value={command.name} variant="outlined" label="Enter Command Name" size="small" />
                 <Button variant="contained" color="primary">Save</Button>
+                <div className="flex gap-1 items-center justify-between">
+                    <Button variant="contained" color="secondary">Delete</Button>
+                    <Button variant="contained" color="primary">Save</Button>
+                </div>
             </Grid>
             <Grid item className="p-1 sm:p-3">
                 <Grid container direction="column">
