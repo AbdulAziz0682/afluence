@@ -104,7 +104,7 @@ export default function SideBar() {
 		<Divider />
 		<List>
 			<ListItem button key="1">
-			  <ListItemIcon><img src={dialogFlowIcon} alt="dialogFlow" className="w-6" /></ListItemIcon>
+			  <ListItemIcon><img src={dialogFlowIcon} alt="dialogFlow" className="w-6" onClick={()=>dispatch(addTab({title: 'Data Flow', type: 'dataFlow'}))} /></ListItemIcon>
 			  <ListItemText primary="Dialog Flow" />
 			</ListItem>
 			<ListItem button key="states" onClick={()=>setStatesExpanded(!statesExpanded)}>

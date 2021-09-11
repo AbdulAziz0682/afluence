@@ -21,6 +21,7 @@ import AddActionTab from './AddActionTab';
 import EditActionTab from './EditActionTab';
 import AddStateTab from './AddStateTab';
 import EditStateTab from './EditStateTab';
+import DataFlowTab from './DataFlowTab';
 
 function TabPanel(props) {
   const { children, currentTab, index, ...other } = props;
@@ -34,7 +35,7 @@ function TabPanel(props) {
 	  {...other}
 	>
 	  {currentTab === index && (
-		<Box p={1}>
+		<Box p={1} height="calc(100vh - 200px)">
 			{children}
 		</Box>
 	  )}
@@ -130,6 +131,11 @@ export default function TabsPanel() {
 			{
 				tab.type === 'editState' && (
 					<EditStateTab data={tab.data} />
+				)
+			}
+			{
+				tab.type === 'dataFlow' && (
+					<DataFlowTab />
 				)
 			}
 		  </TabPanel>
