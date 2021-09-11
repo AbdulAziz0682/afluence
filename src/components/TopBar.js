@@ -5,7 +5,6 @@ import account from '../assets/account.svg';
 
 import { makeStyles } from '@material-ui/core/styles';
 import { AppBar, Toolbar, Typography, IconButton, Menu, MenuItem } from "@material-ui/core";
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { MoreVert } from "@material-ui/icons";
 
 import { useSelector } from "react-redux";

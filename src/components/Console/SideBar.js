@@ -23,7 +23,7 @@ import commandsIcon from '../../assets/commond.svg';
 import dialogFlowIcon from '../../assets/dialogFlow.svg';
 import metricsIcon from '../../assets/metrics.svg';
 import statesIcon from '../../assets/states.svg';
-import { addAction, addCommand, addState, addTab, toggleDrawer } from '../../redux/actions/currentProjectActions';
+import { addTab, toggleDrawer } from '../../redux/actions/currentProjectActions';
 
 const drawerWidth = 200;
 

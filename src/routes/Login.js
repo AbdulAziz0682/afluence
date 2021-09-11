@@ -2,7 +2,6 @@ import React from 'react';
 import { Button, Grid, InputAdornment, Typography } from '@material-ui/core';
 import { TextField } from '@material-ui/core';
 import { Hidden } from '@material-ui/core';
-import { VpnKey, Email } from '@material-ui/icons';
 
 import logo from '../assets/afluence.png';
 import registerBackground from '../assets/registerBackground.png';

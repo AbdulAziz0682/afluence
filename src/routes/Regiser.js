@@ -12,8 +12,6 @@ import confirm from '../assets/confirm.svg';
 import companyicon from '../assets/company.svg';
 import smile from '../assets/smile.svg';
 
-import { VpnKey, Email, Business, CheckCircle, Mood } from '@material-ui/icons';
-
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { Link } from 'react-router-dom';

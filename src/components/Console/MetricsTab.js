@@ -12,7 +12,7 @@ export default function MetricsTab(props){
                         metrics.map(metric => (
                             <TableRow>
                                 <TableCell>{metric.name}</TableCell>
-                                <TableCell>{metric.value + (metric.name==('Avg. Request per minute') ? ' calls' : '%')}</TableCell>
+                                <TableCell>{metric.value + (metric.name===('Avg. Request per minute') ? ' calls' : '%')}</TableCell>
                             </TableRow>
                         ))
                     }

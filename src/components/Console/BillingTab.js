@@ -1,7 +1,6 @@
-import { useState } from "react";
 import { Button, FormControl, Grid, MenuItem, Select, Typography } from "@material-ui/core";
 
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import LineChart from "./LineChart";
 
 export default function BillingTab(props){
