@@ -6,6 +6,11 @@ import { Hidden } from '@material-ui/core';
 
 import logo from '../assets/afluence.png';
 import registerBackground from '../assets/registerBackground.png';
+import account from '../assets/account.svg';
+import key from '../assets/key.svg';
+import confirm from '../assets/confirm.svg';
+import companyicon from '../assets/company.svg';
+import smile from '../assets/smile.svg';
 
 import { VpnKey, Email, Business, CheckCircle, Mood } from '@material-ui/icons';
 
@@ -93,7 +98,7 @@ export default function Register(props){
                                     InputProps={{
                                         startAdornment:(
                                             <InputAdornment postition="start">
-                                                <Email />
+                                                <img src={account} alt="account" />
                                             </InputAdornment>
                                         )
                                     }}
@@ -115,7 +120,7 @@ export default function Register(props){
                                     InputProps={{
                                         startAdornment:(
                                             <InputAdornment postition="start">
-                                                <VpnKey />
+                                                <img src={key} alt="password key" />
                                             </InputAdornment>
                                         )
                                     }}
@@ -137,7 +142,7 @@ export default function Register(props){
                                     InputProps={{
                                         startAdornment:(
                                             <InputAdornment postition="start">
-                                                <CheckCircle />
+                                                <img src={confirm} alt="confirm password" />
                                             </InputAdornment>
                                         )
                                     }}
@@ -158,7 +163,7 @@ export default function Register(props){
                                     InputProps={{
                                         startAdornment:(
                                             <InputAdornment postition="start">
-                                                <Business />
+                                                <img src={companyicon} alt="company" />
                                             </InputAdornment>
                                         )
                                     }}
@@ -179,7 +184,7 @@ export default function Register(props){
                                     InputProps={{
                                         startAdornment:(
                                             <InputAdornment postition="start">
-                                                <Mood />
+                                                <img src={smile} alt="smile" />
                                             </InputAdornment>
                                         )
                                     }}
@@ -224,7 +229,7 @@ export default function Register(props){
                                 InputProps={{
                                     startAdornment:(
                                         <InputAdornment postition="start">
-                                            <Email />
+                                            <img src={account} alt="account" />
                                         </InputAdornment>
                                     )
                                 }}
@@ -246,7 +251,7 @@ export default function Register(props){
                                 InputProps={{
                                     startAdornment:(
                                         <InputAdornment postition="start">
-                                            <VpnKey />
+                                            <img src={key} alt="password key" />
                                         </InputAdornment>
                                     )
                                 }}
@@ -268,7 +273,7 @@ export default function Register(props){
                                 InputProps={{
                                     startAdornment:(
                                         <InputAdornment postition="start">
-                                            <CheckCircle />
+                                            <img src={confirm} alt="confirm password" />
                                         </InputAdornment>
                                     )
                                 }}
@@ -289,7 +294,7 @@ export default function Register(props){
                                 InputProps={{
                                     startAdornment:(
                                         <InputAdornment postition="start">
-                                            <Business />
+                                            <img src={companyicon} alt="company" />
                                         </InputAdornment>
                                     )
                                 }}
@@ -310,7 +315,7 @@ export default function Register(props){
                                 InputProps={{
                                     startAdornment:(
                                         <InputAdornment postition="start">
-                                            <Mood />
+                                            <img src={smile} alt="smile" />
                                         </InputAdornment>
                                     )
                                 }}

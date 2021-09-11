@@ -6,6 +6,8 @@ import { VpnKey, Email } from '@material-ui/icons';
 
 import logo from '../assets/afluence.png';
 import registerBackground from '../assets/registerBackground.png';
+import account from '../assets/account.svg';
+import key from '../assets/key.svg';
 
 import { useFormik } from 'formik';
 import * as yup from 'yup';
@@ -183,7 +185,7 @@ export default function Login(props){
                                     InputProps={{
                                         startAdornment:(
                                             <InputAdornment postition="start">
-                                                <Email />
+                                                <img src={account} alt="account icon" />
                                             </InputAdornment>
                                         )
                                     }}
@@ -205,7 +207,7 @@ export default function Login(props){
                                     InputProps={{
                                         startAdornment:(
                                             <InputAdornment postition="start">
-                                                <VpnKey />
+                                                <img src={key} alt="password key" />
                                             </InputAdornment>
                                         )
                                     }}
@@ -243,7 +245,7 @@ export default function Login(props){
                                 InputProps={{
                                     startAdornment:(
                                         <InputAdornment postition="start">
-                                            <Email />
+                                            <img src={account} alt="account icon" />
                                         </InputAdornment>
                                     )
                                 }}
@@ -265,7 +267,7 @@ export default function Login(props){
                                 InputProps={{
                                     startAdornment:(
                                         <InputAdornment postition="start">
-                                            <VpnKey />
+                                            <img src={key} alt="password key" />
                                         </InputAdornment>
                                     )
                                 }}

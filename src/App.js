@@ -20,7 +20,7 @@ const customTheme = createTheme({
 			main: '#1f2b36d9',
 		},
 		secondary: {
-			main: '#ff004d',
+			main: '#E94646',
 			light: '#f1f1f1',
 		},
 	}

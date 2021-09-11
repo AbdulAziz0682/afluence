@@ -103,7 +103,7 @@ export default function Projects(props){
                                     <TableRow hover key={index}>
                                         <TableCell scope="row">{proj.name}</TableCell>
                                         <TableCell scope="row">{proj.status}</TableCell>
-                                        <TableCell scope="row"><EditIcon /> <DeleteIcon /></TableCell>
+                                        <TableCell scope="row"><EditIcon /> <DeleteIcon color="secondary" /></TableCell>
                                         <TableCell scope="row" className="hover:bg-gray-200" onClick={()=>{handleProjectSetup(proj.id)}}>Go to Console</TableCell>
                                     </TableRow>
                                 ))}

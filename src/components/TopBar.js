@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from '../assets/afluence.png';
+import account from '../assets/account.svg';
 
 import { makeStyles } from '@material-ui/core/styles';
 import { AppBar, Toolbar, Typography, IconButton, Menu, MenuItem } from "@material-ui/core";
@@ -55,10 +56,10 @@ export default function TopBar(props){
                         </IconButton>
                         </>
                         :<IconButton onClick={handleMenuClick} color="inherit">
-                            <AccountCircleIcon />
+                            <img src={account} alt="account" />
                         </IconButton>
                     }
-                    {loggedIn && <AccountCircleIcon />}
+                    {loggedIn && <img src={account} alt="account" />}
                     <Menu open={Boolean(anchor)} 
                         anchorEl={anchor}
                         anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
