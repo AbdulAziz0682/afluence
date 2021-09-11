@@ -28,7 +28,7 @@ export default function DeleteAccountConfirmation(props) {
                 <Button onClick={handleClose} variant="contained">
                     Cancel
                 </Button>
-                <Button onClick={handleClose} variant="contained" className="text-white hover:bg-red-700 bg-red-500" autoFocus>
+                <Button onClick={handleClose} variant="contained" color="secondary" autoFocus>
                     Deactivate
                 </Button>
             </DialogActions>

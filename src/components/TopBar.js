@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from '../assets/afluence.png';
-import account from '../assets/account.svg';
+import account from '../assets/account.png';
 
 import { makeStyles } from '@material-ui/core/styles';
 import { AppBar, Toolbar, Typography, IconButton, Menu, MenuItem } from "@material-ui/core";
@@ -21,11 +21,13 @@ const useStyles = makeStyles((theme) => ({
     },
     logo: {
       margin: 0,
-      width: 48,
+      width: 35,
       padding: 0
     },
     title: {
       flexGrow: 1,
+      marginLeft: 10,
+      fontSize: 26
     },
   }));
 
@@ -43,22 +45,22 @@ export default function TopBar(props){
     }
     return (
         <div className={classes.root}>
-            <AppBar position="fixed" color="default" className={classes.appBarZIndex}>
-                <Toolbar>
+            <AppBar position="fixed" color="white" className={classes.appBarZIndex, 'border-gray border-b shadow-none'}>
+                <Toolbar className="items-center">
                     <IconButton edge="start" className={classes.logo} color="inherit" aria-label="menu">
-                        <img src={logo} alt="afluence logo" width="100%"/>
+                        <img src={logo} alt="afluence logo"/>
                     </IconButton>
-                    <Typography variant="h6" className={classes.title}>{loggedIn ? (user ? user.name : '') : "Afluence" }</Typography>
+                    <Typography variant="h6" className={classes.title} style={{fontFamily: "'Montserrat', sans-serif"}}>{loggedIn ? (user ? user.name : '') : "amazethu" }</Typography>
                     {   loggedIn ? <> 
                         <IconButton onClick={handleMenuClick} color="inherit">
                             {loggedIn && <MoreVert />}
                         </IconButton>
                         </>
-                        :<IconButton onClick={handleMenuClick} color="inherit">
-                            <img src={account} alt="account" />
+                        :<IconButton onClick={handleMenuClick}  color="inherit">
+                            <img src={account} alt="account" style={{width: '16px'}}/>
                         </IconButton>
                     }
-                    {loggedIn && <img src={account} alt="account" />}
+                    {loggedIn && <img src={account} alt="account" style={{width: '16px'}} />}
                     <Menu open={Boolean(anchor)} 
                         anchorEl={anchor}
                         anchorOrigin={{ vertical: 'top', horizontal: 'right' }}

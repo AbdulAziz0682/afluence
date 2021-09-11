@@ -90,7 +90,7 @@ export default function Account(props){
                         <DeleteAccountConfirmation open={open} handleClose={handleClose} />
                         <Button variant="contained" size="small" 
                             onClick={handleClickOpen} 
-                            className="text-white hover:bg-red-700 bg-red-500"
+                            color="secondary"
                             startIcon={<DeleteIcon htmlColor="white" />}
                         >
                             Delete
