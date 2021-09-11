@@ -115,7 +115,7 @@ export default function SideBar() {
 			<Collapse key="stateItems" in={statesExpanded}>
 				{
 					states.map((state, index) => <>
-						<ListItem button key={'state'+index} onClick={()=>{}}>
+						<ListItem button key={'state'+index} onClick={()=>{dispatch(addTab({title: state.name, type: 'editState', data: state}))}}>
 							<ListItemText primary={<span className="text-sm">{state.name}</span>} inset />
 						</ListItem>
 					</>)

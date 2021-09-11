@@ -48,23 +48,24 @@ const useStyles = makeStyles((theme) => ({
     },
 }))
 
-export default function AddStateTab(props){
+export default function EditStateTab({data}){
     const classes = useStyles();
     let [open, setOpen] = useState(false);
-    let [name, setName] = useState('...');
+/*     let [name, setName] = useState('...');
     let [onEnterFunctions, setOnEnterFunctions] = useState([
-        {type: 'onEnterFunction', name: 'add_action_to_list', data: [/* {actions: [], params: []} */]},
+        {type: 'onEnterFunction', name: 'add_action_to_list', data: []},
         {type: 'onEnterFunction', name: 'send_action_list', data: []},
         {type: 'onEnterFunction', name: 'transition', data: []}
     ]);
     let [onInputFunctions, setOnInputFunctions] = useState([
-        {type: 'onInputFunction', name: 'branch', data: [/* {actions: [], params: []} */]},
-    ]);
+        {type: 'onInputFunction', name: 'branch', data: []},
+    ]); */
+    let {name, onEnterFunctions, onInputFunctions} = data;
     let [drawerData, setDrawerData] = useState(null);
     return (
         <Grid container direction="column" className="border rounded-lg overflow-scroll sm:overflow-auto">
             <Grid item className="flex gap-3 p-1 sm:p-3 border-b-2 items-center justify-between flex flex-col sm:flex-row">
-                <TextField variant="outlined" value={name} onChange={(e)=>setName(e.target.value)} label="Enter State Name" size="small" />
+                <TextField variant="outlined" value={name} onChange={(e)=>{}} label="Enter State Name" size="small" />
                 <div className="flex gap-1 sm:justify-end w-full items-center justify-around">
                     <Button variant="contained" color="secondary">Cancel</Button>
                     <Button variant="contained" color="primary">Save</Button>
