@@ -7,9 +7,9 @@ export default function AddActionTab(props){
 
     return (
         <Grid container direction="column" className="border rounded-lg overflow-scroll sm:overflow-auto">
-            <Grid item className="flex gap-3 p-1 sm:p-3 border-b-2 items-center justify-between">
+            <Grid item className="flex gap-3 p-1 sm:p-3 border-b-2 items-center justify-between flex flex-col sm:flex-row">
                 <TextField variant="outlined" label="Enter Action Name" size="small" />
-                <div className="flex gap-1 items-center justify-between">
+                <div className="flex gap-1 sm:justify-end w-full items-center justify-around">
                     <Button variant="contained" color="secondary">Cancel</Button>
                     <Button variant="contained" color="primary">Save</Button>
                 </div>

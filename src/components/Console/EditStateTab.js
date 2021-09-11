@@ -51,15 +51,6 @@ const useStyles = makeStyles((theme) => ({
 export default function EditStateTab({data}){
     const classes = useStyles();
     let [open, setOpen] = useState(false);
-/*     let [name, setName] = useState('...');
-    let [onEnterFunctions, setOnEnterFunctions] = useState([
-        {type: 'onEnterFunction', name: 'add_action_to_list', data: []},
-        {type: 'onEnterFunction', name: 'send_action_list', data: []},
-        {type: 'onEnterFunction', name: 'transition', data: []}
-    ]);
-    let [onInputFunctions, setOnInputFunctions] = useState([
-        {type: 'onInputFunction', name: 'branch', data: []},
-    ]); */
     let {name, onEnterFunctions, onInputFunctions} = data;
     let [drawerData, setDrawerData] = useState(null);
     return (
@@ -68,7 +59,7 @@ export default function EditStateTab({data}){
                 <TextField variant="outlined" value={name} onChange={(e)=>{}} label="Enter State Name" size="small" />
                 <div className="flex gap-1 sm:justify-end w-full items-center justify-around">
                     <Button variant="contained" color="secondary">Cancel</Button>
-                    <Button variant="contained" color="primary">Save</Button>
+                    <Button variant="contained" color="primary">Delete</Button>
                 </div>
             </Grid>
             <Grid item className="p-1 sm:p-6 flex relative gap-3">

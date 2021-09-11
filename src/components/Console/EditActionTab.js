@@ -7,9 +7,12 @@ export default function AddEditTab(props){
     let action = props.action;
     return (
         <Grid container direction="column" className="border rounded-lg overflow-scroll sm:overflow-auto">
-            <Grid item className="flex gap-3 p-1 sm:p-3 border-b-2 items-center justify-between">
-                <TextField variant="outlined" value={action.name} label="Enter Action Name" size="small" />
-                <Button variant="contained" color="primary">Save</Button>
+            <Grid item className="flex gap-3 p-1 sm:p-3 border-b-2 items-center justify-between flex flex-col sm:flex-row">
+                <TextField variant="outlined" value={action.name} label="Enter Command Name" size="small" />
+                <div className="flex gap-1 sm:justify-end w-full items-center justify-around">
+                    <Button variant="contained" color="secondary">Cancel</Button>
+                    <Button variant="contained" color="primary">Delete</Button>
+                </div>
             </Grid>
             <Grid item className="p-1 sm:p-3">
                 <Grid container direction="column">
