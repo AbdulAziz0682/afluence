@@ -158,10 +158,10 @@ export default function Login(props){
         return <Redirect push to="/projects" />
     }
     return (
-        <Grid container item style={{height: 'calc(100vh - 64px)'}} alignItems="center" justifyContent="center">
+        <Grid container item>
             <form onSubmit={formik.handleSubmit} className="w-full flex items-center justify-center">
             <Hidden smDown>
-                <Grid container id="md" direction="row" className="border lg:w-7/12 xl:5/12 self-center rounded-3xl mt-3">
+                <Grid container id="md" direction="row" className="border md:w-5/6 lg:w-156 self-center rounded-3xl mt-3">
                     <Grid item xs={6} className="flex flex-col justify-center items-center p-5 bg-gray-100 rounded-l-3xl">
                         <div className="flex flex-row items-center mt-9">
                             <img src={logo} alt="afluence logo" style={{width: 70}}/>

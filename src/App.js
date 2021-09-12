@@ -10,7 +10,7 @@ import {create} from 'jss';
 import jssExtend from 'jss-plugin-extend';
 import rtl from 'jss-rtl';
 
-import './assets/tailwind.css';
+import './index.css';
 import ErrorBoundary from './components/ErrorBoundary';
 
 const customTheme = createTheme({

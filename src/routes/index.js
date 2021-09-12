@@ -18,7 +18,7 @@ export default function Routes({children}){
                 <Grid item>
                     <TopBar />
                 </Grid>
-                <Grid item className="flex justify-center">
+                <Grid container item style={{height: 'calc(100vh - 64px)'}} alignItems="center" justifyContent="center">
                     <Switch>
                         <Route exact path="/console"><Console /></Route>
                         <Route exact path="/login"><Login /></Route>
