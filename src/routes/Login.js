@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Grid, InputAdornment, Typography } from '@material-ui/core';
+import { Button, Grid, InputAdornment, Paper, Typography } from '@material-ui/core';
 import { TextField } from '@material-ui/core';
 import { Hidden } from '@material-ui/core';
 
@@ -161,7 +161,7 @@ export default function Login(props){
         <Grid container item>
             <form onSubmit={formik.handleSubmit} className="w-full flex items-center justify-center">
             <Hidden smDown>
-                <Grid container id="md" direction="row" className="border md:w-5/6 lg:w-156 self-center rounded-3xl mt-3">
+                <Grid container component={Paper} elevation={6} id="md" direction="row" className="border md:w-5/6 lg:w-156 self-center rounded-3xl mt-3">
                     <Grid item xs={6} className="flex flex-col justify-center items-center p-5 bg-gray-100 rounded-l-3xl">
                         <div className="flex flex-row items-center mt-9">
                             <img src={logo} alt="afluence logo" style={{width: 70}}/>

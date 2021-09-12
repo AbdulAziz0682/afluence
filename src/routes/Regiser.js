@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, FormHelperText, Grid, InputLabel, Typography, InputAdornment } from '@material-ui/core';
+import { Button, FormHelperText, Grid, InputLabel, Typography, InputAdornment, Paper } from '@material-ui/core';
 import { TextField } from '@material-ui/core';
 import CheckBox from '@material-ui/core/Checkbox';
 import { Hidden } from '@material-ui/core';
@@ -73,7 +73,7 @@ export default function Register(props){
         <Grid item container>
             <form onSubmit={formik.handleSubmit} className="w-full flex items-center justify-center">
             <Hidden smDown>
-            <Grid container id="md" direction="row" className="border md:w-5/6 lg:w-180 self-center rounded-3xl mt-3">
+            <Grid container component={Paper} elevation={6} id="md" direction="row" className="border md:w-5/6 lg:w-180 self-center rounded-3xl">
                     <Grid item xs={6} className="flex flex-col justify-center items-center p-5 bg-gray-100 rounded-l-3xl">
                         <div className="flex flex-row items-center mt-9">
                             <img src={logo} alt="afluence logo" style={{width: 70}}/>
