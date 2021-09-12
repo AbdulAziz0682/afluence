@@ -50,7 +50,7 @@ export default function TopBar(props){
                     <IconButton edge="start" className={classes.logo} color="inherit" aria-label="menu">
                         <img src={logo} alt="afluence logo"/>
                     </IconButton>
-                    <Typography variant="h6" className={classes.title} style={{fontFamily: "'Montserrat', sans-serif"}}>{loggedIn ? (user ? user.name : '') : "amazethu" }</Typography>
+                    <Typography variant="h6" className={classes.title} style={{fontFamily: "'Montserrat', sans-serif"}}>{"amazethu" }</Typography>
                     {   loggedIn ? <> 
                         <IconButton onClick={handleMenuClick} color="inherit">
                             {loggedIn && <MoreVert />}

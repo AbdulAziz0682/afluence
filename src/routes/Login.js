@@ -43,7 +43,7 @@ export default function Login(props){
         validationSchema: validationSchema,
         onSubmit: (values) => {
             let user = {
-                name: 'Abdul Aziz',
+                name: 'UserName',
                 email: 'email@gmail.com',
                 password: 'Password123',
                 company: 'company 1',
