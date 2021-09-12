@@ -4,9 +4,11 @@ import { TextField } from '@material-ui/core';
 import CheckBox from '@material-ui/core/Checkbox';
 import { Hidden } from '@material-ui/core';
 
+import ReportProblemOutlinedIcon from '@material-ui/icons/ReportProblemOutlined';
+
 import logo from '../assets/afluence.png';
 import registerBackground from '../assets/registerBackground.png';
-import account from '../assets/account.svg';
+import account from '../assets/account.png';
 import key from '../assets/key.svg';
 import confirm from '../assets/confirm.svg';
 import companyicon from '../assets/company.svg';
@@ -68,274 +70,342 @@ export default function Register(props){
         return <Redirect push to="/" />
     }
     return (
-        <Grid item className="mt-3">
-            <form onSubmit={formik.handleSubmit} className="w-100">
+        <Grid container item style={{height: 'calc(100vh - 64px)'}} alignItems="center" justifyContent="center">
+            <form onSubmit={formik.handleSubmit} className="w-full flex items-center justify-center">
             <Hidden smDown>
-                <Grid container id="md" direction="row" className="border w-full self-center rounded-lg mt-3 p-3">
-                    <Grid item className="flex flex-col justify-center p-6">
-                        <div className="flex flex-row items-center">
-                            <img src={logo} alt="afluence logo" width="50px"/>
-                            <Typography variant="h3" color="primary" className="font-extrabold text-right">Amazethu</Typography>
+            <Grid container id="md" direction="row" className="border lg:w-7/12 xl:5/12 self-center rounded-3xl mt-3">
+                    <Grid item xs={6} className="flex flex-col justify-center items-center p-5 bg-gray-100 rounded-l-3xl">
+                        <div className="flex flex-row items-center mt-9">
+                            <img src={logo} alt="afluence logo" style={{width: 70}}/>
+                            <Typography color="primary" className="font-extrabold text-4xl ml-2" style={{fontFamily: "'Montserrat', sans-serif"}}>amazethu</Typography>
                         </div>
-                        <img src={registerBackground} alt="register background" style={{width: '300px'}} />
+                        <img src={registerBackground} alt="register background" style={{width: 250}} />
                     </Grid>
-                    <Grid item>
-                        <Grid container spacing={2} direction="column" alignItems="center" justifyContent="center">
-                        <Grid item className="my-2 flex flex-col items-center">
-                            <Typography variant="h4" color="primary" className="font-extrabold">Create your Account</Typography>
-                            <hr className="border-2 w-full border-black" />
-                        </Grid>
-                            <Grid item className="w-80">
-                                <TextField
-                                    fullWidth
-                                    id="email"
-                                    name="email"
-                                    variant="outlined"
-                                    label="Email"
-                                    size="small"
-                                    InputProps={{
-                                        startAdornment:(
-                                            <InputAdornment postition="start">
-                                                <img src={account} alt="account" />
-                                            </InputAdornment>
-                                        )
-                                    }}
-                                    value={formik.values.email}
-                                    onChange={formik.handleChange}
-                                    error={formik.touched.email && Boolean(formik.errors.email)}
-                                    helperText={formik.touched.email && formik.errors.email}
-                                />
+                    <Grid item xs={6}>
+                        <Grid container direction="column" alignItems="center" justifyContent="center" className="p-6">
+                            <Grid item className="flex flex-col items-center w-full">
+                                <Typography color="primary" className="font-black uppercase text-2xl">Create your account</Typography>
+                                <hr className="border-b border-black w-11/12" />
+                                <hr className="border-b border-black w-10/12 my-1" />
+                                <hr className="border-b border-black w-9/12" />
                             </Grid>
-                            <Grid item className="w-80">
-                                <TextField
-                                    fullWidth
-                                    type="password"
-                                    id="password"
-                                    name="password"
-                                    variant="outlined"
-                                    label="Password"
-                                    size="small"
-                                    InputProps={{
-                                        startAdornment:(
-                                            <InputAdornment postition="start">
-                                                <img src={key} alt="password key" />
-                                            </InputAdornment>
-                                        )
-                                    }}
-                                    value={formik.values.password}
-                                    onChange={formik.handleChange}
-                                    error={formik.touched.password && Boolean(formik.errors.password)}
-                                    helperText={formik.touched.password && formik.errors.password}
-                                />
+                            <Grid container alignItems="center" direction="column" className="my-6">
+                            <Grid item className="w-full my-1">
+                                    <TextField
+                                        fullWidth
+                                        id="email"
+                                        name="email"
+                                        variant="standard"
+                                        label="Email"
+                                        size="small"
+                                        InputProps={{
+                                            startAdornment:(
+                                                <InputAdornment postition="start">
+                                                    <img src={account} alt="account icon" />
+                                                </InputAdornment>
+                                            ),
+                                            endAdornment:(
+                                                (formik.touched.email && Boolean(formik.errors.email)) &&
+                                                <InputAdornment position="end">
+                                                    <ReportProblemOutlinedIcon color="secondary" />
+                                                </InputAdornment>
+                                            )
+                                        }}
+                                        value={formik.values.email}
+                                        onChange={formik.handleChange}
+                                        error={formik.touched.email && Boolean(formik.errors.email)}
+                                        helperText={formik.touched.email && formik.errors.email}
+                                    />
+                                </Grid>
+                                <Grid item className="w-full my-1">
+                                    <TextField
+                                        fullWidth
+                                        type="password"
+                                        id="password"
+                                        name="password"
+                                        variant="standard"
+                                        label="Password"
+                                        size="small"
+                                        InputProps={{
+                                            startAdornment:(
+                                                <InputAdornment postition="start">
+                                                    <img src={key} alt="password key" />
+                                                </InputAdornment>
+                                            ),
+                                            endAdornment:(
+                                                (formik.touched.password && Boolean(formik.errors.password)) &&
+                                                <InputAdornment position="end">
+                                                    <ReportProblemOutlinedIcon color="secondary" />
+                                                </InputAdornment>
+                                            )
+                                        }}
+                                        value={formik.values.password}
+                                        onChange={formik.handleChange}
+                                        error={formik.touched.password && Boolean(formik.errors.password)}
+                                        helperText={formik.touched.password && formik.errors.password}
+                                    />
+                                </Grid>
+                                <Grid item className="w-full my-1">
+                                    <TextField
+                                        fullWidth
+                                        type="password"
+                                        id="confirmPassword"
+                                        name="confirmPassword"
+                                        variant="standard"
+                                        label="Confirm Password"
+                                        size="small"
+                                        InputProps={{
+                                            startAdornment:(
+                                                <InputAdornment postition="start">
+                                                    <img src={confirm} alt="confirmPassword key" />
+                                                </InputAdornment>
+                                            ),
+                                            endAdornment:(
+                                                (formik.touched.confirmPassword && Boolean(formik.errors.confirmPassword)) &&
+                                                <InputAdornment position="end">
+                                                    <ReportProblemOutlinedIcon color="secondary" />
+                                                </InputAdornment>
+                                            )
+                                        }}
+                                        value={formik.values.confirmPassword}
+                                        onChange={formik.handleChange}
+                                        error={formik.touched.confirmPassword && Boolean(formik.errors.confirmPassword)}
+                                        helperText={formik.touched.confirmPassword && formik.errors.confirmPassword}
+                                    />
+                                </Grid>
+                                <Grid item className="w-full my-1">
+                                    <TextField
+                                        fullWidth
+                                        id="company"
+                                        name="company"
+                                        variant="standard"
+                                        label="Company"
+                                        size="small"
+                                        InputProps={{
+                                            startAdornment:(
+                                                <InputAdornment postition="start">
+                                                    <img src={companyicon} alt="company" />
+                                                </InputAdornment>
+                                            ),
+                                            endAdornment:(
+                                                (formik.touched.company && Boolean(formik.errors.company)) &&
+                                                <InputAdornment position="end">
+                                                    <ReportProblemOutlinedIcon color="secondary" />
+                                                </InputAdornment>
+                                            )
+                                        }}
+                                        value={formik.values.company}
+                                        onChange={formik.handleChange}
+                                        error={formik.touched.company && Boolean(formik.errors.company)}
+                                        helperText={formik.touched.company && formik.errors.company}
+                                    />
+                                </Grid>
+                                <Grid item className="w-full my-1">
+                                    <TextField
+                                        fullWidth
+                                        id="hearAboutUs"
+                                        name="hearAboutUs"
+                                        variant="standard"
+                                        label="How did you hear about us?"
+                                        size="small"
+                                        InputProps={{
+                                            startAdornment:(
+                                                <InputAdornment postition="start">
+                                                    <img src={smile} alt="smile" />
+                                                </InputAdornment>
+                                            ),
+                                            endAdornment:(
+                                                (formik.touched.hearAboutUs && Boolean(formik.errors.hearAboutUs)) &&
+                                                <InputAdornment position="end">
+                                                    <ReportProblemOutlinedIcon color="secondary" />
+                                                </InputAdornment>
+                                            )
+                                        }}
+                                        value={formik.values.hearAboutUs}
+                                        onChange={formik.handleChange}
+                                        error={formik.touched.hearAboutUs && Boolean(formik.errors.hearAboutUs)}
+                                        helperText={formik.touched.hearAboutUs && formik.errors.hearAboutUs}
+                                    />
+                                </Grid>
+                                <Grid item className="w-full my-1 flex-col">
+                                    <div className={`${(formik.touched.isAccepting && Boolean(formik.errors.isAccepting)) ? 'text-red-600' : 'text-current'} flex gap-3 items-center`}>
+                                        <CheckBox name="isAccepting" onChange={formik.handleChange} checked={formik.values.isAccepting} color="primary" />
+                                        <InputLabel>I have read and accept Terms and Conditions</InputLabel>
+                                    </div>
+                                    {formik.touched.isAccepting && Boolean(formik.errors.isAccepting) && <FormHelperText error className="ml-3">{formik.touched.hearAboutUs && formik.errors.isAccepting}</FormHelperText>}
+                                </Grid>
                             </Grid>
-                            <Grid item className="w-80">
-                                <TextField
-                                    fullWidth
-                                    type="password"
-                                    id="confirmPassword"
-                                    name="confirmPassword"
-                                    variant="outlined"
-                                    label="Confirm Password"
-                                    size="small"
-                                    InputProps={{
-                                        startAdornment:(
-                                            <InputAdornment postition="start">
-                                                <img src={confirm} alt="confirm password" />
-                                            </InputAdornment>
-                                        )
-                                    }}
-                                    value={formik.values.confirmPassword}
-                                    onChange={formik.handleChange}
-                                    error={formik.touched.confirmPassword && Boolean(formik.errors.confirmPassword)}
-                                    helperText={formik.touched.confirmPassword && formik.errors.confirmPassword}
-                                />
-                            </Grid>
-                            <Grid item className="w-80">
-                                <TextField
-                                    fullWidth
-                                    id="company"
-                                    name="company"
-                                    variant="outlined"
-                                    label="Company"
-                                    size="small"
-                                    InputProps={{
-                                        startAdornment:(
-                                            <InputAdornment postition="start">
-                                                <img src={companyicon} alt="company" />
-                                            </InputAdornment>
-                                        )
-                                    }}
-                                    value={formik.values.company}
-                                    onChange={formik.handleChange}
-                                    error={formik.touched.company && Boolean(formik.errors.company)}
-                                    helperText={formik.touched.company && formik.errors.company}
-                                />
-                            </Grid>
-                            <Grid item className="w-80">
-                                <TextField
-                                    fullWidth
-                                    id="hearAboutUs"
-                                    name="hearAboutUs"
-                                    variant="outlined"
-                                    label="How did you hear about us?"
-                                    size="small"
-                                    InputProps={{
-                                        startAdornment:(
-                                            <InputAdornment postition="start">
-                                                <img src={smile} alt="smile" />
-                                            </InputAdornment>
-                                        )
-                                    }}
-                                    value={formik.values.hearAboutUs}
-                                    onChange={formik.handleChange}
-                                    error={formik.touched.hearAboutUs && Boolean(formik.errors.hearAboutUs)}
-                                    helperText={formik.touched.hearAboutUs && formik.errors.hearAboutUs}
-                                />
-                            </Grid>
-                            <Grid item className="w-80 flex-col">
-                                <div className={`${(formik.touched.isAccepting && Boolean(formik.errors.isAccepting)) ? 'border-red-600 rounded border' : ''} flex gap-3 items-center`}>
-                                    <CheckBox name="isAccepting" onChange={formik.handleChange} checked={formik.values.isAccepting} color="primary" />
-                                    <InputLabel>I have read and accept Terms and Conditions</InputLabel>
+                            <Grid item xs={8} className="flex flex-col items-center">
+                                <Button variant="contained" color="primary" type="submit" fullWidth>Create your Account</Button>
+                                <div className="w-80 flex justify-center items-center text-xs mt-2">
+                                    <span>Already have an account?</span>
+                                    <Link to="/register" className="font-bold mx-1">LOGIN here</Link>
                                 </div>
-                                {formik.touched.isAccepting && Boolean(formik.errors.isAccepting) && <FormHelperText error className="ml-3">{formik.touched.hearAboutUs && formik.errors.isAccepting}</FormHelperText>}
-                            </Grid>
-                            <Grid item className="w-80 flex justify-center">
-                                <Button variant="contained" color="primary" type="submit">Create your Account</Button>
-                            </Grid>
-                            <Grid item className="w-80 flex justify-center items-center">
-                                <Typography variant="subtitle1">Already have an account!</Typography>
-                                <Link to="/login" className="font-bold">Login</Link>
                             </Grid>
                         </Grid>
                     </Grid>
                 </Grid>
                 </Hidden>
                 <Hidden mdUp>
-                    <Grid container id="sm" spacing={2} direction="column" alignItems="center" className="border self-center rounded-lg p-3">
-                        <Grid item className="w-full flex items-center p-6">
-                            <img src={logo} alt="afluence logo" width="30%"/>
-                            <Typography variant="h3" color="primary" className="font-extrabold text-right">Amazethu</Typography>
+                    <Grid container spacing={2} alignItems="center" direction="column" className="self-center">
+                        <Grid item className="w-80 flex items-center p-6">
+                            <img src={logo} alt="logo" style={{width: 100}}/>
+                            <Typography variant="h4" color="primary" style={{fontFamily: "'Montserrat', sans-serif"}}>amazethu</Typography>
                         </Grid>
                         <Grid item className="w-full">
-                            <TextField
-                                fullWidth
-                                id="email"
-                                name="email"
-                                variant="outlined"
-                                label="Email"
-                                size="small"
-                                InputProps={{
-                                    startAdornment:(
-                                        <InputAdornment postition="start">
-                                            <img src={account} alt="account" />
-                                        </InputAdornment>
-                                    )
-                                }}
-                                value={formik.values.email}
-                                onChange={formik.handleChange}
-                                error={formik.touched.email && Boolean(formik.errors.email)}
-                                helperText={formik.touched.email && formik.errors.email}
-                            />
+                            <Grid container alignItems="center" direction="column" className="my-1" spacing={2}>
+                                <Grid item className="w-80">
+                                    <TextField
+                                        fullWidth
+                                        id="email"
+                                        name="email"
+                                        variant="standard"
+                                        label="Email"
+                                        size="small"
+                                        InputProps={{
+                                            startAdornment:(
+                                                <InputAdornment postition="start">
+                                                    <img src={account} alt="account icon" />
+                                                </InputAdornment>
+                                            ),
+                                            endAdornment:(
+                                                (formik.touched.email && Boolean(formik.errors.email)) &&
+                                                <InputAdornment position="end">
+                                                    <ReportProblemOutlinedIcon color="secondary" />
+                                                </InputAdornment>
+                                            )
+                                        }}
+                                        value={formik.values.email}
+                                        onChange={formik.handleChange}
+                                        error={formik.touched.email && Boolean(formik.errors.email)}
+                                        helperText={formik.touched.email && formik.errors.email}
+                                    />
+                                </Grid>
+                                <Grid item className="w-80">
+                                    <TextField
+                                        fullWidth
+                                        type="password"
+                                        id="password"
+                                        name="password"
+                                        variant="standard"
+                                        label="Password"
+                                        size="small"
+                                        InputProps={{
+                                            startAdornment:(
+                                                <InputAdornment postition="start">
+                                                    <img src={key} alt="password key" />
+                                                </InputAdornment>
+                                            ),
+                                            endAdornment:(
+                                                (formik.touched.password && Boolean(formik.errors.password)) &&
+                                                <InputAdornment position="end">
+                                                    <ReportProblemOutlinedIcon color="secondary" />
+                                                </InputAdornment>
+                                            )
+                                        }}
+                                        value={formik.values.password}
+                                        onChange={formik.handleChange}
+                                        error={formik.touched.password && Boolean(formik.errors.password)}
+                                        helperText={formik.touched.password && formik.errors.password}
+                                    />
+                                </Grid>
+                                <Grid item className="w-80">
+                                    <TextField
+                                        fullWidth
+                                        type="password"
+                                        id="confirmPassword"
+                                        name="confirmPassword"
+                                        variant="standard"
+                                        label="Confirm Password"
+                                        size="small"
+                                        InputProps={{
+                                            startAdornment:(
+                                                <InputAdornment postition="start">
+                                                    <img src={confirm} alt="confirmPassword key" />
+                                                </InputAdornment>
+                                            ),
+                                            endAdornment:(
+                                                (formik.touched.confirmPassword && Boolean(formik.errors.confirmPassword)) &&
+                                                <InputAdornment position="end">
+                                                    <ReportProblemOutlinedIcon color="secondary" />
+                                                </InputAdornment>
+                                            )
+                                        }}
+                                        value={formik.values.confirmPassword}
+                                        onChange={formik.handleChange}
+                                        error={formik.touched.confirmPassword && Boolean(formik.errors.confirmPassword)}
+                                        helperText={formik.touched.confirmPassword && formik.errors.confirmPassword}
+                                    />
+                                </Grid>
+                                <Grid item className="w-80">
+                                    <TextField
+                                        fullWidth
+                                        id="company"
+                                        name="company"
+                                        variant="standard"
+                                        label="Company"
+                                        size="small"
+                                        InputProps={{
+                                            startAdornment:(
+                                                <InputAdornment postition="start">
+                                                    <img src={companyicon} alt="company" />
+                                                </InputAdornment>
+                                            ),
+                                            endAdornment:(
+                                                (formik.touched.company && Boolean(formik.errors.company)) &&
+                                                <InputAdornment position="end">
+                                                    <ReportProblemOutlinedIcon color="secondary" />
+                                                </InputAdornment>
+                                            )
+                                        }}
+                                        value={formik.values.company}
+                                        onChange={formik.handleChange}
+                                        error={formik.touched.company && Boolean(formik.errors.company)}
+                                        helperText={formik.touched.company && formik.errors.company}
+                                    />
+                                </Grid>
+                                <Grid item className="w-80">
+                                    <TextField
+                                        fullWidth
+                                        id="hearAboutUs"
+                                        name="hearAboutUs"
+                                        variant="standard"
+                                        label="How did you hear about us?"
+                                        size="small"
+                                        InputProps={{
+                                            startAdornment:(
+                                                <InputAdornment postition="start">
+                                                    <img src={smile} alt="smile" />
+                                                </InputAdornment>
+                                            ),
+                                            endAdornment:(
+                                                (formik.touched.hearAboutUs && Boolean(formik.errors.hearAboutUs)) &&
+                                                <InputAdornment position="end">
+                                                    <ReportProblemOutlinedIcon color="secondary" />
+                                                </InputAdornment>
+                                            )
+                                        }}
+                                        value={formik.values.hearAboutUs}
+                                        onChange={formik.handleChange}
+                                        error={formik.touched.hearAboutUs && Boolean(formik.errors.hearAboutUs)}
+                                        helperText={formik.touched.hearAboutUs && formik.errors.hearAboutUs}
+                                    />
+                                </Grid>
+                                <Grid item className="w-80 flex-col">
+                                    <div className={`${(formik.touched.isAccepting && Boolean(formik.errors.isAccepting)) ? 'text-red-600' : 'text-current'} flex gap-3 items-center`}>
+                                        <CheckBox name="isAccepting" onChange={formik.handleChange} checked={formik.values.isAccepting} color="primary" />
+                                        <InputLabel className="text-xs text-black">I have read and accept Terms and Conditions</InputLabel>
+                                    </div>
+                                    {formik.touched.isAccepting && Boolean(formik.errors.isAccepting) && <FormHelperText error className="ml-3">{formik.touched.hearAboutUs && formik.errors.isAccepting}</FormHelperText>}
+                                </Grid>
+                            </Grid>
                         </Grid>
-                        <Grid item className="w-full">
-                            <TextField
-                                fullWidth
-                                type="password"
-                                id="password"
-                                name="password"
-                                variant="outlined"
-                                label="Password"
-                                size="small"
-                                InputProps={{
-                                    startAdornment:(
-                                        <InputAdornment postition="start">
-                                            <img src={key} alt="password key" />
-                                        </InputAdornment>
-                                    )
-                                }}
-                                value={formik.values.password}
-                                onChange={formik.handleChange}
-                                error={formik.touched.password && Boolean(formik.errors.password)}
-                                helperText={formik.touched.password && formik.errors.password}
-                            />
-                        </Grid>
-                        <Grid item className="w-full">
-                            <TextField
-                                fullWidth
-                                type="password"
-                                id="confirmPassword"
-                                name="confirmPassword"
-                                variant="outlined"
-                                label="Confirm Password"
-                                size="small"
-                                InputProps={{
-                                    startAdornment:(
-                                        <InputAdornment postition="start">
-                                            <img src={confirm} alt="confirm password" />
-                                        </InputAdornment>
-                                    )
-                                }}
-                                value={formik.values.confirmPassword}
-                                onChange={formik.handleChange}
-                                error={formik.touched.confirmPassword && Boolean(formik.errors.confirmPassword)}
-                                helperText={formik.touched.confirmPassword && formik.errors.confirmPassword}
-                            />
-                        </Grid>
-                        <Grid item className="w-full">
-                            <TextField
-                                fullWidth
-                                id="company"
-                                name="company"
-                                variant="outlined"
-                                label="Company"
-                                size="small"
-                                InputProps={{
-                                    startAdornment:(
-                                        <InputAdornment postition="start">
-                                            <img src={companyicon} alt="company" />
-                                        </InputAdornment>
-                                    )
-                                }}
-                                value={formik.values.company}
-                                onChange={formik.handleChange}
-                                error={formik.touched.company && Boolean(formik.errors.company)}
-                                helperText={formik.touched.company && formik.errors.company}
-                            />
-                        </Grid>
-                        <Grid item className="w-full">
-                            <TextField
-                                fullWidth
-                                id="hearAboutUs"
-                                name="hearAboutUs"
-                                variant="outlined"
-                                label="How did you hear about us?"
-                                size="small"
-                                InputProps={{
-                                    startAdornment:(
-                                        <InputAdornment postition="start">
-                                            <img src={smile} alt="smile" />
-                                        </InputAdornment>
-                                    )
-                                }}
-                                value={formik.values.hearAboutUs}
-                                onChange={formik.handleChange}
-                                error={formik.touched.hearAboutUs && Boolean(formik.errors.hearAboutUs)}
-                                helperText={formik.touched.hearAboutUs && formik.errors.hearAboutUs}
-                            />
-                        </Grid>
-                        <Grid item className="w-full flex-col">
-                            <div className={`${(formik.touched.isAccepting && Boolean(formik.errors.isAccepting)) ? 'border-red-600 rounded border' : ''} flex gap-3 items-center`}>
-                                <CheckBox name="isAccepting" onChange={formik.handleChange} checked={formik.values.isAccepting} color="primary" />
-                                <InputLabel>I have read and accept Terms and Conditions</InputLabel>
+                        <Grid item xs={8} className="flex flex-col items-center">
+                            <Button variant="contained" color="primary" type="submit" fullWidth>Create your Account</Button>
+                            <div className="w-80 flex justify-center items-center text-xs mt-2">
+                                <span>Already have an account?</span>
+                                <Link to="/register" className="font-bold mx-1">LOGIN here</Link>
                             </div>
-                            {formik.touched.isAccepting && Boolean(formik.errors.isAccepting) && <FormHelperText error className="ml-3">{formik.touched.hearAboutUs && formik.errors.isAccepting}</FormHelperText>}
-                        </Grid>
-                        <Grid item className="w-full flex justify-center">
-                            <Button variant="contained" color="primary" type="submit">Create your Account</Button>
-                        </Grid>
-                        <Grid item className="w-full flex justify-center items-center">
-                            <Typography variant="subtitle1">Already have an account!</Typography>
-                            <Link to="/login" className="font-bold">Login</Link>
                         </Grid>
                     </Grid>
                 </Hidden>
