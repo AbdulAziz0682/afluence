@@ -1,12 +1,13 @@
 import React, {useState} from 'react';
-import { Button, Grid, Typography, TextField, TableHead, InputAdornment, Select } from '@material-ui/core';
+import { Button, Grid, Typography, TextField, TableHead, InputAdornment, Select, ListItem, ListItemText } from '@material-ui/core';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import { FormControl, MenuItem } from '@material-ui/core';
+import InputBase from '@material-ui/core/InputBase';
+import { FormControl, MenuItem, Menu } from '@material-ui/core';
 
 import AddIcon from '@material-ui/icons/Add';
 import SearchIcon from '@material-ui/icons/Search';
@@ -38,6 +39,14 @@ export default function Projects(props){
         dispatch(setProject(project));
         history.push('/console');
     }
+    //
+    const [anchorEl, setAnchorEl] = React.useState(null);
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+    const handleMenuClose = () => {
+        setAnchorEl(null);
+    };
     //Dialog Actions
     const [open, setOpen] = useState(false);
     const handleClickOpen = () => {
@@ -50,35 +59,32 @@ export default function Projects(props){
         return <Redirect push to="/login" />
     }
     return (
-        <Grid item xs={12} md={11} lg={9} className="mt-3">
-            <Grid container direction="column" className="border self-center rounded-lg md:p-8 p-4">
-                <Grid item className="flex gap-6 justify-between flex-col sm:flex-row md:gap-1 items-center flex-grow">
+        <Grid item xs={12} md={11} lg={9} className="h-5/6 md:border rounded-3xl overflow-auto">
+            <Grid container direction="column" className="self-center md:p-8 p-4">
+                <Grid item className="flex justify-between flex-col sm:flex-row gap-2 md:gap-6 m-2 items-center flex-grow">
                     <Typography variant="h6" color="primary">MY PROJECTS</Typography>
-                    <div className="flex">
-                        <TextField
-                            id="search"
-                            placeholder="search"
-                            variant="outlined"
-                            size="small"
-                            InputProps={{
-                            endAdornment: (
-                                <InputAdornment position="end">
-                                    <SearchIcon />
-                                </InputAdornment>
-                            ),
+                    <div className="flex w-72 md:w-auto gap-1 flex-grow ">
+                        <InputBase className="bg-gray-100 h-8 flex-grow" endAdornment={<InputAdornment position="end"><SearchIcon /></InputAdornment>} />
+                        <Button type="default" onClick={handleClick}>{'Select'}</Button>
+                         <Menu
+                            elevation={0}
+                            getContentAnchorEl={null}
+                            anchorOrigin={{
+                                vertical: 'bottom',
+                                horizontal: 33,
                             }}
-                        />
-                        <FormControl variant="outlined" size="small">
-                        <Select
-                            labelId="demo-simple-select-label"
-                            id="demo-simple-select"
-                            value={searchType}
-                            onChange={handleTypeChange}
+                            transformOrigin={{
+                                vertical: 'top',
+                                horizontal: 'center',
+                            }}
+                            anchorEl={anchorEl}
+                            keepMounted
+                            open={Boolean(anchorEl)}
+                            onClose={handleMenuClose}
                         >
-                            <MenuItem value="name">Name</MenuItem>
-                            <MenuItem value="status">Status</MenuItem>
-                        </Select>
-                        </FormControl>
+                            <MenuItem value="name"><ListItem className="w-96 border"><ListItemText primary="Name"/></ListItem></MenuItem>
+                            <MenuItem value="status"><ListItem className="w-96 border"><ListItemText primary="Status"/></ListItem></MenuItem>
+                        </Menu>
                     </div>
                     <div className="flex gap-3 justify-between">
                         <NewProjectDialog open={open} handleClose={handleClose} />
@@ -88,9 +94,9 @@ export default function Projects(props){
                     </div>
                 </Grid>
                 <Grid item>
-                    <TableContainer component={Paper}>
+                    <TableContainer>
                         <Table aria-label="simple table">
-                            <TableHead>
+                            <TableHead className="border-b-2 border-gray-600 p-0">
                                 <TableRow>
                                     <TableCell scope="row">Name</TableCell>
                                     <TableCell scope="row">Status</TableCell>

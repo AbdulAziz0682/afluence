@@ -47,15 +47,15 @@ export default function DeleteAccountConfirmation(props) {
             aria-labelledby="alert-dialog-title"
             aria-describedby="alert-dialog-description"
         >
-        <form onSubmit={formik.handleSubmit}>
+        <form onSubmit={formik.handleSubmit} className="sm:m-6 m-2">
             <Typography component={DialogTitle} className="text-center" variant="h4">New Project</Typography>
-            <DialogContent className="flex flex-col gap-3">
+            <DialogContent className="flex flex-col gap-3 w-84 md:w-132 sm:m-3">
                 <Typography variant="body1">Project Name</Typography>
                 <TextField
                     fullWidth
                     id="name"
                     name="name"
-                    variant="outlined"
+                    variant="filled"
                     size="small"
                     value={formik.values.name}
                     onChange={formik.handleChange}
@@ -63,7 +63,7 @@ export default function DeleteAccountConfirmation(props) {
                     helperText={formik.touched.name && formik.errors.name}
                 />
                 <Typography variant="body1">Choose country for project launch</Typography>
-                <FormControl variant="outlined" size="small">
+                <FormControl variant="filled" size="small">
                     <Select
                         id="country-select"
                         name="country"
@@ -76,12 +76,12 @@ export default function DeleteAccountConfirmation(props) {
                     </Select>
                 </FormControl>
             </DialogContent>
-            <DialogActions>
-                <Button onClick={handleClose} variant="contained" color="secondary">
+            <DialogActions className="flex gap-3 justify-evenly">
+                <Button onClick={handleClose} variant="contained" color="default">
                     Cancel
                 </Button>
                 <Button  variant="contained" color="primary" type="submit">
-                    Add
+                    Create Project
                 </Button>
             </DialogActions>
             </form>
