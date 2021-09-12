@@ -17,6 +17,7 @@ import { Redirect } from 'react-router';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import DeleteAccountConfirmation from '../components/Account/DeleteAccountConfirmation';
+import TextInputBase from '../components/TextInputBase';
 
 const User = {
     name: '',
@@ -81,9 +82,9 @@ export default function Account(props){
         return <Redirect push to="/" />
     }
     return (
-        <Grid item xs={12} md={11} lg={9} className="mt-3">
+        <Grid item xs={12} md={11} lg={9} className="h-5/6 md:border rounded-3xl overflow-auto bg-white">
             <form onSubmit={formik.handleSubmit} className="w-100">
-            <Grid container direction="column" className="border self-center rounded-lg md:p-8 p-4">
+            <Grid container direction="column" className="self-center md:p-8 p-4">
                 <Grid item className="flex gap-6 justify-between items-center">
                     <Typography variant="h6" color="primary">ACCOUNT DETAILS</Typography>
                     <div className="flex gap-3 justify-between">
@@ -116,18 +117,16 @@ export default function Account(props){
                     {
                         edit 
                         ?
-                            <TableContainer component={Paper}>
+                            <TableContainer>
                                 <Table aria-label="simple table" size="small">
                                     <TableBody>
                                         <TableRow key="0">
-                                            <TableCell scope="row">Email</TableCell>
-                                            <TableCell scope="row">
-                                                <TextField
-                                                    fullWidth
+                                            <TableCell scope="row" className="border-r border-gray-600">Email</TableCell>
+                                            <TableCell scope="row" className="border-b border-gray-600 w-5/6">
+                                                <TextInputBase
                                                     id="email"
                                                     name="email"
-                                                    variant="outlined"
-                                                    size="small"
+                                                    placeholder="Email"
                                                     value={formik.values.email}
                                                     onChange={formik.handleChange}
                                                     error={formik.touched.email && Boolean(formik.errors.email)}
@@ -136,32 +135,23 @@ export default function Account(props){
                                             </TableCell>
                                         </TableRow>
                                         <TableRow key="1">
-                                            <TableCell scope="row">Password</TableCell>
-                                            <TableCell scope="row">
-                                                <TextField
-                                                    fullWidth
+                                            <TableCell scope="row" className="border-r border-gray-600">Password</TableCell>
+                                            <TableCell scope="row" className="border-b border-gray-600 items-center flex gap-1 md:gap-3">
+                                                <TextInputBase
                                                     type="password"
                                                     id="password"
                                                     name="password"
-                                                    variant="outlined"
-                                                    size="small"
+                                                    placeholder="Password"
                                                     value={formik.values.password}
                                                     onChange={formik.handleChange}
                                                     error={formik.touched.password && Boolean(formik.errors.password)}
                                                     helperText={formik.touched.password && formik.errors.password}
                                                 />
-                                            </TableCell>
-                                        </TableRow>
-                                        <TableRow key="8">
-                                            <TableCell scope="row">Confirm Password</TableCell>
-                                            <TableCell scope="row">
-                                                <TextField
-                                                    fullWidth
+                                                <TextInputBase
                                                     type="password"
                                                     id="confirmPassword"
                                                     name="confirmPassword"
-                                                    variant="outlined"
-                                                    size="small"
+                                                    placeholder="Re-enter Password"
                                                     value={formik.values.confirmPassword}
                                                     onChange={formik.handleChange}
                                                     error={formik.touched.confirmPassword && Boolean(formik.errors.confirmPassword)}
@@ -170,14 +160,12 @@ export default function Account(props){
                                             </TableCell>
                                         </TableRow>
                                         <TableRow key="2">
-                                            <TableCell scope="row">Company Name</TableCell>
-                                            <TableCell scope="row">
-                                                <TextField
-                                                    fullWidth
+                                            <TableCell scope="row" className="border-r border-gray-600">Company Name</TableCell>
+                                            <TableCell scope="row" className="border-b border-gray-600 w-5/6">
+                                                <TextInputBase
                                                     id="company"
                                                     name="company"
-                                                    variant="outlined"
-                                                    size="small"
+                                                    placeholder="Company"
                                                     value={formik.values.company}
                                                     onChange={formik.handleChange}
                                                     error={formik.touched.company && Boolean(formik.errors.company)}
@@ -186,14 +174,12 @@ export default function Account(props){
                                             </TableCell>
                                         </TableRow>
                                         <TableRow key="3">
-                                            <TableCell scope="row">Developer Name</TableCell>
-                                            <TableCell scope="row">
-                                                <TextField
-                                                    fullWidth
+                                            <TableCell scope="row" className="border-r border-gray-600">Developer Name</TableCell>
+                                            <TableCell scope="row" className="border-b border-gray-600 w-5/6">
+                                                <TextInputBase
                                                     id="name"
                                                     name="name"
-                                                    variant="outlined"
-                                                    size="small"
+                                                    placeholder="Name"
                                                     value={formik.values.name}
                                                     onChange={formik.handleChange}
                                                     error={formik.touched.name && Boolean(formik.errors.name)}
@@ -202,14 +188,13 @@ export default function Account(props){
                                             </TableCell>
                                         </TableRow>
                                         <TableRow key="4">
-                                            <TableCell scope="row">Token</TableCell>
-                                            <TableCell scope="row">
-                                                <TextField
-                                                    fullWidth
+                                            <TableCell scope="row" className="border-r border-gray-600">Token</TableCell>
+                                            <TableCell scope="row" className="border-b border-gray-600 w-5/6">
+                                                <TextInputBase
                                                     id="token"
                                                     name="token"
-                                                    variant="outlined"
-                                                    size="small"
+                                                    placeholder="Token"
+                                                    className="w-3/6"
                                                     value={formik.values.token}
                                                     onChange={formik.handleChange}
                                                     error={formik.touched.token && Boolean(formik.errors.token)}
@@ -221,28 +206,28 @@ export default function Account(props){
                                 </Table>
                             </TableContainer>
                         :
-                        <TableContainer component={Paper}>
+                        <TableContainer>
                             <Table aria-label="simple table">
                                 <TableBody>
                                     <TableRow key="0">
-                                        <TableCell scope="row">Email</TableCell>
-                                        <TableCell scope="row">{user.email}</TableCell>
+                                        <TableCell scope="row" className="border-r border-gray-600">Email</TableCell>
+                                        <TableCell scope="row" className="border-b border-gray-600 w-2/3">{user.email}</TableCell>
                                     </TableRow>
                                     <TableRow key="1">
-                                        <TableCell scope="row">Password</TableCell>
-                                        <TableCell scope="row">{user.password}</TableCell>
+                                        <TableCell scope="row" className="border-r border-gray-600">Password</TableCell>
+                                        <TableCell scope="row" className="border-b border-gray-600  w-5/6">{user.password}</TableCell>
                                     </TableRow>
                                     <TableRow key="2">
-                                        <TableCell scope="row">Company Name</TableCell>
-                                        <TableCell scope="row">{user.company}</TableCell>
+                                        <TableCell scope="row" className="border-r border-gray-600">Company Name</TableCell>
+                                        <TableCell scope="row" className="border-b border-gray-600  w-5/6">{user.company}</TableCell>
                                     </TableRow>
                                     <TableRow key="3">
-                                        <TableCell scope="row">Developer Name</TableCell>
-                                        <TableCell scope="row">{user.name}</TableCell>
+                                        <TableCell scope="row" className="border-r border-gray-600">Developer Name</TableCell>
+                                        <TableCell scope="row" className="border-b border-gray-600  w-5/6">{user.name}</TableCell>
                                     </TableRow>
                                     <TableRow key="4">
-                                        <TableCell scope="row">Token</TableCell>
-                                        <TableCell scope="row">{user.token}</TableCell>
+                                        <TableCell scope="row" className="border-r border-gray-600">Token</TableCell>
+                                        <TableCell scope="row" className="border-b border-gray-600  w-5/6">{user.token}</TableCell>
                                     </TableRow>
                                 </TableBody>
                             </Table>
