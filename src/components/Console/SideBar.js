@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
-import { Collapse } from '@material-ui/core';
+import { Box, Collapse } from '@material-ui/core';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
@@ -19,13 +19,14 @@ import { useDispatch } from 'react-redux';
 
 import actionsIcon from '../../assets/actions.svg';
 import billingIcon from '../../assets/billing.svg';
-import commandsIcon from '../../assets/commond.svg';
+import commandsIcon from '../../assets/commands.svg';
 import dialogFlowIcon from '../../assets/dialogFlow.svg';
 import metricsIcon from '../../assets/metrics.svg';
 import statesIcon from '../../assets/states.svg';
 import { addTab, toggleDrawer } from '../../redux/actions/currentProjectActions';
 
-const drawerWidth = 200;
+const drawerWidth = 240;
+const activeColor = 'rgba(228, 212, 248, 1)';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -77,7 +78,7 @@ export default function SideBar() {
 	let [statesExpanded, setStatesExpanded] = useState(false);
 	let [commandsExpanded, setCommandsExpanded] = useState(false);
 	let [actionsExpanded, setActionsExpanded] = useState(false);
-	//let items = useSelector((state)=>state.currentProject.expandableItems);
+	let {currentTab, tabs} = useSelector((state)=>state.currentProject);
 	let {states, commands, actions} = useSelector((state)=>state.currentProject);
 
   return (
@@ -99,13 +100,13 @@ export default function SideBar() {
 	  >
 		<div id="drawerbar" className={classes.toolbar}>
 		  <IconButton onClick={()=>dispatch(toggleDrawer())}>
-			<ChevronIcon expanded={open} />
+			<ChevronIcon color="primary" expanded={open} />
 		  </IconButton>
 		</div>
 		<Divider />
 		<List>
-			<ListItem button key="1">
-			  <ListItemIcon><img src={dialogFlowIcon} alt="dialogFlow" className="w-6" onClick={()=>dispatch(addTab({title: 'Data Flow', type: 'dataFlow'}))} /></ListItemIcon>
+			<ListItem button key="1" style={{backgroundColor: tabs[currentTab]?.title.toLowerCase() === 'dialog flow' ? activeColor : ''}} onClick={()=>dispatch(addTab({title: 'dialog Flow', type: 'dialogFlow'}))} >
+			  <ListItemIcon><img src={dialogFlowIcon} alt="dialogFlow" className="w-6" /></ListItemIcon>
 			  <ListItemText primary="Dialog Flow" />
 			</ListItem>
 			<ListItem button key="states" onClick={()=>setStatesExpanded(!statesExpanded)}>
@@ -116,15 +117,20 @@ export default function SideBar() {
 			<Collapse key="stateItems" in={statesExpanded}>
 				{
 					states.map((state, index) => <>
-						<ListItem button key={'state'+index} onClick={()=>{dispatch(addTab({title: state.name, type: 'editState', data: state}))}}>
-							<ListItemText primary={<span className="text-sm">{state.name}</span>} inset />
+						<ListItem button key={'state'+index} style={{backgroundColor: tabs[currentTab]?.title.toLowerCase() === state.name.toLowerCase() ? activeColor : ''}} onClick={()=>{dispatch(addTab({title: state.name, type: 'editState', data: state}))}}>
+							{(state.name.toLowerCase() === 'start' || state.name.toLowerCase() === 'end') ? 
+							<ListItemText inset primary={<div className="flex justify-between text-sm">
+								<span>{state.name}</span>
+								<Box color="rgba(217, 135, 255, 1)" fontSize="0.75rem">SYSTEM</Box>
+							</div>} />
+							: <ListItemText primary={<span className="text-sm">{state.name}</span>} inset />
+							}
 						</ListItem>
 					</>)
 				}
 				{
-					<ListItem button key="addState" onClick={()=>dispatch(addTab({title: 'Add State', type: 'addState'}))}>
-						<ListItemIcon><AddIcon /></ListItemIcon>
-						<ListItemText primary={<span className="text-sm">Add State</span>} />
+					<ListItem button key="addState" style={{backgroundColor: tabs[currentTab]?.title.toLowerCase() === 'add state' ? activeColor : ''}} onClick={()=>dispatch(addTab({title: 'Add State', type: 'addState'}))}>
+						<ListItemText inset primary={<div className="flex items-center gap-2 text-sm"><AddIcon color="primary" /><span>Add State</span></div>} />
 					</ListItem>
 				}
 			</Collapse>
@@ -136,15 +142,21 @@ export default function SideBar() {
 			<Collapse key="commandItems" in={commandsExpanded}>
 				{
 					commands.map((command, index) => <>
-						<ListItem button key={'command'+index} onClick={()=>dispatch(addTab({title: command.name, type:'editCommand', data: command}))}>
-							<ListItemText primary={<span className="text-sm">{command.name}</span>} inset />
+						<ListItem button key={'command'+index} style={{backgroundColor: tabs[currentTab]?.title.toLowerCase() === command.name.toLowerCase() ? activeColor : ''}} onClick={()=>dispatch(addTab({title: command.name, type:'editCommand', data: command}))}>
+						{(command.name.toLowerCase() === 'no_match' || command.name.toLowerCase() === 'no_input') ? 
+							<ListItemText inset primary={<div className="flex justify-between text-sm">
+								<span>{command.name}</span>
+								<Box color="rgba(217, 135, 255, 1)" fontSize="0.75rem">SYSTEM</Box>
+							</div>} />
+							: <ListItemText primary={<span className="text-sm">{command.name}</span>} inset />
+						}
 						</ListItem>
 					</>)
 				}
 				{
-					<ListItem button key="addCommand" onClick={()=>dispatch(addTab({title: 'Add Command', type: 'addCommand'}))}>
-						<ListItemIcon><AddIcon /></ListItemIcon>
-						<ListItemText primary={<span className="text-sm">Add Command</span>} />
+					<ListItem button key="addCommand" style={{backgroundColor: tabs[currentTab]?.title.toLowerCase() === 'add command' ? activeColor : ''}} onClick={()=>dispatch(addTab({title: 'Add Command', type: 'addCommand'}))}>
+						<ListItemIcon></ListItemIcon>
+						<ListItemText primary={<div className="flex items-center gap-2 text-sm"><AddIcon color="primary" /><span>Add Command</span></div>} />
 					</ListItem>
 				}
 			</Collapse>
@@ -156,65 +168,29 @@ export default function SideBar() {
 			<Collapse key="actionItems" in={actionsExpanded}>
 				{
 					actions.map((action, index) => <>
-						<ListItem button key={'action'+index} onClick={()=>dispatch(addTab({title: action.name, type: 'editAction', data: action}))}>
-							<ListItemText primary={<span className="text-sm">{action.name}</span>} inset />
+						<ListItem button key={'action'+index} style={{backgroundColor: tabs[currentTab]?.title.toLowerCase() === action.name.toLowerCase() ? activeColor : ''}} onClick={()=>dispatch(addTab({title: action.name, type: 'editAction', data: action}))}>
+						{(action.name.toLowerCase() === 'get_input' || action.name.toLowerCase() === 'end_convo') ? 
+							<ListItemText inset primary={<div className="flex justify-between text-sm">
+								<span>{action.name}</span>
+								<Box color="rgba(217, 135, 255, 1)" fontSize="0.75rem">SYSTEM</Box>
+							</div>} />
+							: <ListItemText primary={<span className="text-sm">{action.name}</span>} inset />
+						}
 						</ListItem>
 					</>)
 				}
 				{
-					<ListItem button key="addAction" onClick={()=>dispatch(addTab({title: 'Add Action', type: 'addAction'}))}>
-						<ListItemIcon><AddIcon /></ListItemIcon>
-						<ListItemText primary={<span className="text-sm">Add Action</span>} />
+					<ListItem button key="addAction" style={{backgroundColor: tabs[currentTab]?.title.toLowerCase() === 'add action' ? activeColor : ''}} onClick={()=>dispatch(addTab({title: 'Add Action', type: 'addAction'}))}>
+						<ListItemIcon></ListItemIcon>
+						<ListItemText primary={<div className="flex items-center gap-2 text-sm"><AddIcon color="primary" /><span>Add Action</span></div>} />
 					</ListItem>
 				}
 			</Collapse>
-			{/* {
-				items.map((item, index) => <>
-					<ListItem button key={index+2} onClick={()=>toggleExpand(index)}>
-						<ListItemIcon><img src={item.icon} alt={item.name} className="w-6" /></ListItemIcon>
-						<ListItemText primary={item.name} />
-						<ExpandIcon expanded={item.expanded} />
-					</ListItem>
-					<Collapse in={item.expanded} key={index*10}>
-						{
-							item.children.map((child, idx) => <>
-								<ListItem button key={Math.random()}>
-									<ListItemText primary={<span className="text-sm">{child.name}</span>} inset/>
-								</ListItem>
-							</>)
-						}
-						{
-							item.name === 'States' && <>
-								<ListItem button key="addState" onClick={()=>dispatch(addState({name: 'abc'}))}>
-									<ListItemIcon><AddIcon /></ListItemIcon>
-									<ListItemText primary={<span className="text-sm">Add State</span>} />
-								</ListItem>
-							</>
-						}
-						{
-							item.name === 'Commands' && <>
-								<ListItem button key="addCommand" onClick={()=>dispatch(addCommand({name: 'abc'}))}>
-									<ListItemIcon><AddIcon /></ListItemIcon>
-									<ListItemText primary={<span className="text-sm">Add Command</span>} />
-								</ListItem>
-							</>
-						}
-						{
-							item.name === 'Actions' && <>
-								<ListItem button key="addActions" onClick={()=>dispatch(addAction({name: 'abc'}))}>
-									<ListItemIcon><AddIcon /></ListItemIcon>
-									<ListItemText primary={<span className="text-sm">Add Action</span>} />
-								</ListItem>
-							</>
-						}
-					</Collapse>
-				</>)
-			} */}
-			<ListItem button key="metrics" onClick={()=>dispatch(addTab({title: 'Metrics', type:'metrics'}))}>
+			<ListItem button key="metrics" style={{backgroundColor: tabs[currentTab]?.title.toLowerCase() === 'metrics' ? activeColor : ''}} onClick={()=>dispatch(addTab({title: 'Metrics', type:'metrics'}))}>
 			  <ListItemIcon><img src={metricsIcon} alt="metrics" className="w-6" /></ListItemIcon>
 			  <ListItemText primary="Metrics" />
 			</ListItem>
-			<ListItem button key="billing" onClick={()=>dispatch(addTab({title: 'Billing', type:'billing'}))}>
+			<ListItem button key="billing" style={{backgroundColor: tabs[currentTab]?.title.toLowerCase() === 'billing' ? activeColor : ''}} onClick={()=>dispatch(addTab({title: 'Billing', type:'billing'}))}>
 			  <ListItemIcon><img src={billingIcon} alt="billing" className="w-6" /></ListItemIcon>
 			  <ListItemText primary="Billing" />
 			</ListItem>

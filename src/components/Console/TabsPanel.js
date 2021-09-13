@@ -134,7 +134,7 @@ export default function TabsPanel() {
 				)
 			}
 			{
-				tab.type === 'dataFlow' && (
+				tab.type === 'dialogFlow' && (
 					<DataFlowTab />
 				)
 			}

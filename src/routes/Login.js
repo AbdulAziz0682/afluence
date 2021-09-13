@@ -78,13 +78,13 @@ export default function Login(props){
                             }
                         ],
                         commands: [
-                            {name: 'GET_INPUT', phrases: [{language: 'English', audio: null, text: ''}]},
-                            {name: 'END_CONVO', phrases: [{language: 'English', audio: null, text: ''}]},
+                            {name: 'NO_MATCH', phrases: [{language: 'English', audio: null, text: ''}]},
+                            {name: 'NO_INPUT', phrases: [{language: 'English', audio: null, text: ''}]},
                             {name: 'PLAY_AUDIO', phrases: [{language: 'English', audio: null, text: ''}]},
                         ],
                         actions: [
-                            {name: 'NOT_MATCH', parameters: [{name: 'param1', dataType: 'string'}, {name: 'param2', dataType: 'number'}]},
-                            {name: 'NO_INPUT', parameters: [{name: 'param1', dataType: 'string'}, {name: 'param2', dataType: 'number'}]}
+                            {name: 'GET_INPUT', parameters: [{name: 'param1', dataType: 'string'}, {name: 'param2', dataType: 'number'}]},
+                            {name: 'END_CONVO', parameters: [{name: 'param1', dataType: 'string'}, {name: 'param2', dataType: 'number'}]}
                         ],
                         metrics: [
                             {name: 'Classification Accuracy(QA)', value: 'X'},
