@@ -5,14 +5,14 @@ import { useSelector } from "react-redux";
 export default function MetricsTab(props){
     let metrics = useSelector(state => state.currentProject.metrics);
     return (
-        <Grid container direction="column" className="border rounded-lg overflow-scroll sm:overflow-auto">
-            <Table>
+        <Grid container direction="column" className="overflow-scroll sm:overflow-auto">
+            <Table className="md:w-5/6">
                 <TableBody>
                     {
-                        metrics.map(metric => (
-                            <TableRow>
-                                <TableCell>{metric.name}</TableCell>
-                                <TableCell>{metric.value + (metric.name===('Avg. Request per minute') ? ' calls' : '%')}</TableCell>
+                        metrics.map((metric, index) => (
+                            <TableRow hover className='divide-x'>
+                                <TableCell className={`${index === (metrics.length-1) && 'border-b-0'} w-1/2  md:pl-10`}>{metric.name}</TableCell>
+                                <TableCell className={`${index === (metrics.length-1) && 'border-b-0'} w-1/2  md:pl-10`}>{metric.value + (metric.name===('Avg. Request per minute') ? ' calls' : '%')}</TableCell>
                             </TableRow>
                         ))
                     }
