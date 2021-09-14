@@ -6,11 +6,17 @@ import LineChart from "./LineChart";
 
 const useStyles = makeStyles(theme => ({
     chartDimensions: {
+        [theme.breakpoints.down('sm')]:{
+            maxHeight: '55%'
+        },
         [theme.breakpoints.down('md')]:{
             maxHeight: '40%'
         },
         [theme.breakpoints.up('lg')]:{
-            maxHeight: '60%'
+            maxHeight: '75%'
+        },
+        [theme.breakpoints.up('xl')]:{
+            maxHeight: '80%'
         }
     }
 }))
