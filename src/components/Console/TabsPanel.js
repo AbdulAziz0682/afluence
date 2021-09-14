@@ -35,7 +35,7 @@ function TabPanel(props) {
 	  {...other}
 	>
 	  {currentTab === index && (
-		<Box p={1} height="calc(100vh - 200px)">
+		<Box p={1} height="calc(100vh - 64px)">
 			{children}
 		</Box>
 	  )}
