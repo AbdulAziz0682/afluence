@@ -30,14 +30,18 @@ const data = {
 const options = {
   maintainAspectRatio: false,
   scales: {
-    yAxes: [
-      {
-        ticks: {
-          beginAtZero: true,
-        },
-      },
-    ],
-  },
+    x: {
+        grid:{
+         display:false
+             }
+       },
+    y: 
+       {
+     grid:{
+      display:false
+          }
+       }
+  }
 };
 
 const LineChart = () => (
