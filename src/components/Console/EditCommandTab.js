@@ -18,7 +18,7 @@ export default function EditCommandTab(props){
                     className="w-full md:w-6/12 px-2 bg-gray-100 h-10 rounded-lg"
                 />
                 <div className="flex gap-9 md:justify-end w-full md:w-5/12 items-center justify-between">
-                    <Button variant="contained" color="secondary" className="w-36">Cancel</Button>
+                    <Button variant="contained" color="secondary" className="w-36">Delete</Button>
                     <Button variant="contained" color="primary" className="w-36">Save</Button>
                 </div>
             </Grid>
