@@ -1,18 +1,10 @@
 
 import {Grid, TextField, Button, Typography, IconButton, FormControl, Select, MenuItem} from '@material-ui/core';
-import { makeStyles } from '@material-ui/core';
 import AddCircle from '@material-ui/icons/AddCircle';
 import NegativeIcon from '../../assets/negative.png';
 
-const useStyles = makeStyles(theme => ({
-    seletectRoot: {
-        paddingTop: 6
-    }
-}))
-
 export default function AddEditTab(props){
     let action = props.action;
-    let classes = useStyles();
     return (
         <Grid container direction="column" className="border rounded-lg overflow-scroll sm:overflow-auto">
             <Grid item className="flex gap-3 p-1 sm:p-3 border-b items-center justify-between flex flex-col md:flex-row">
