@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
     },
     drawerOpen: {
         [theme.breakpoints.down('xs')]:{
-            width: '80%',
+            width: '98%',
             right: 0,
             transition: theme.transitions.create('width', {
                 easing: theme.transitions.easing.easeOut,
@@ -62,13 +62,13 @@ export default function EditStateTab({data}){
                     className="w-full md:w-6/12 px-2 bg-gray-100 h-10 rounded-lg"
                 />
                 <div className="flex gap-9 md:justify-end w-full md:w-5/12 items-center justify-between">
-                    <Button variant="contained" color="secondary" className="w-36">Cancel</Button>
+                    <Button variant="contained" color="secondary" className="w-36">Delete</Button>
                     <Button variant="contained" color="primary" className="w-36">Save</Button>
                 </div>
             </Grid>
             <Grid item className="pl-1 md:pl-10 flex relative md:gap-20">
                 <div className="border rounded-lg md:w-72 sm:w-36 bg-gray-200 flex flex-col divide-y my-9">
-                    <div className="p-1 sm:p-3 text-center flex flex-col flex-grow">
+                    <div className="p-1 sm:p-3 text-center flex flex-col h-12">
                         <Hidden smUp><IconButton className="self-end"><ChevronLeftIcon className="bg-gray-400" onClick={()=>setOpen(true)} /></IconButton></Hidden>
                         <span className="self-center">{name ? name : '...'}</span>
                     </div>
