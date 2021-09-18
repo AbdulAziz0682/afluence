@@ -52,7 +52,30 @@ TabPanel.propTypes = {
 const useStyles = makeStyles((theme) => ({
   root: {
 	flexGrow: 1,
+	textTransform: 'none',
+	maxHeight: 25,
+	minHeight: 20,
 	backgroundColor: theme.palette.background.paper,
+	margin: 0,
+  },
+  tabWrapper: {
+    display: 'flex',
+    flexDirection: 'row-reverse',
+    alignItems: 'center',
+    maxHeight: 20,
+    textTransform: 'none',
+    justifyContent: 'space-between',
+	borderRadius: '0.2rem',
+	fontWeight: 'normal',
+	overflow: 'hidden'
+  },
+  tabRoot: {
+	maxHeight: 25,
+	minHeight: 20,
+	margin: 2,
+  },
+  indicator:{
+	  //display: 'none'
   }
 }));
 
@@ -65,10 +88,10 @@ export default function TabsPanel() {
   const handleChange = (event, newValue) => {
 	dispatch(setCurrentTab(newValue));
   };
-
+  let isActive = true;
   return (
-	<div className={clsx({[classes.root]:true})}>
-	  <AppBar position="static" color="default" elevation={0}>
+	<div>
+	  {/* <AppBar position="static" color="default" elevation={0}> */}
 		<Tabs
 		  value={currentTab}
 		  onChange={handleChange}
@@ -77,6 +100,8 @@ export default function TabsPanel() {
 		  variant="scrollable"
 		  scrollButtons="auto"
 		  aria-label="scrollable auto tabs example"
+		  className="bg-gray-100"
+			classes={{root: classes.root, indicator: classes.indicator}}
 		>
 		  {
 			tabs.map((tab, index) => (
@@ -84,12 +109,13 @@ export default function TabsPanel() {
 			  	label={tab.title} 
 				value={index} 
 				key={'tab'+index} 
-				className="hover:bg-green-100"
-				icon={<IconButton className="hover:bg-gray-400"><CloseIcon /></IconButton>}/>
+				className={clsx({['bg-white']: isActive})}
+				classes={{wrapper: classes.tabWrapper, root: classes.tabRoot}}
+				icon={<IconButton><CloseIcon className="w-4 mt-1" /></IconButton>}/>
 			))
 		  }
 		</Tabs>
-	  </AppBar>
+	  {/* </AppBar> */}
 	  {
 		tabs.map((tab, index)=>(
 		  <TabPanel currentTab={currentTab} key={'panel'+index} index={index}>

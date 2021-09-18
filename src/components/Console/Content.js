@@ -5,7 +5,7 @@ import TabPanel from './TabsPanel';
 const useStyles = makeStyles(theme => ({
     root: {
         padding: theme.spacing(1),
-        paddingTop: theme.mixins.toolbar.minHeight/2,
+        paddingTop: theme.mixins.toolbar.minHeight/2-15,
         flexGrow: 1,
         width: 50
     },
