@@ -25,7 +25,7 @@ export default function BillingTab(props){
     let classes = useStyles();
     let billing = useSelector(state => state.currentProject.billing);
     return (
-        <Grid container direction="column" className="border rounded-lg h-full overflow-scroll sm:overflow-auto">
+        <Grid container direction="column" className="border rounded-lg h-full overflow-scroll sm:overflow-auto bg-white">
             <Grid item className="flex p-2 sm:p-4 items-center justify-between gap-1 border-b">
                 <div className="flex flex-col">
                     <Typography variant="body1" className="font-bold">Current Balance</Typography>

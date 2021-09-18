@@ -63,7 +63,7 @@ export default function AddStateTab(props){
     let [drawerData, setDrawerData] = useState(null);
     return (
         <Grid container direction="column" className="border rounded-lg overflow-scroll sm:overflow-auto">
-            <Grid item className="flex gap-3 p-2 sm:p-3 border-b items-center justify-between flex flex-col md:flex-row">
+            <Grid item className="flex gap-3 p-2 sm:p-3 border-b items-center justify-between flex flex-col md:flex-row bg-white">
                 <InputBase 
                     placeholder="Enter State Name"
                     value={name}

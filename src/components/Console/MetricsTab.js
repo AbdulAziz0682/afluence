@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 export default function MetricsTab(props){
     let metrics = useSelector(state => state.currentProject.metrics);
     return (
-        <Grid container direction="column" className="overflow-scroll sm:overflow-auto">
+        <Grid container direction="column" className="overflow-scroll sm:overflow-auto bg-white">
             <Table className="md:w-5/6">
                 <TableBody>
                     {
