@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box';
@@ -91,7 +90,6 @@ export default function TabsPanel() {
   let isActive = true;
   return (
 	<div>
-	  {/* <AppBar position="static" color="default" elevation={0}> */}
 		<Tabs
 		  value={currentTab}
 		  onChange={handleChange}
@@ -115,7 +113,6 @@ export default function TabsPanel() {
 			))
 		  }
 		</Tabs>
-	  {/* </AppBar> */}
 	  {
 		tabs.map((tab, index)=>(
 		  <TabPanel currentTab={currentTab} key={'panel'+index} index={index}>

@@ -17,25 +17,25 @@ export default function DrawerData({data}){
                                 </Select>
                             </FormControl>
                             <div className="flex flex-col w-full">
-                                <div className="flex items-center w-full gap-1 sm:gap-10 mt-5">
+                                <div className="flex justify-between w-full gap-1 sm:gap-10 mt-5">
                                     <Typography variant="h6" className="w-3/12 py-1">Action</Typography>
                                     <Typography variant="h6" className="w-36 md:flex-grow py-1">Parameters</Typography>
-                                    <IconButton className="w-2/12 hover:bg-transparent"><AddCircle /></IconButton>
+                                    <IconButton className="w-4 hover:bg-transparent"><AddCircle /></IconButton>
                                 </div>
                                 {
                                     data.data.map(item => 
                                         <div className="flex justify-between w-full gap-1 sm:gap-10 h-8 mb-5">
                                             <div className="w-3/12">
-                                                <select className="w-20 md:w-full bg-gray-100 h-full">
+                                                <select className="bg-gray-100 w-full h-full">
                                                     {item.actions.map(i => <option value={i}>{i}</option>)}
                                                 </select>
                                             </div>
                                             <div className="w-36 md:flex-grow">
-                                                <select className="w-20 md:w-full bg-gray-100 h-full">
+                                                <select className="bg-gray-100 w-full h-full">
                                                     {item.params.map(i => <option value={i}>{i}</option>)}
                                                 </select>
                                             </div>
-                                            <IconButton className="w-2/12 hover:bg-transparent"><img src={NegativeIcon} style={{width: 22}} alt="delete" /></IconButton>
+                                            <IconButton className="w-4 hover:bg-transparent"><img src={NegativeIcon} style={{minWidth: 22, maxHeight: 22}} alt="delete" /></IconButton>
                                         </div>
                                     )
                                 }
@@ -57,14 +57,14 @@ export default function DrawerData({data}){
                             <Typography variant="h6">Transition</Typography>
                             <div className="w-full flex flex-col">
                                 <div className="flex items-center justify-between w-full gap-1 sm:gap-10 mt-5">
-                                    <Typography variant="subtitle1" className="w-24 md:w-8/12 py-1">State</Typography>
+                                    <Typography variant="subtitle1" className="flex-grow py-1">State</Typography>
                                     <IconButton className="w-2/12 hover:bg-transparent"><AddCircle color="primary" /></IconButton>
                                 </div>
                                 {
                                     [1, 2, 3].map(item => (
                                         <div className="flex justify-between w-full gap-1 sm:gap-10 h-8 mb-5">
-                                            <div className="w-24 md:w-8/12">
-                                                <select className="w-20 md:w-full bg-gray-100 h-full">
+                                            <div className="flex-grow">
+                                                <select className="w-full bg-gray-100 h-full">
                                                     {[1, 2, 3].map(i => <option value={i}>{i}</option>)}
                                                 </select>
                                             </div>
