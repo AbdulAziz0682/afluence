@@ -55,24 +55,22 @@ export default function DrawerData({data}){
                         data.name === 'transition' && (<>
                             <Typography variant="h6">Transition</Typography>
                             <div className="w-full flex flex-col">
-                                <div className="w-full flex gap-1 justify-between items-center">
-                                    <Typography variant="subtitle1">State</Typography>
-                                    <IconButton><AddCircle color="primary" /></IconButton>
+                                <div className="flex items-center justify-between w-full gap-1 sm:gap-10 mt-5">
+                                    <Typography variant="subtitle1" className="w-24 md:w-8/12 py-1">State</Typography>
+                                    <IconButton className="w-2/12 hover:bg-transparent"><AddCircle color="primary" /></IconButton>
                                 </div>
-                                <div className="w-full flex gap-1 justify-between items-center">
                                 {
-                                    data.data.map(item => (
-                                        <>
-                                        <FormControl variant="outlined" size="small">
-                                            <Select value={item.actions[0]}>
-                                                {item.actions.map(i => <MenuItem value={i}>{i}</MenuItem>)}
-                                            </Select>
-                                        </FormControl>
-                                        <IconButton><img src={NegativeIcon} style={{maxHeight: 22}} alt="delete" /></IconButton>
-                                        </>
+                                    [1, 2, 3].map(item => (
+                                        <div className="flex justify-between w-full gap-1 sm:gap-10 h-8 mb-5">
+                                            <div className="w-24 md:w-8/12">
+                                                <select className="w-20 md:w-full bg-gray-100 h-full">
+                                                    {[1, 2, 3].map(i => <option value={i}>{i}</option>)}
+                                                </select>
+                                            </div>
+                                            <IconButton className="w-2/12 hover:bg-transparent"><img src={NegativeIcon} style={{maxHeight: 22, minWidth: 22}} alt="delete" /></IconButton>
+                                        </div>
                                     ))
                                 }
-                                </div>
                             </div>
                         </>)
                     }
