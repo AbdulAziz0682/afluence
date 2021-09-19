@@ -1,13 +1,12 @@
 import React, {useState} from 'react';
-import { Button, Grid, Typography, TextField, TableHead, InputAdornment, Select, ListItem, ListItemText, IconButton } from '@material-ui/core';
+import { Button, Grid, Typography, TableHead, InputAdornment, ListItem, ListItemText } from '@material-ui/core';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
 import InputBase from '@material-ui/core/InputBase';
-import { FormControl, MenuItem, Menu } from '@material-ui/core';
+import { MenuItem, Menu } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core';
 
 import AddIcon from '@material-ui/icons/Add';
@@ -41,9 +40,6 @@ export default function Projects(props){
     let user = useSelector((state)=>state.account.user);
     let projects = user ? user.projects : [];
     let [searchType, setType] = useState('name');
-    function handleTypeChange(e){
-        setType(e.target.value)
-    }
     function handleProjectSetup(id){
         console.log(id);
         let project = projects.find(p => p.id === id);
