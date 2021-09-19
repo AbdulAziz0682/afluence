@@ -106,7 +106,7 @@ export default function AddStateTab(props){
                         }
                     </div>
                 </div>
-                <div className={clsx({["bg-white absolute md:relative sm:ml-0 flex-grow flex flex-col border-gray-200 border-l"]:true, [classes.drawerOpen]: open, [classes.drawerClose]:!open})}>
+                <div style={{minHeight: '100%'}} className={clsx({["bg-white absolute md:relative sm:ml-0 flex-grow flex flex-col border-gray-200 border-l"]:true, [classes.drawerOpen]: open, [classes.drawerClose]:!open})}>
                     <Hidden smUp><IconButton className="self-start"><ChevronRightIcon className="bg-gray-400" onClick={()=>setOpen(false)}/></IconButton></Hidden>
                     <DrawerData data={drawerData} />
                 </div>
