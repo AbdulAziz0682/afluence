@@ -9,6 +9,7 @@ import { FormControl, MenuItem, Select } from '@material-ui/core';
 
 import { useFormik } from 'formik';
 import * as yup from 'yup';
+import { useHistory } from 'react-router';
 
 const initialValues = {
     name: '',
@@ -16,7 +17,7 @@ const initialValues = {
 }
 export default function DeleteAccountConfirmation(props) {
     let {open, handleClose} = props;
-
+    const history = useHistory();
     //Form requirements
     let countries = ['United States', 'England', 'France', 'China'];
     const validationSchema = yup.object({
@@ -36,6 +37,7 @@ export default function DeleteAccountConfirmation(props) {
             handleClose();
             actions.resetForm();
             console.log(JSON.stringify(values, null, 2));
+            history.push('/console');
         },
     });
     //------------------------
