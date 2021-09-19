@@ -11,6 +11,8 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { logout } from "../redux/actions/accountActions";
 
+import { useHistory } from "react-router";
+
 const useStyles = makeStyles((theme) => ({
     root: {
       flexGrow: 1,
@@ -34,8 +36,8 @@ const useStyles = makeStyles((theme) => ({
 export default function TopBar(props){
     const classes = useStyles();
     let dispatch = useDispatch();
+    let history = useHistory();
     let loggedIn = useSelector(state => state.account.loggedIn);
-    let user = useSelector(state => state.account.user);
     let [anchor, setAnchor] = useState(null);
     function handleMenuClick(event){
         setAnchor(event.currentTarget);
@@ -51,6 +53,13 @@ export default function TopBar(props){
                         <img src={logo} alt="afluence logo"/>
                     </IconButton>
                     <Typography variant="h6" className={classes.title} style={{fontFamily: "'Montserrat', sans-serif"}}>{"amazethu" }</Typography>
+                    {history.location.pathname === '/console' && 
+                        <select className="bg-gray-50 rounded-lg border p-1 mr-9">
+                            {
+                                [1].map(item => <option value="new dmgt service">new dmgt service</option>)
+                            }
+                        </select>
+                    }
                     {   loggedIn ? <> 
                         <IconButton onClick={handleMenuClick} color="inherit">
                             {loggedIn && <MoreVert />}
@@ -73,7 +82,7 @@ export default function TopBar(props){
                             <MenuItem key="3" component={Link} to="/login" onClick={(e)=>{dispatch(logout()); handleMenuClose(e)}}>Logout</MenuItem>
                         ]
                         : [
-                            <MenuItem key="4" component={Link} to="/" onClick={handleMenuClose}>Home</MenuItem>,
+                            <MenuItem key="4" component={Link} to="/home" onClick={handleMenuClose}>Home</MenuItem>,
                             <MenuItem key="5" component={Link} to="/register" onClick={handleMenuClose}>Register</MenuItem>,
                             <MenuItem key="6" component={Link} to="/login" onClick={handleMenuClose}>Login</MenuItem>
                         ]

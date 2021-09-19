@@ -79,7 +79,7 @@ export default function Account(props){
     });
     //------------------------
     if(!loggedIn){
-        return <Redirect push to="/" />
+        return <Redirect push to="/login" />
     }
     return (
         <Grid item xs={12} md={11} lg={9} className="h-5/6 md:border rounded-3xl overflow-auto bg-white">

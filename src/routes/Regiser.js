@@ -67,7 +67,7 @@ export default function Register(props){
     });
     //------------------------
     if(loggedIn){
-        return <Redirect push to="/" />
+        return <Redirect push to="/home" />
     }
     return (
         <Grid item container>

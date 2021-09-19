@@ -155,7 +155,7 @@ export default function Login(props){
     });
     //------------------------
     if(loggedIn){
-        return <Redirect push to="/projects" />
+        return <Redirect push to="/account" />
     }
     return (
         <Grid container item>
