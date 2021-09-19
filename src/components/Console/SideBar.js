@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
 	width: drawerWidth,
 	flexShrink: 0,
 	whiteSpace: 'nowrap',
-	zIndex: theme.zIndex.drawer - 200
+	zIndex: theme.zIndex.drawer - 200,
   },
   drawerOpen: {
 	width: drawerWidth,
@@ -44,8 +44,10 @@ const useStyles = makeStyles((theme) => ({
 	  easing: theme.transitions.easing.sharp,
 	  duration: theme.transitions.duration.enteringScreen,
 	}),
+	paddingTop: 80
   },
   drawerClose: {
+	paddingTop: 80,
 	transition: theme.transitions.create('width', {
 	  easing: theme.transitions.easing.sharp,
 	  duration: theme.transitions.duration.leavingScreen,
@@ -65,9 +67,9 @@ const useStyles = makeStyles((theme) => ({
 	...theme.mixins.toolbar,
 	marginTop: theme.mixins.toolbar.minHeight+1,
   },
-  content: {
+  listContent: {
 	flexGrow: 1,
-	padding: theme.spacing(3),
+	marginTop: theme.spacing(3),
   },
 }));
 
@@ -87,7 +89,7 @@ export default function SideBar() {
 	  <Drawer
 		variant="permanent"
 		id="drawer"
-		className={clsx('mt-6',classes.drawer, {
+		className={clsx('mt-3',classes.drawer, {
 		  [classes.drawerOpen]: open,
 		  [classes.drawerClose]: !open,
 		})}
@@ -98,13 +100,12 @@ export default function SideBar() {
 		  }),
 		}}
 	  >
-		<div id="drawerbar" className={classes.toolbar}>
+		<div id="drawerbar" className={classes.toolbar, 'order-last flex-grow flex items-end justify-end'}>
 		  <IconButton onClick={()=>dispatch(toggleDrawer())}>
 			<ChevronIcon color="primary" expanded={open} />
 		  </IconButton>
 		</div>
-		<Divider />
-		<List>
+		<List className={classes.content}>
 			<ListItem button key="1" style={{backgroundColor: tabs[currentTab]?.title.toLowerCase() === 'dialog flow' ? activeColor : ''}} onClick={()=>dispatch(addTab({title: 'dialog Flow', type: 'dialogFlow'}))} >
 			  <ListItemIcon><img src={dialogFlowIcon} alt="dialogFlow" className="w-6" /></ListItemIcon>
 			  <ListItemText primary="Dialog Flow" />
