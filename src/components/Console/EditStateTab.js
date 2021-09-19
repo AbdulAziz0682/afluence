@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import {Grid, TextField, Button, Typography, IconButton, InputBase} from '@material-ui/core';
+import {Grid, Button, IconButton, InputBase} from '@material-ui/core';
 import { Hidden } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core';
 
