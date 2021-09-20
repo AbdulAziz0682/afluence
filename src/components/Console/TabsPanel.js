@@ -88,9 +88,10 @@ export default function TabsPanel() {
 	dispatch(setCurrentTab(newValue));
   };
   let isActive = true;
+  if(tabs[currentTab]?.title === 'billing') return <BillingTab />;
   return (
-	<div>
-		<Tabs
+	<div>{
+		tabs[currentTab] && tabs[currentTab].title!=='billing' ? <><Tabs
 		  value={currentTab}
 		  onChange={handleChange}
 		  indicatorColor="primary"
@@ -117,9 +118,9 @@ export default function TabsPanel() {
 		tabs.map((tab, index)=>(
 		  <TabPanel currentTab={currentTab} key={'panel'+index} index={index}>
 			{
-				tab.type === 'billing' && (
+				/* tab.type === 'billing' && (
 					<BillingTab />
-				)
+				) */
 			}
 			{
 				tab.type === 'metrics' && (
@@ -164,6 +165,9 @@ export default function TabsPanel() {
 		  </TabPanel>
 		))
 	  }
-	</div>
+	  </>
+	  :
+	  <BillingTab />
+	}</div>
   );
 }

@@ -90,6 +90,7 @@ function addTab(state, action){
     let newState = _.cloneDeep(state);
     if(_.find(newState.tabs, {title: action.payload.tab.title})){
         //Tab already present
+        newState.currentTab = _.findIndex(newState.tabs, {title: action.payload.tab.title});
         return newState;
     }
     newState.tabs.push({

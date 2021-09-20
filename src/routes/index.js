@@ -2,6 +2,7 @@ import React from 'react';
 
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Grid } from '@material-ui/core';
+
 import TopBar from '../components/TopBar';
 import Home from './Home';
 import Register from './Regiser';
@@ -12,11 +13,17 @@ import Console from './Console';
 import Test from './Test';
 
 export default function Routes({children}){
+    let {location: {pathname}} = window;
+    const hiddenOnPaths = {
+        "/": true,
+        "/login": true,
+        "/register": true
+    }
     return (
         <BrowserRouter>
             <Grid container direction="column">
                 <Grid item>
-                    <TopBar />
+                    {hiddenOnPaths[pathname] ? '' : <TopBar />}
                 </Grid>
                 <Grid container item style={{height: 'calc(100vh - 64px)'}} alignItems="center" justifyContent="center">
                     <Switch>
