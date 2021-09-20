@@ -34,7 +34,7 @@ function TabPanel(props) {
 	  {...other}
 	>
 	  {currentTab === index && (
-		<Box p={1} height="calc(100vh - 64px)">
+		<Box paddingTop={1} paddingLeft={2} height="calc(100vh - 57px)">
 			{children}
 		</Box>
 	  )}
@@ -88,7 +88,7 @@ export default function TabsPanel() {
 	dispatch(setCurrentTab(newValue));
   };
   let isActive = true;
-  if(tabs[currentTab]?.title === 'billing') return <BillingTab />;
+  //if(tabs[currentTab]?.title === 'billing') return <BillingTab />;
   return (
 	<div>{
 		tabs[currentTab] && tabs[currentTab].title!=='billing' ? <><Tabs
@@ -99,7 +99,7 @@ export default function TabsPanel() {
 		  variant="scrollable"
 		  scrollButtons="auto"
 		  aria-label="scrollable auto tabs example"
-		  className="bg-gray-100"
+		  className="bg-transparent"
 			classes={{root: classes.root, indicator: classes.indicator}}
 		>
 		  {
@@ -118,9 +118,9 @@ export default function TabsPanel() {
 		tabs.map((tab, index)=>(
 		  <TabPanel currentTab={currentTab} key={'panel'+index} index={index}>
 			{
-				/* tab.type === 'billing' && (
+				tab.type === 'billing' && (
 					<BillingTab />
-				) */
+				) 
 			}
 			{
 				tab.type === 'metrics' && (

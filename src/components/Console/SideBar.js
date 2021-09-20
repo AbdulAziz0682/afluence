@@ -99,7 +99,7 @@ export default function SideBar() {
 		  }),
 		}}
 	  >
-		<div id="drawerbar" className={classes.toolbar, 'order-last flex-grow flex items-end justify-end'}>
+		<div id="drawerbar" className={`order-last flex items-end border-t  ${open ? 'justify-end' : 'justify-center'}`}>
 		  <IconButton onClick={()=>dispatch(toggleDrawer())}>
 			<ChevronIcon color="primary" expanded={open} />
 		  </IconButton>
@@ -195,6 +195,7 @@ export default function SideBar() {
 			  <ListItemText primary="Billing" />
 			</ListItem>
 		</List>
+		<div className="flex-grow"></div>
 	  </Drawer>
 	</>
   );
