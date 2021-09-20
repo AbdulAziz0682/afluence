@@ -119,7 +119,7 @@ export default function SideBar() {
 					states.map((state, index) => <>
 						<ListItem button key={'state'+index} style={{backgroundColor: tabs[currentTab]?.title.toLowerCase() === state.name.toLowerCase() ? activeColor : ''}} onClick={()=>{dispatch(addTab({title: state.name, type: 'editState', data: state}))}}>
 							{(state.name.toLowerCase() === 'start' || state.name.toLowerCase() === 'end') ? 
-							<ListItemText inset primary={<div className="flex justify-between text-sm">
+							<ListItemText inset primary={<div className="flex justify-between text-sm uppercase">
 								<span>{state.name}</span>
 								<Box color="rgba(217, 135, 255, 1)" fontSize="0.75rem">SYSTEM</Box>
 							</div>} />
@@ -144,7 +144,7 @@ export default function SideBar() {
 					commands.map((command, index) => <>
 						<ListItem button key={'command'+index} style={{backgroundColor: tabs[currentTab]?.title.toLowerCase() === command.name.toLowerCase() ? activeColor : ''}} onClick={()=>dispatch(addTab({title: command.name, type:'editCommand', data: command}))}>
 						{(command.name.toLowerCase() === 'no_match' || command.name.toLowerCase() === 'no_input') ? 
-							<ListItemText inset primary={<div className="flex justify-between text-sm">
+							<ListItemText inset primary={<div className="flex justify-between text-sm uppercase">
 								<span>{command.name}</span>
 								<Box color="rgba(217, 135, 255, 1)" fontSize="0.75rem">SYSTEM</Box>
 							</div>} />
@@ -170,7 +170,7 @@ export default function SideBar() {
 					actions.map((action, index) => <>
 						<ListItem button key={'action'+index} style={{backgroundColor: tabs[currentTab]?.title.toLowerCase() === action.name.toLowerCase() ? activeColor : ''}} onClick={()=>dispatch(addTab({title: action.name, type: 'editAction', data: action}))}>
 						{(action.name.toLowerCase() === 'get_input' || action.name.toLowerCase() === 'end_convo') ? 
-							<ListItemText inset primary={<div className="flex justify-between text-sm">
+							<ListItemText inset primary={<div className="flex justify-between text-sm uppercase">
 								<span>{action.name}</span>
 								<Box color="rgba(217, 135, 255, 1)" fontSize="0.75rem">SYSTEM</Box>
 							</div>} />

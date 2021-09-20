@@ -2,6 +2,9 @@ import clsx from "clsx";
 import { makeStyles } from '@material-ui/core/styles';
 import TabsPanel from './TabsPanel';
 
+import { useSelector } from "react-redux";
+import BillingTab from "./BillingTab";
+
 const useStyles = makeStyles(theme => ({
     root: {
         padding: theme.spacing(1),
@@ -14,9 +17,11 @@ const useStyles = makeStyles(theme => ({
 
 export default function Content(props){
     let classes = useStyles();
+    const currentProject = useSelector(state => state.currentProject);
+    const {currentTab, tabs} = currentProject;
     return (
     <div className={clsx({[classes.root]:true})}>
-        <TabsPanel />
+        {(tabs[currentTab].type !== 'billing' || tabs[currentTab].type !== 'metrics') && <TabsPanel />}
     </div>
     )
 }

@@ -34,7 +34,7 @@ function TabPanel(props) {
 	  {...other}
 	>
 	  {currentTab === index && (
-		<Box paddingTop={1} paddingLeft={2} height="calc(100vh - 57px)">
+		<Box marginRight={-1} height="calc(100vh - 57px)">
 			{children}
 		</Box>
 	  )}

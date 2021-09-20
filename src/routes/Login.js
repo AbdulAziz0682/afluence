@@ -103,7 +103,7 @@ export default function Login(props){
                             }
                         },
                         tabs: [
-                    
+                            {title: 'Billing', type: 'billing'}                    
                         ],
                         currentTab: 0
                     },
@@ -120,7 +120,7 @@ export default function Login(props){
                         commands: [
                             {name: 'GET_INPUT', phrases: [{language: 'English', audio: null, text: ''}]},
                             {name: 'END_CONVO', phrases: [{language: 'English', audio: null, text: ''}]},
-                            {name: 'PLAY_AUDIO', phrases: [{language: 'English', audio: null, text: ''}]},
+                            {name: 'Play_Audio', phrases: [{language: 'English', audio: null, text: ''}]},
                         ],
                         actions: [
                             {name: 'NOT_MATCH', parameters: [{name: 'param1', dataType: 'string'}, {name: 'param2', dataType: 'number'}]},
@@ -143,7 +143,7 @@ export default function Login(props){
                             }
                         },
                         tabs: [
-
+                            {title: 'Billing', type: 'billing'}
                         ],
                         currentTab: 0
                     }
@@ -161,6 +161,8 @@ export default function Login(props){
         <Grid container item>
             <form onSubmit={formik.handleSubmit} className="w-full flex items-center justify-center">
             <Hidden smDown>
+            <div className="flex-grow flex flex-col items-center">
+                <Typography variant="h6">Build interactive voice interfaces with amazethu</Typography>
                 <Grid container component={Paper} elevation={6} id="md" direction="row" className="border md:w-5/6 lg:w-156 self-center rounded-3xl mt-3">
                     <Grid item xs={6} className="flex flex-col justify-center items-center p-5 bg-gray-100 rounded-l-3xl">
                         <div className="flex flex-row items-center mt-9">
@@ -244,6 +246,7 @@ export default function Login(props){
                         </Grid>
                     </Grid>
                 </Grid>
+                </div>
                 </Hidden>
                 <Hidden mdUp>
                     <Grid container spacing={2} alignItems="center" direction="column" className="self-center">
