@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, FormHelperText, Grid, InputLabel, Typography, InputAdornment, Paper, makeStyles, Input } from '@material-ui/core';
+import { Button, FormHelperText, Grid, InputLabel, Typography, InputAdornment, Paper } from '@material-ui/core';
 import { TextField } from '@material-ui/core';
 import CheckBox from '@material-ui/core/Checkbox';
 import { Hidden } from '@material-ui/core';
@@ -22,17 +22,9 @@ import { useSelector } from 'react-redux';
 
 import { Redirect } from 'react-router';
 
-const useStyles = makeStyles(theme => ({
-    checkIcon: {
-        maxHeight: 14,
-        minWidth: 14
-    }
-}))
-
 const inputIconSize = 20;
 export default function Register(props){
     let loggedIn = useSelector((state)=>state.account.loggedIn);
-    const classes = useStyles();
     //Form requirements
     const validationSchema = yup.object({
         email: yup

@@ -54,7 +54,7 @@ export default function EditStateTab({data}){
     let {name, onEnterFunctions, onInputFunctions} = data;
     let [drawerData, setDrawerData] = useState(null);
     return (
-        <Grid container direction="column" className="border rounded-lg overflow-scroll sm:overflow-auto">
+        <Grid container direction="column" className="border rounded-lg overflow-scroll sm:overflow-auto flex-nowrap">
             <Grid item className="flex gap-3 p-2 sm:p-3 border-b items-center justify-between flex flex-col md:flex-row bg-white">
                 <InputBase placeholder="Enter state name" className="w-full md:w-6/12 px-2 bg-gray-100 h-10 rounded-lg" value={name} />
                 <div className="flex gap-9 md:justify-end w-full md:w-5/12 items-center justify-between">

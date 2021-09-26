@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from '../assets/afluence.png';
 import account from '../assets/account.png';
@@ -37,6 +37,7 @@ export default function TopBar(props){
     const classes = useStyles();
     let dispatch = useDispatch();
     let history = useHistory();
+    let state = useSelector(state => state);
     let loggedIn = useSelector(state => state.account.loggedIn);
     let [anchor, setAnchor] = useState(null);
     function handleMenuClick(event){
@@ -45,9 +46,12 @@ export default function TopBar(props){
     function handleMenuClose(){
         setAnchor(null);
     }
+    useEffect(()=>{
+        //For rerendering the component
+    }, [state]);
     return (
         <div className={classes.root}>
-            <AppBar position="fixed" color="white" className={classes.appBarZIndex, 'border-gray border-b shadow-none'}>
+            <AppBar position="fixed" color="white" className={classes.appBarZIndex + 'border-gray border-b shadow-none'}>
                 <Toolbar className="items-center">
                     <IconButton edge="start" className={classes.logo} color="inherit" aria-label="menu">
                         <img src={logo} alt="afluence logo"/>
