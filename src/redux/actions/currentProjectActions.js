@@ -49,20 +49,20 @@ export const addTab = (tab) => {
     }
 }
 
-export const closeTab = (id) => {
+export const closeTab = (title) => {
     return {
         type: CLOSE_TAB,
         payload: {
-            id
+            title
         }
     }
 }
 
-export const setCurrentTab = (index) => {
+export const setCurrentTab = (title) => {
     return {
         type: SET_CURRENT_TAB,
         payload: {
-            index
+            title
         }
     }
 }

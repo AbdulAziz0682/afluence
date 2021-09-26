@@ -100,53 +100,14 @@ export default function Login(props){
                             date: new Date(),
                             graphData: {
                                 //some data
-                            }
+                            } 
                         },
-                        tabs: [
-                            {title: 'Billing', type: 'billing'}                    
-                        ],
-                        currentTab: 0
+                        tabs: {
+                            'Billing': {title: 'Billing', type: 'billing'},
+                            'Metrics': {title: 'Metrics', type: 'metrics'}
+                        },
+                        currentTab: 'Billing',
                     },
-                    {
-                        name: 'Project_2',
-                        id: Number(new Date())+1,
-                        country: 'United States',
-                        status: 'In developent',
-                        drawerOpen: false,
-                        states: [
-                            {name: 'Start'},
-                            {name: 'End'}
-                        ],
-                        commands: [
-                            {name: 'GET_INPUT', phrases: [{language: 'English', audio: null, text: ''}]},
-                            {name: 'END_CONVO', phrases: [{language: 'English', audio: null, text: ''}]},
-                            {name: 'Play_Audio', phrases: [{language: 'English', audio: null, text: ''}]},
-                        ],
-                        actions: [
-                            {name: 'NOT_MATCH', parameters: [{name: 'param1', dataType: 'string'}, {name: 'param2', dataType: 'number'}]},
-                            {name: 'NO_INPUT', parameters: [{name: 'param1', dataType: 'string'}, {name: 'param2', dataType: 'number'}]}
-                        ],
-                        metrics: [
-                            {name: 'Classification Accuracy(QA)', value: 'X'},
-                            {name: 'Classification Accuracy(Live)', value: 'X'},
-                            {name: 'Uptime', value: 'X'},
-                            {name: 'Avg. Request per minute', value: 'X'},
-                            {name: 'Avg. latency', value: 'X'},
-                            {name: 'Max. latency', value: 'X'},
-                        ],
-                        billing: {
-                            currentBalance: 5000.00,
-                            totalCost: 10.00,
-                            date: new Date(),
-                            graphData: {
-                                //some data
-                            }
-                        },
-                        tabs: [
-                            {title: 'Billing', type: 'billing'}
-                        ],
-                        currentTab: 0
-                    }
                 ]
             }
             dispatch(login(user));

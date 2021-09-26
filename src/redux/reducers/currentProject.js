@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { ADD_STATE, ADD_ACTION, ADD_COMMAND, ADD_TAB, CLOSE_TAB, SET_CURRENT_TAB, TOGGLE_DRAWER, SET_CURRENT_PROJECT } from "../actions/currentProjectTypes";
+import { ADD_STATE, ADD_ACTION, ADD_COMMAND, ADD_TAB, CLOSE_TAB, SET_CURRENT_TAB, TOGGLE_DRAWER, SET_CURRENT_PROJECT} from "../actions/currentProjectTypes";
 
 const initialState = {
     name: 'proj',
@@ -54,10 +54,11 @@ const initialState = {
             //some data
         }
     },
-    tabs: [
-        {title: 'Billing', type: 'billing'}
-    ],
-    currentTab: 0
+    tabs: {
+        'Billing': {title: 'Billing', type: 'billing'},
+        'Metrics': {title: 'Metrics', type: 'metrics'}
+    },
+    currentTab: 'Billing',
 }
 
 function setProject(state, action){
@@ -88,34 +89,36 @@ function addAction(state, action){
 
 function addTab(state, action){
     let newState = _.cloneDeep(state);
-    if(_.find(newState.tabs, {title: action.payload.tab.title})){
+
+    if(newState.tabs[action.payload.tab.title]){
         //Tab already present
-        newState.currentTab = _.findIndex(newState.tabs, {title: action.payload.tab.title});
+        newState.currentTab = action.payload.tab.title;
         return newState;
     }
-    newState.tabs.push({
-        id: newState.tabs.length+1,
+    newState.tabs[action.payload.tab.title] = {
+        id: Number(new Date()),
         title: action.payload.tab.title || `${Math.random()}`,
         type: action.payload.tab.type, //Can be dataFlow, state, command, action, metric or billing
         data: action.payload.tab.data
-    });
-    newState.currentTab = newState.tabs.length-1;
+    };
+    newState.currentTab = action.payload.tab.title;
     return newState;
 }
 
 function closeTab(state, action){
     let newState = _.cloneDeep(state);
-    let nextTab = _.findIndex(newState.tabs, {id: action.payload.id});
-    if(nextTab < 0) nextTab += newState.tabs.length;
-    console.log('CurrentTab', nextTab);
-    newState.tabs = newState.tabs.filter(tab => tab.id !== action.payload.id);
-    newState.currentTab = nextTab;
+    let newtabs = _.omit(_.cloneDeep(newState.tabs), [action.payload.title]);
+    newState.tabs = newtabs;
+    //Setting current tab
+    let alltabs = _.keys(newState.tabs);
+    if(alltabs[2]) newState.currentTab = alltabs[alltabs.length-1];
+    else newState.currentTab = 'Billing';
     return newState;
 }
 
 function setTab(state, action){
     let newState = _.cloneDeep(state);
-    newState.currentTab = action.payload.index;
+    newState.currentTab = action.payload.title;
     return newState;
 }
 

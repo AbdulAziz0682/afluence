@@ -17,7 +17,6 @@ const data = {
         for(let i=0; i<15; i++){
           arr.push(Math.floor(Math.random()*30));
         }
-        console.log(arr);
         return arr;
       })(),
       fill: false,

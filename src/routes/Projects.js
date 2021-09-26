@@ -41,9 +41,7 @@ export default function Projects(props){
     let projects = user ? user.projects : [];
     let [searchType, setType] = useState('name');
     function handleProjectSetup(id){
-        console.log(id);
         let project = projects.find(p => p.id === id);
-        console.log('project', project);
         dispatch(setProject(project));
         history.push('/console');
     }
@@ -51,7 +49,6 @@ export default function Projects(props){
     const [anchorEl, setAnchorEl] = React.useState(null);
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
-        console.log(anchorEl);
     };
     const handleMenuClose = () => {
         setAnchorEl(null);

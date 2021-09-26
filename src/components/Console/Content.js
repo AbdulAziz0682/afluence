@@ -3,7 +3,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import TabsPanel from './TabsPanel';
 
 import { useSelector } from "react-redux";
+
 import BillingTab from "./BillingTab";
+import MetricsTab from './MetricsTab';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -14,14 +16,21 @@ const useStyles = makeStyles(theme => ({
         height: "calc(100vh - 57px)",
     },
 }))
-
 export default function Content(props){
     let classes = useStyles();
     const currentProject = useSelector(state => state.currentProject);
-    const {currentTab, tabs} = currentProject;
+    const {currentTab} = currentProject;
     return (
     <div className={clsx({[classes.root]:true})}>
-        {(tabs[currentTab].type !== 'billing' || tabs[currentTab].type !== 'metrics') && <TabsPanel />}
+        {
+            currentTab === 'Billing' && <BillingTab />
+        }
+        {
+            currentTab === 'Metrics' && <MetricsTab />
+        }
+        {
+            (currentTab !== 'Billing' && currentTab !== 'Metrics') && <TabsPanel />
+        }
     </div>
     )
 }
