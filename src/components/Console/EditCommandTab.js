@@ -53,8 +53,8 @@ export default function EditCommandTab(props){
                                             onChange={handleFileInput}
                                         />
                                         <div className="rounded-sm bg-gray-100 px-1 md:w-full h-full flex justify-between items-center">
-                                            <span className="overflow-hidden h-full w-12 md:w-full px-2">{ file ? file.name : "No file chosen"}</span>
-                                            <label htmlFor="upload-audio" className="bg-white rounded-lg text-xs px-1 md:w-24">Choose file</label>
+                                            <span className="overflow-auto h-full w-12 md:w-full px-2 text-xs">{ file ? file.name : "No file chosen"}</span>
+                                            <label htmlFor="upload-audio" className="bg-white rounded-lg text-xs px-1 w-32 text-center">Choose file</label>
                                         </div>
                                     </div>
                                     <div className="w-36 md:flex-grow">
