@@ -56,7 +56,7 @@ export default function Login(props){
                         status: 'Active',
                         drawerOpen: false,
                         states: [
-                            {   name: 'Start', 
+                            {   name: 'START', 
                                 onEnterFunctions: [
                                     {type: 'onEnterFunction', name: 'add_action_to_list', data: [{actions: ['play_video', 'GET_INPUT'], params: ['Question.wav', 'audio ']}]},
                                     {type: 'onEnterFunction', name: 'send_action_list', data: []},
@@ -66,7 +66,7 @@ export default function Login(props){
                                     {type: 'onInputFunction', name: 'branch', data: [{actions: ['core', 'teo'], params: ['Response 1', 'Response 2']}]},
                                 ]
                             },
-                            {   name: 'End',
+                            {   name: 'END',
                                 onEnterFunctions: [
                                     {type: 'onEnterFunction', name: 'add_action_to_list', data: [{actions: ['play_video', 'GET_INPUT'], params: ['Question.wav', 'audio ']}]},
                                     {type: 'onEnterFunction', name: 'send_action_list', data: []},
@@ -80,7 +80,7 @@ export default function Login(props){
                         commands: [
                             {name: 'NO_MATCH', phrases: [{language: 'English', audio: null, text: ''}]},
                             {name: 'NO_INPUT', phrases: [{language: 'English', audio: null, text: ''}]},
-                            {name: 'PLAY_AUDIO', phrases: [{language: 'English', audio: null, text: ''}]},
+                            {name: 'Play_Audio', phrases: [{language: 'English', audio: null, text: ''}]},
                         ],
                         actions: [
                             {name: 'GET_INPUT', parameters: [{name: 'param1', dataType: 'string'}, {name: 'param2', dataType: 'number'}]},

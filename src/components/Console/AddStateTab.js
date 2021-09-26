@@ -75,7 +75,7 @@ export default function AddStateTab(props){
                     <Button variant="contained" color="primary" className="w-36">Save</Button>
                 </div>
             </Grid>
-            <Grid item className="pl-1 md:pl-10 flex relative md:gap-20">
+            <Grid item className="pl-1 md:pl-10 flex relative md:gap-20 bg-gray-100 flex-grow items-start">
                 <div className="border rounded-lg md:w-72 sm:w-36 bg-gray-200 flex flex-col divide-y my-9">
                     <div className="p-1 sm:p-3 text-center flex flex-col flex-grow">
                         <Hidden smUp><IconButton className="self-end"><ChevronLeftIcon className="bg-gray-400" onClick={()=>setOpen(true)} /></IconButton></Hidden>
@@ -87,7 +87,7 @@ export default function AddStateTab(props){
                         </div>
                         {   onEnterFunctions.map((item, index) => (
                             <div className="flex items-center justify-between w-full hover:bg-pink-100 md:gap-8 gap-2" onClick={()=>setDrawerData(onEnterFunctions[index])}>
-                                <InputBase className="bg-gray-100 w-full px-2 rounded-lg" value={item.name} />
+                                <span className="bg-gray-100 w-full p-2 rounded-lg">{item.name}</span>
                                 <IconButton><img src={NegativeIcon} alt="delete" style={{maxHeight: 22}} /></IconButton>
                             </div>
                             ))
@@ -99,14 +99,14 @@ export default function AddStateTab(props){
                         </div>
                         {   onInputFunctions.map((item, index) =>(
                             <div className="flex items-center justify-between w-full hover:bg-pink-100 md:gap-8 gap-2" onClick={()=>setDrawerData(onInputFunctions[index])}>
-                                <InputBase className="bg-gray-100 w-full px-2 rounded-lg" value={item.name} />
+                                <span className="bg-gray-100 w-full p-2 rounded-lg">{item.name}</span>
                                 <IconButton><img src={NegativeIcon} alt="delete" style={{maxHeight: 22}} /></IconButton>
                             </div>
                             ))
                         }
                     </div>
                 </div>
-                <div style={{minHeight: '100%'}} className={clsx({["bg-white absolute md:relative sm:ml-0 flex-grow flex flex-col border-gray-200 border-l"]:true, [classes.drawerOpen]: open, [classes.drawerClose]:!open})}>
+                <div style={{minHeight: '100%'}} className={clsx({"bg-white absolute md:relative sm:ml-0 flex-grow flex flex-col border-gray-200 border-l":true, [classes.drawerOpen]: open, [classes.drawerClose]:!open})}>
                     <Hidden smUp><IconButton className="self-start"><ChevronRightIcon className="bg-gray-400" onClick={()=>setOpen(false)}/></IconButton></Hidden>
                     <DrawerData data={drawerData} />
                 </div>

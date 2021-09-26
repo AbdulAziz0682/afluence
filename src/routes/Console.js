@@ -10,6 +10,9 @@ const useStyles = makeStyles((theme) => ({
 	root: {
 		display: 'flex',
 		flexGrow: 1,
+		maxHeight: '100%',
+		minHeight: '100%',
+		overflow: 'hidden'
 	},
 }));
 

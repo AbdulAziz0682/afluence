@@ -4,7 +4,7 @@ import NegativeIcon from '../../assets/negative.png';
 import AddCommandBranch from "../AddCommandBranch";
 
 export default function DrawerData({data}){
-    if(!data) return 'No data';
+    if(!data) return '';
     return <>
         {
             data.type === 'onEnterFunction' && (

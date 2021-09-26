@@ -28,12 +28,13 @@ function TabPanel(props) {
 	  hidden={value !== index}
 	  id={`scrollable-auto-tabpanel-${index}`}
 	  aria-labelledby={`scrollable-auto-tab-${index}`}
+	  style={{overflow: 'hidden', height: 'calc(100vh - 103px)'}}
 	  {...other}
 	>
 	  {value === index && (
-		<Box marginRight={-1} height="calc(100vh - 57px)">
-			{children}
-		</Box>
+		<div className="flex items-stretch h-full">
+				{children}
+		</div>
 	  )}
 	</div>
   );
@@ -83,7 +84,7 @@ export default function TabsPanel() {
 		dispatch(setCurrentTab(newValue));
 	};
 	return (
-		<div>
+		<>
 			<Tabs
 				value={currentTab}
 				onChange={handleChange}
@@ -106,7 +107,7 @@ export default function TabsPanel() {
 									label={tab.title} 
 									value={tab.title} 
 									key={'tab'+tab.title} 
-									className={clsx({'bg-white': (currentTab === tab.title)})}
+									className={`${currentTab === tab.title ? 'bg-white' : 'bg-gray-100'} rounded-t-md`}
 									classes={{wrapper: classes.tabWrapper, root: classes.tabRoot}}
 									icon={<IconButton><CloseIcon className="w-4 mt-1" /></IconButton>}
 								/>
@@ -165,6 +166,6 @@ export default function TabsPanel() {
 					return arr;
 				})()
 			}
-		</div> 
+		</> 
 	);
 }

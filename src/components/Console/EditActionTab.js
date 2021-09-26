@@ -6,7 +6,7 @@ import NegativeIcon from '../../assets/negative.png';
 export default function AddEditTab(props){
     let action = props.action;
     return (
-        <Grid container direction="column" className="border rounded-lg overflow-scroll sm:overflow-auto bg-white">
+        <Grid container direction="column" className="border rounded-lg overflow-scroll sm:overflow-auto bg-white h-full">
             <Grid item className="flex gap-3 p-2 sm:p-3 border-b items-center justify-between flex flex-col md:flex-row">
                 <InputBase 
                     label="Enter command Name"

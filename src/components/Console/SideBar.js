@@ -105,7 +105,7 @@ export default function SideBar() {
 		  </IconButton>
 		</div>
 		<List className={classes.content}>
-			<ListItem button key="1" style={{backgroundColor: tabs[currentTab]?.title.toLowerCase() === 'dialog flow' ? activeColor : ''}} onClick={()=>dispatch(addTab({title: 'dialog Flow', type: 'dialogFlow'}))} >
+			<ListItem button key="1" style={{backgroundColor: tabs[currentTab]?.title.toLowerCase() === 'dialog flow' ? activeColor : ''}} onClick={()=>dispatch(addTab({title: 'Dialog Flow', type: 'dialogFlow'}))} >
 			  <ListItemIcon><img src={dialogFlowIcon} alt="dialogFlow" className="w-6" /></ListItemIcon>
 			  <ListItemText primary="Dialog Flow" />
 			</ListItem>

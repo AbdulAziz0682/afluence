@@ -13,7 +13,9 @@ const useStyles = makeStyles(theme => ({
         paddingTop: theme.mixins.toolbar.minHeight/2-15,
         flexGrow: 1,
         background: 'rgba(233, 234, 238, 1)',
-        height: "calc(100vh - 57px)",
+		maxHeight: '100%',
+        minHeight: '100%',
+		overflow: 'hidden'
     },
 }))
 export default function Content(props){
@@ -21,7 +23,7 @@ export default function Content(props){
     const currentProject = useSelector(state => state.currentProject);
     const {currentTab} = currentProject;
     return (
-    <div className={clsx({[classes.root]:true})}>
+    <div id="content" className={clsx({[classes.root]:true})}>
         {
             currentTab === 'Billing' && <BillingTab />
         }
