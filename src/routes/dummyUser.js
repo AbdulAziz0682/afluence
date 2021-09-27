@@ -14,29 +14,7 @@ let dummyUser = {
             states: [
                 {   name: 'START', 
                     type: 'system',
-                    onEnterFunctions: [
-                        {
-                            type: 'onEnterFunction', 
-                            name: 'add_action_to_list', 
-                            data: [
-                                {actions: ['play_video', 'GET_INPUT'], params: ['Question.wav', 'audio']}
-                            ]
-                        },
-                        {
-                            type: 'onEnterFunction', 
-                            name: 'send_action_list', 
-                            data: []
-                        }
-                    ], 
-                    onInputFunctions: [
-                        {
-                            type: 'onInputFunction', 
-                            name: 'branch', 
-                            data: [
-                                {actions: ['core', 'teo'], params: ['Response 1', 'Response 2']}
-                            ]
-                        },
-                    ]
+                    onEnterFunctions: [],
                 },
                 {   
                     name: 'END', 
@@ -73,10 +51,37 @@ let dummyUser = {
                             data: [],
                         },
                     ],
-                    onInputFunctions: [],
+                    onInputFunctions: [
+                        {
+                            type: 'onInputFunction', 
+                            name: 'branch', 
+                            data: [
+                                {actions: ['core', 'teo'], params: ['Response 1', 'Response 2']}
+                            ]
+                        },
+                    ],
                 },
                 {
                     name: 'Response 1',
+                    type: 'custom',
+                    onEnterFunctions: [
+                        {
+                            type: 'onEnterFunction',
+                            name: 'add_action_to_list',
+                            data: [
+                                {actions: ['play_video', 'GET_INPUT'], params: ['Question.wav', 'audio']},
+                            ]
+                        },
+                        {
+                            type: 'onEnterFunction',
+                            name: 'transition',
+                            states: ['END', 'START'],
+                        },
+                    ],
+                    onInputFunctions: [],
+                },
+                {
+                    name: 'Response 2',
                     type: 'custom',
                     onEnterFunctions: [
                         {

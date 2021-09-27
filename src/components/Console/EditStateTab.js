@@ -74,7 +74,7 @@ export default function EditStateTab({state}){
                         </div>
                         {   onEnterFunctions.map((item, index) => (
                                 <div className="flex items-center justify-between w-full md:gap-8 gap-2" onClick={()=>setDrawerData(onEnterFunctions[index])}>
-                                    <span className={`${drawerData?.name === item.name ? 'bg-pink-100' : 'bg-gray-100'} w-full p-2 rounded-lg hover:bg-pink-100`}>{item.name}</span>
+                                    <span className={`${drawerData?.name === item.name ? 'bg-activeTab' : 'bg-gray-100'} w-full p-2 rounded-lg hover:bg-activeTab`}>{item.name}</span>
                                     <IconButton><img src={NegativeIcon} alt="delete" style={{maxHeight: 22}} /></IconButton>
                                 </div>
                             ))
@@ -87,7 +87,7 @@ export default function EditStateTab({state}){
                             </div>
                             {   onInputFunctions.map((item, index) =>(
                                 <div className="flex items-center justify-between w-full md:gap-8 gap-2" onClick={()=>setDrawerData(onInputFunctions[index])}>
-                                    <span className={`${drawerData?.name === item.name ? 'bg-pink-100' : 'bg-gray-100'} w-full p-2 rounded-lg hover:bg-pink-100`}>{item.name}</span>
+                                    <span className={`${drawerData?.name === item.name ? 'bg-activeTab' : 'bg-gray-100'} w-full p-2 rounded-lg hover:bg-activeTab`}>{item.name}</span>
                                     <IconButton><img src={NegativeIcon} alt="delete" style={{maxHeight: 22}} /></IconButton>
                                 </div>
                                 ))

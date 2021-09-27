@@ -1,14 +1,14 @@
 
-import {Grid, Button, Typography, IconButton, InputBase} from '@material-ui/core';
+import { Grid, Button, Typography, IconButton, InputBase } from '@material-ui/core';
 import AddCircle from '@material-ui/icons/AddCircle';
 import NegativeIcon from '../../assets/negative.png';
 
-export default function AddEditTab(props){
+export default function AddEditTab(props) {
     let action = props.action;
     return (
         <Grid container direction="column" className="border rounded-lg overflow-scroll sm:overflow-auto bg-white h-full">
             <Grid item className="flex gap-3 p-2 sm:p-3 border-b items-center justify-between flex flex-col md:flex-row">
-                <InputBase 
+                <InputBase
                     label="Enter command Name"
                     value={action.name}
                     className="w-full md:w-6/12 px-2 bg-gray-100 h-10 rounded-lg"
@@ -33,8 +33,8 @@ export default function AddEditTab(props){
                             [1].map(item => <>
                                 <Grid item className="flex justify-between w-full gap-1 md:gap-24 h-8 mb-5">
                                     <div className="w-36 md:flex-grow">
-                                        <InputBase 
-                                            className="bg-gray-100 md:w-full h-full px-2" 
+                                        <InputBase
+                                            className="bg-gray-100 md:w-full h-full px-2"
                                         />
                                     </div>
                                     <div className="w-36 md:flex-grow">
@@ -44,8 +44,8 @@ export default function AddEditTab(props){
                                             <option value="Boolean">Boolean</option>
                                         </select>
                                     </div>
-                                    <IconButton className="w-2/12 hover:bg-transparent"><img src={NegativeIcon} style={{width: 22}} alt="delete" /></IconButton>
-                                </Grid>                            
+                                    <IconButton className="w-2/12 hover:bg-transparent"><img src={NegativeIcon} style={{ width: 22 }} alt="delete" /></IconButton>
+                                </Grid>
                             </>)
                         }
                     </Grid>

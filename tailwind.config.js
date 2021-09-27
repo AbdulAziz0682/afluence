@@ -19,6 +19,9 @@ module.exports = {
         '168': '42rem',
         '180': '45rem',
         '204': '51rem',
+      },
+      colors: {
+        'activeTab': '#E4D4F8'
       }
     },
   },
