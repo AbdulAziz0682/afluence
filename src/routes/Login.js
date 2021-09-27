@@ -19,6 +19,7 @@ import { useDispatch } from 'react-redux';
 
 import { Redirect } from 'react-router';
 import { login } from '../redux/actions/accountActions';
+import dummyUser from './dummyUser';
 
 export default function Login(props){
     let loggedIn = useSelector((state)=>state.account.loggedIn);
@@ -42,75 +43,7 @@ export default function Login(props){
         },
         validationSchema: validationSchema,
         onSubmit: (values) => {
-            let user = {
-                name: 'UserName',
-                email: 'email@gmail.com',
-                password: 'Password123',
-                company: 'company 1',
-                token: 'abdcder0985djljsjkj38875',
-                projects: [
-                    {
-                        name: 'Project_1',
-                        id: Number(new Date()),
-                        country: 'United States',
-                        status: 'Active',
-                        drawerOpen: false,
-                        states: [
-                            {   name: 'START', 
-                                onEnterFunctions: [
-                                    {type: 'onEnterFunction', name: 'add_action_to_list', data: [{actions: ['play_video', 'GET_INPUT'], params: ['Question.wav', 'audio ']}]},
-                                    {type: 'onEnterFunction', name: 'send_action_list', data: []},
-                                    {type: 'onEnterFunction', name: 'transition', data: []}
-                                ], 
-                                onInputFunctions: [
-                                    {type: 'onInputFunction', name: 'branch', data: [{actions: ['core', 'teo'], params: ['Response 1', 'Response 2']}]},
-                                ]
-                            },
-                            {   name: 'END',
-                                onEnterFunctions: [
-                                    {type: 'onEnterFunction', name: 'add_action_to_list', data: [{actions: ['play_video', 'GET_INPUT'], params: ['Question.wav', 'audio ']}]},
-                                    {type: 'onEnterFunction', name: 'send_action_list', data: []},
-                                    {type: 'onEnterFunction', name: 'transition', data: []}
-                                ], 
-                                onInputFunctions: [
-                                    {type: 'onInputFunction', name: 'branch', data: [{actions: ['core', 'teo'], params: ['Response 1', 'Response 2']}]},
-                                ]
-                            }
-                        ],
-                        commands: [
-                            {name: 'NO_MATCH', phrases: [{language: 'English', audio: null, text: ''}]},
-                            {name: 'NO_INPUT', phrases: [{language: 'English', audio: null, text: ''}]},
-                            {name: 'play_audio', phrases: [{language: 'English', audio: null, text: ''}]},
-                        ],
-                        actions: [
-                            {name: 'GET_INPUT', parameters: [{name: 'param1', dataType: 'string'}, {name: 'param2', dataType: 'number'}]},
-                            {name: 'END_CONVO', parameters: [{name: 'param1', dataType: 'string'}, {name: 'param2', dataType: 'number'}]}
-                        ],
-                        metrics: [
-                            {name: 'Classification Accuracy(QA)', value: 'X'},
-                            {name: 'Classification Accuracy(Live)', value: 'X'},
-                            {name: 'Uptime', value: 'X'},
-                            {name: 'Avg. Request per minute', value: 'X'},
-                            {name: 'Avg. latency', value: 'X'},
-                            {name: 'Max. latency', value: 'X'},
-                        ],
-                        billing: {
-                            currentBalance: 5000.00,
-                            totalCost: 10.00,
-                            date: new Date(),
-                            graphData: {
-                                //some data
-                            } 
-                        },
-                        tabs: {
-                            'Billing': {title: 'Billing', type: 'billing'},
-                            'Metrics': {title: 'Metrics', type: 'metrics'}
-                        },
-                        currentTab: 'Billing',
-                    },
-                ]
-            }
-            dispatch(login(user));
+            dispatch(login(dummyUser));
             console.log(JSON.stringify(values, null, 2));
         },
     });

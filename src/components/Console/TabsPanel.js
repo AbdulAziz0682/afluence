@@ -74,8 +74,7 @@ export default function TabsPanel() {
 	let tabs = useSelector((state)=>state.currentProject.tabs);
 	let currentTab = useSelector((state)=>state.currentProject.currentTab);
 	const handleChange = (event, newValue) => {
-		console.dir(event.target.classList);
-		if(event.target.classList.contains('MuiIconButton-root') || event.target.classList.contains('MuiSvgIcon-root')){
+		if(event.target.classList.contains('MuiIconButton-root') || event.target.classList.contains('MuiSvgIcon-root') || !event.target.classList.length){
 			dispatch(closeTab(newValue));
 			return;
 		}
@@ -150,7 +149,7 @@ export default function TabsPanel() {
 								}
 								{
 									tab.type === 'editState' && (
-										<EditStateTab data={tab.data} />
+										<EditStateTab state={tab.data} />
 									)
 								}
 								{

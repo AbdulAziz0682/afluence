@@ -55,7 +55,7 @@ export default function AddStateTab(props){
     let [onEnterFunctions, setOnEnterFunctions] = useState([
         {type: 'onEnterFunction', name: 'add_action_to_list', data: [/* {actions: [], params: []} */]},
         {type: 'onEnterFunction', name: 'send_action_list', data: []},
-        {type: 'onEnterFunction', name: 'transition', data: []}
+        {type: 'onEnterFunction', name: 'transition', states: []}
     ]);
     let [onInputFunctions, setOnInputFunctions] = useState([
         {type: 'onInputFunction', name: 'branch', data: [/* {actions: [], params: []} */]},
@@ -86,25 +86,27 @@ export default function AddStateTab(props){
                             <p className="flex-grow p-2 rounded-lg">onEnter</p><span><IconButton><AddCircle /></IconButton></span>
                         </div>
                         {   onEnterFunctions.map((item, index) => (
-                            <div className="flex items-center justify-between w-full hover:bg-pink-100 md:gap-8 gap-2" onClick={()=>setDrawerData(onEnterFunctions[index])}>
-                                <span className="bg-gray-100 w-full p-2 rounded-lg">{item.name}</span>
-                                <IconButton><img src={NegativeIcon} alt="delete" style={{maxHeight: 22}} /></IconButton>
-                            </div>
+                                <div className="flex items-center justify-between w-full md:gap-8 gap-2" onClick={()=>setDrawerData(onEnterFunctions[index])}>
+                                    <span className={`${drawerData?.name === item.name ? 'bg-pink-100' : 'bg-gray-100'} w-full p-2 rounded-lg hover:bg-pink-100`}>{item.name}</span>
+                                    <IconButton><img src={NegativeIcon} alt="delete" style={{maxHeight: 22}} /></IconButton>
+                                </div>
                             ))
                         }
                     </div>
-                    <div className="p-1 sm:px-3 flex flex-col flex-grow bg-white items-center rounded-b-lg">
-                        <div className="flex items-center justify-between w-full">
-                            <p className="flex-grow p-2 rounded-lg">onInput</p><span><IconButton><AddCircle /></IconButton></span>
+                    {   onInputFunctions && 
+                        <div className="p-1 sm:px-3 flex flex-col flex-grow bg-white items-center rounded-b-lg">
+                            <div className="flex items-center justify-between w-full">
+                                <p className="flex-grow p-2 rounded-lg">onInput</p><span><IconButton><AddCircle /></IconButton></span>
+                            </div>
+                            {   onInputFunctions.map((item, index) =>(
+                                <div className="flex items-center justify-between w-full md:gap-8 gap-2" onClick={()=>setDrawerData(onInputFunctions[index])}>
+                                    <span className={`${drawerData?.name === item.name ? 'bg-pink-100' : 'bg-gray-100'} w-full p-2 rounded-lg hover:bg-pink-100`}>{item.name}</span>
+                                    <IconButton><img src={NegativeIcon} alt="delete" style={{maxHeight: 22}} /></IconButton>
+                                </div>
+                                ))
+                            }
                         </div>
-                        {   onInputFunctions.map((item, index) =>(
-                            <div className="flex items-center justify-between w-full hover:bg-pink-100 md:gap-8 gap-2" onClick={()=>setDrawerData(onInputFunctions[index])}>
-                                <span className="bg-gray-100 w-full p-2 rounded-lg">{item.name}</span>
-                                <IconButton><img src={NegativeIcon} alt="delete" style={{maxHeight: 22}} /></IconButton>
-                            </div>
-                            ))
-                        }
-                    </div>
+                    }
                 </div>
                 <div style={{minHeight: '100%'}} className={clsx({"bg-white absolute md:relative sm:ml-0 flex-grow flex flex-col border-gray-200 border-l":true, [classes.drawerOpen]: open, [classes.drawerClose]:!open})}>
                     <Hidden smUp><IconButton className="self-start"><ChevronRightIcon className="bg-gray-400" onClick={()=>setOpen(false)}/></IconButton></Hidden>

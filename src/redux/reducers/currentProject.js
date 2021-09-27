@@ -2,31 +2,93 @@ import _ from 'lodash';
 import { ADD_STATE, ADD_ACTION, ADD_COMMAND, ADD_TAB, CLOSE_TAB, SET_CURRENT_TAB, TOGGLE_DRAWER, SET_CURRENT_PROJECT} from "../actions/currentProjectTypes";
 
 const initialState = {
-    name: 'proj',
+    name: 'Project_1',
     id: Number(new Date()),
     country: 'United States',
-    status: 'active',
+    status: 'Active',
     drawerOpen: false,
     states: [
-        {   name: 'Start', 
+        {   name: 'START', 
+            type: 'system',
             onEnterFunctions: [
-                {type: 'onEnterFunction', name: 'add_action_to_list', data: [{actions: ['play_video', 'GET_INPUT'], params: ['Question.wav', 'audio ']}]},
-                {type: 'onEnterFunction', name: 'send_action_list', data: []},
-                {type: 'onEnterFunction', name: 'transition', data: []}
+                {
+                    type: 'onEnterFunction', 
+                    name: 'add_action_to_list', 
+                    data: [
+                        {actions: ['play_video', 'GET_INPUT'], params: ['Question.wav', 'audio']}
+                    ]
+                },
+                {
+                    type: 'onEnterFunction', 
+                    name: 'send_action_list', 
+                    data: []
+                }
             ], 
             onInputFunctions: [
-                {type: 'onInputFunction', name: 'branch', data: [{actions: ['core', 'teo'], params: ['Response 1', 'Response 2']}]},
+                {
+                    type: 'onInputFunction', 
+                    name: 'branch', 
+                    data: [
+                        {actions: ['core', 'teo'], params: ['Response 1', 'Response 2']}
+                    ]
+                },
             ]
         },
-        {   name: 'End',
+        {   
+            name: 'END', 
+            type: 'system',
             onEnterFunctions: [
-                {type: 'onEnterFunction', name: 'add_action_to_list', data: [{actions: ['play_video', 'GET_INPUT'], params: ['Question.wav', 'audio ']}]},
-                {type: 'onEnterFunction', name: 'send_action_list', data: []},
-                {type: 'onEnterFunction', name: 'transition', data: []}
-            ], 
-            onInputFunctions: [
-                {type: 'onInputFunction', name: 'branch', data: [{actions: ['core', 'teo'], params: ['Response 1', 'Response 2']}]},
+                {
+                    type: 'onEnterFunction', 
+                    name: 'add_action_to_list', 
+                    data: [
+                        {actions: ['END_CONVO', 'GET_INPUT'], params: ['Question.wav', 'audio ']}
+                    ]
+                },
+                {
+                    type: 'onEnterFunction', 
+                    name: 'send_action_list', 
+                    data: []
+                },
             ]
+        },
+        {
+            name: 'Ask Question',
+            type: 'custom',
+            onEnterFunctions: [
+                {
+                    type: 'onEnterFunction',
+                    name: 'add_action_to_list',
+                    data: [
+                        {actions: ['play_video', 'GET_INPUT'], params: ['Question.wav', 'audio']},
+                    ]
+                },
+                {
+                    type: 'onEnterFunction',
+                    name: 'send_action_list',
+                    data: [],
+                },
+            ],
+            onInputFunctions: [],
+        },
+        {
+            name: 'Response 1',
+            type: 'custom',
+            onEnterFunctions: [
+                {
+                    type: 'onEnterFunction',
+                    name: 'add_action_to_list',
+                    data: [
+                        {actions: ['play_video', 'GET_INPUT'], params: ['Question.wav', 'audio']},
+                    ]
+                },
+                {
+                    type: 'onEnterFunction',
+                    name: 'transition',
+                    states: ['END', 'START'],
+                },
+            ],
+            onInputFunctions: [],
         }
     ],
     commands: [
@@ -52,7 +114,7 @@ const initialState = {
         date: new Date(),
         graphData: {
             //some data
-        }
+        } 
     },
     tabs: {
         'Billing': {title: 'Billing', type: 'billing'},

@@ -65,16 +65,15 @@ export default function DrawerData({data}){
                                     <IconButton className="w-2/12 hover:bg-transparent"><AddCircle color="primary" /></IconButton>
                                 </div>
                                 {
-                                    [1, 2, 3].map(item => (
                                         <div className="flex justify-between w-full gap-1 sm:gap-10 h-8 mb-5">
                                             <div className="flex-grow">
                                                 <select className="w-full bg-gray-100 h-full">
-                                                    {[1, 2, 3].map(i => <option value={i}>{i}</option>)}
+                                                    {data.states.map(i => <option value={i}>{i}</option>)}
                                                 </select>
                                             </div>
                                             <IconButton className="w-2/12 hover:bg-transparent"><img src={NegativeIcon} style={{maxHeight: 22, minWidth: 22}} alt="delete" /></IconButton>
                                         </div>
-                                    ))
+                                    
                                 }
                             </div>
                         </>)
