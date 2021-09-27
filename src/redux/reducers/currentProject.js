@@ -32,7 +32,7 @@ const initialState = {
     commands: [
         {name: 'NO_MATCH', phrases: [{language: 'English', audio: null, text: ''}]},
         {name: 'NO_INPUT', phrases: [{language: 'English', audio: null, text: ''}]},
-        {name: 'Play_Audio', phrases: [{language: 'English', audio: null, text: ''}]},
+        {name: 'play_audio', phrases: [{language: 'English', audio: null, text: ''}]},
     ],
     actions: [
         {name: 'GET_INPUT', parameters: [{name: 'param1', dataType: 'string'}, {name: 'param2', dataType: 'number'}]},

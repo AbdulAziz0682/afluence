@@ -54,7 +54,11 @@ export default function DrawerData({data}){
                     }
                     {
                         data.name === 'transition' && (<>
-                            <Typography variant="h6">Transition</Typography>
+                            <FormControl size="small" variant="outlined" className="lg:w-11/12">
+                                <Select value="Transition">
+                                    <MenuItem value="Transition">Transition</MenuItem>
+                                </Select>
+                            </FormControl>
                             <div className="w-full flex flex-col">
                                 <div className="flex items-center justify-between w-full gap-1 sm:gap-10 mt-5">
                                     <Typography variant="subtitle1" className="flex-grow py-1">State</Typography>

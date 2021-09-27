@@ -105,9 +105,9 @@ export default function TabsPanel() {
 									label={tab.title} 
 									value={tab.title} 
 									key={'tab'+tab.title} 
-									className={`${currentTab === tab.title ? 'bg-white' : 'bg-gray-100'} rounded-t-md`}
+									className={`${currentTab === tab.title ? 'bg-white' : 'bg-gray-100'} rounded-t-md pr-0`}
 									classes={{wrapper: classes.tabWrapper, root: classes.tabRoot}}
-									icon={<IconButton><CloseIcon className="w-4 mt-1" /></IconButton>}
+									icon={<IconButton className="justify-self-end w-4"><CloseIcon className="w-4 mt-1" /></IconButton>}
 								/>
 							)
 						}
