@@ -24,12 +24,18 @@ const useStyles = makeStyles((theme) => ({
     logo: {
       margin: 0,
       width: 35,
-      padding: 0
+      padding: 0,
+      [theme.breakpoints.down('sm')]:{
+          marginLeft: -10
+      }
     },
     title: {
       flexGrow: 1,
       marginLeft: 10,
-      fontSize: 26
+      fontSize: 26,
+      [theme.breakpoints.down('sm')]:{
+          marginLeft: 3
+      }
     },
   }));
 
@@ -58,7 +64,7 @@ export default function TopBar(props){
                     </IconButton>
                     <Typography variant="h6" className={classes.title} style={{fontFamily: "'Montserrat', sans-serif"}}>{"amazethu" }</Typography>
                     {history.location.pathname === '/console' && 
-                        <select className="bg-gray-50 rounded-lg border p-1 mr-9">
+                        <select className="bg-gray-50 rounded-lg border p-1 md:mr-9 w-14 md:w-auto text-xs md:text-normal">
                             {
                                 [1].map(item => <option value="new dmgt service">new dmgt service</option>)
                             }
