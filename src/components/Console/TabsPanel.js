@@ -17,56 +17,63 @@ import AddStateTab from './AddStateTab';
 import EditStateTab from './EditStateTab';
 import DataFlowTab from './DataFlowTab';
 
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
-
-  return (
-	<div
-	  role="tabpanel"
-	  hidden={value !== index}
-	  id={`scrollable-auto-tabpanel-${index}`}
-	  aria-labelledby={`scrollable-auto-tab-${index}`}
-	  style={{overflow: 'hidden', height: 'calc(100vh - 103px)'}}
-	  {...other}
-	>
-	  {value === index && (
-		<div className="flex items-stretch h-full">
-				{children}
-		</div>
-	  )}
-	</div>
-  );
-}
-
 const useStyles = makeStyles((theme) => ({
-  root: {
-	flexGrow: 1,
-	textTransform: 'none',
-	maxHeight: 25,
-	minHeight: 20,
-	backgroundColor: theme.palette.background.paper,
-	margin: 0,
-  },
-  tabWrapper: {
-    display: 'flex',
-    flexDirection: 'row-reverse',
-    alignItems: 'center',
-    maxHeight: 20,
-    textTransform: 'none',
-    justifyContent: 'space-between',
-	borderRadius: '0.2rem',
-	fontWeight: 'normal',
-	overflow: 'hidden'
-  },
-  tabRoot: {
-	maxHeight: 25,
-	minHeight: 20,
-	margin: 2,
-  },
-  indicator:{
-	  display: 'none'
-  }
-}));
+	root: {
+	  flexGrow: 1,
+	  textTransform: 'none',
+	  maxHeight: 25,
+	  minHeight: 20,
+	  backgroundColor: theme.palette.background.paper,
+	  margin: 0,
+	},
+	tabWrapper: {
+	  display: 'flex',
+	  flexDirection: 'row-reverse',
+	  alignItems: 'center',
+	  maxHeight: 20,
+	  textTransform: 'none',
+	  justifyContent: 'space-between',
+	  borderRadius: '0.2rem',
+	  fontWeight: 'normal',
+	  overflow: 'hidden'
+	},
+	tabRoot: {
+	  maxHeight: 25,
+	  minHeight: 20,
+	  margin: 2,
+	},
+	indicator:{
+		display: 'none'
+	},
+	tabPanel: {
+		overflow: 'hidden',
+		height: 'calc(100vh - 90px)',
+		[theme.breakpoints.up('md')]:{
+			height: 'calc(100vh - 98px)'
+		}
+	}
+  }));
+
+function TabPanel(props) {
+	const { children, value, index, ...other } = props;
+	const classes = useStyles();
+	return (
+		<div
+		role="tabpanel"
+		hidden={value !== index}
+		id={`scrollable-auto-tabpanel-${index}`}
+		aria-labelledby={`scrollable-auto-tab-${index}`}
+		className={classes.tabPanel}
+		{...other}
+		>
+		{value === index && (
+			<div className="flex items-stretch h-full">
+					{children}
+			</div>
+		)}
+		</div>
+	);
+}
 
 export default function TabsPanel() {
 	const classes = useStyles();

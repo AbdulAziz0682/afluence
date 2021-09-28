@@ -9,8 +9,11 @@ import MetricsTab from './MetricsTab';
 
 const useStyles = makeStyles(theme => ({
     root: {
-        padding: theme.spacing(1),
-        paddingTop: theme.mixins.toolbar.minHeight/2-15,
+        padding: 3,
+        paddingTop: 4,
+        [theme.breakpoints.up('sm')]:{
+            paddingTop: 12
+        },
         flexGrow: 1,
         background: 'rgba(233, 234, 238, 1)',
 		maxHeight: '100%',
