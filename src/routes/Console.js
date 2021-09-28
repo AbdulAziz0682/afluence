@@ -24,7 +24,7 @@ export default function Console() {
 	}
 	return (
 		<div className={classes.root}>
-			<SideBar />
+			<SideBar />{/* Collapsable Sidebar */}
 			<Content />
 		</div>
 	);

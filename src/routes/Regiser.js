@@ -73,7 +73,7 @@ export default function Register(props){
     return (
         <Grid item container>
             <form onSubmit={formik.handleSubmit} className="w-full flex items-center justify-center">
-            <Hidden smDown>
+            <Hidden smDown>{/* Hidden on mobile screens */}
                 <div className="flex-grow flex flex-col items-center">
                     <Typography variant="h6">Build interactive voice interfaces with amazethu</Typography>
                     <Grid container component={Paper} elevation={6} id="md" direction="row" className="border md:w-5/6 lg:w-204 self-center rounded-3xl">
@@ -250,7 +250,7 @@ export default function Register(props){
                     </Grid>
                 </div>
             </Hidden>
-            <Hidden mdUp>
+            <Hidden mdUp>{/*Hidden on desktop screens */}
                 <Grid container spacing={2} alignItems="center" direction="column" className="self-center">
                     <Grid item className="w-80 flex items-center p-6">
                         <img src={logo} alt="logo" style={{width: 100}}/>

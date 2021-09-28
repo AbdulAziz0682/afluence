@@ -2,18 +2,18 @@ import React from 'react';
 import { ThemeProvider, createTheme } from '@material-ui/core/styles';
 import Routes from './routes';
 
-import { Provider } from 'react-redux';
+import { Provider } from 'react-redux'; //Global State with redux
 import store from './redux/store';
 
-import { createGenerateClassName, jssPreset, StylesProvider } from '@material-ui/core/styles';
+import { createGenerateClassName, jssPreset, StylesProvider } from '@material-ui/core/styles'; //JSS Integration in order for tailwindcss work
 import {create} from 'jss';
 import jssExtend from 'jss-plugin-extend';
 import rtl from 'jss-rtl';
 
-import './index.css';
-import ErrorBoundary from './components/ErrorBoundary';
+import './index.css'; //Global styles including generated TailwindCSS
+import ErrorBoundary from './components/ErrorBoundary'; //Error Boundary for handling errors
 
-const customTheme = createTheme({
+const customTheme = createTheme({ //Custom theme
 	palette: {
 		type: 'light',
 		primary: {

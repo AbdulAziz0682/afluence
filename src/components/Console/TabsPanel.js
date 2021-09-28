@@ -75,7 +75,7 @@ export default function TabsPanel() {
 	let currentTab = useSelector((state)=>state.currentProject.currentTab);
 	const handleChange = (event, newValue) => {
 		if(event.target.classList.contains('MuiIconButton-root') || event.target.classList.contains('MuiSvgIcon-root') || !event.target.classList.length){
-			dispatch(closeTab(newValue));
+			dispatch(closeTab(newValue)); //The clicked button can be IconButton, SvgIcon or path component that has no classList
 			return;
 		}
 		dispatch(setCurrentTab(newValue));

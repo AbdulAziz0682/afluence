@@ -31,7 +31,7 @@ export default function Routes({children}){
                         <Route exact path="/register"><Register /></Route>
                         <Route exact path="/test"><Test /></Route>
                         <Route exact path="/home"><Home /></Route>
-                        <Route exact path="/"><Login /></Route>
+                        <Route exact path="/"><Login /></Route> {/*Default route as Login */}
                     </Switch>
                 </Grid>
             </Grid>
