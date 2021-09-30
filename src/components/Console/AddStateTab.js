@@ -71,8 +71,8 @@ export default function AddStateTab(props){
                     <Button variant="contained" color="primary" className="w-36">Save</Button>
                 </div>
             </Grid>
-            <Grid item className="pl-1 md:pl-10 flex relative md:gap-20 bg-gray-100 flex-grow items-start">
-                <div className="border rounded-lg md:w-72 sm:w-36 bg-gray-200 flex flex-col divide-y my-9">
+            <Grid item className="md:pl-5 flex relative md:gap-5 lg:gap-30 bg-gray-100 flex-grow items-start justify-around">
+                <div className="border rounded-lg w-60 bg-gray-200 flex flex-col divide-y my-9">
                     <div className="p-1 sm:p-3 text-center flex flex-col flex-grow">
                         <Hidden smUp><IconButton className="self-end"><ChevronLeftIcon className="bg-gray-400" onClick={()=>setOpen(true)} /></IconButton></Hidden>
                         <span className="self-center">{name ? name : '...'}</span>
